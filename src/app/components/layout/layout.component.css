@@ -1,7 +1,7 @@
 #gridContainer{
     display:grid;
     grid-template-columns : repeat(12,1fr);
-    grid-template-rows : 50px minmax(600px,auto) 50px;
+    grid-template-rows : 50px minmax(800px,auto) 75px;
 }
 
 #navBar{
