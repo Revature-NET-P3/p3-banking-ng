@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -24,7 +29,11 @@ import { AccountviewComponent } from "./components/accountview/accountview.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AccordionModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
