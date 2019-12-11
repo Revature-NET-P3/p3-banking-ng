@@ -1,0 +1,12 @@
+#LandingWrapper{
+    background-image: url("../../../assets/images/banking_background.jpeg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    justify-content: space-around;
+
+
+}
