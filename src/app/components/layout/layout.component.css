@@ -1,0 +1,21 @@
+#gridContainer{
+    display:grid;
+    grid-template-columns : repeat(12,1fr);
+    grid-template-rows : 50px minmax(600px,auto) 50px;
+}
+
+#navBar{
+    grid-column:span 12;
+    background-color: aquamarine;
+
+}
+#contentArea{
+    grid-column:span 12;
+    background-color: aliceblue;
+
+}
+#footer{
+    grid-column:span 12;
+    background-color: aquamarine;
+
+}

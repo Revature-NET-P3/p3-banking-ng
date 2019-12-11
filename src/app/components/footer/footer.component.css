@@ -1,0 +1,9 @@
+button{
+    margin-top: 7px;
+}
+
+#FooterWrapper{
+    display: flex;
+    align-items: center;   
+    justify-content: space-around;
+}
