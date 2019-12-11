@@ -1,7 +1,7 @@
 #gridContainer{
     display:grid;
     grid-template-columns : repeat(12,1fr);
-    grid-template-rows : 50px minmax(600px,auto) 50px;
+    grid-template-rows : 50px minmax(800px,auto) 75px;
 }
 
 #navBar{
@@ -11,7 +11,7 @@
 }
 #contentArea{
     grid-column:span 12;
-    background-color: aliceblue;
+    background-color: rgba(0, 38, 255, 0.705);
 
 }
 #footer{
