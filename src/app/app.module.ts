@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentareaComponent } from './components/contentarea/contentarea.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     FooterComponent,
     ContentareaComponent,
     AccountsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
