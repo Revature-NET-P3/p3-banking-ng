@@ -9,6 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentareaComponent } from './components/contentarea/contentarea.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { UserService } from './services/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     FooterComponent,
     ContentareaComponent,
     AccountsComponent,
-    LandingPageComponent
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

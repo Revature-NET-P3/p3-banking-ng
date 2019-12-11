@@ -28,8 +28,16 @@ export class UserService implements OnInit {
     return this.cookies.get('UserId');
   }
 
-  isLoggedIn(): Observable<boolean> { //TODO Make Observable
+  isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
+  }
+
+  getUser() {
+    return this.user.getValue();
+  }
+
+  observeUser(){
+    return this.user.asObservable();
   }
 
   logOut() {
