@@ -12,24 +12,10 @@ export class UserService implements OnInit {
   constructor(private cookies: CookieService) { }
 
   ngOnInit(): void {
-    if (this.cookies.check('UserId')) {
+    if (this.cookies.check('User')) {
       this.loggedIn.next(true);
-      this.user.next(this.cookies.get('UserId'));
+      this.user.next(this.cookies.get('User'));
     }
-  }
-
-  setUserID(id: string) {
-    this.cookies.set('UserId', id)
-    if (id != null) this.loggedIn.next(true);
-    console.log("from the user service", this.cookies.get('UserId'))
-  }
-
-  getUserID() {
-    return this.cookies.get('UserId');
-  }
-
-  isLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
   }
 
   getUser() {
@@ -40,9 +26,23 @@ export class UserService implements OnInit {
     return this.user.asObservable();
   }
 
-  logOut() {
-    this.cookies.set('UserId', '');
+  isLoggedIn(): Observable<boolean> {
+    return this.loggedIn.asObservable();
+  }
+
+  logout() {
+    this.cookies.set('User', '');
+    this.user.next('');
     this.loggedIn.next(false);
   }
+
+  login(user){
+    this.user.next(user);
+    this.cookies.set('User', user);
+    this.loggedIn.next(true);
+    //TODO Use api.service.ts
+  }
+
+
 
 }

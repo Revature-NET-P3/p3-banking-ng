@@ -7,7 +7,7 @@
           <i class="fa fa-bars"></i>
         </a>
 
-        <button *ngIf="!(loggedIn | async)" mat-button routerLink="/home"> Log In </button>
-        <button *ngIf="loggedIn | async" mat-button routerLink="/home"> Log Out </button>
+        <a class="right" *ngIf="!(loggedIn | async)" routerLink="/home"> Log In </a>
+        <a class="right" *ngIf="loggedIn | async" routerLink="/home"> Log Out </a>
 </div>
 
