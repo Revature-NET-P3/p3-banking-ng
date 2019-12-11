@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
 
-  private loggedIn: Observable<boolean> = this.userSvc.isLoggedIn();
+  loggedIn: Observable<boolean> = this.userSvc.isLoggedIn();
 
   constructor(private userSvc: UserService) { }
 

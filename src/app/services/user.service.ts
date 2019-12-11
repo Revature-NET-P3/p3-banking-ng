@@ -9,6 +9,7 @@ export class UserService implements OnInit {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
   private user = new BehaviorSubject<any>('');
+  
   constructor(private cookies: CookieService) { }
 
   ngOnInit(): void {
