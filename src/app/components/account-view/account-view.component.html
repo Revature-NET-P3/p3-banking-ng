@@ -20,7 +20,7 @@
               </div>
 
         <accordion >
-            <accordion-group *ngFor="let a of account" heading={{a.accountname}} (click)="getAccount(a.id)">
+            <accordion-group *ngFor="let a of account" heading={{a.accountname}} (click)="getAccount(a)">
                 <p><b>Account Number:</b> {{a.accountnumber}}</p>
                 <p><b>Balance:</b> {{a.balance}}</p>
             </accordion-group>
@@ -49,7 +49,7 @@
         <h2>{{master}}</h2>
         <h3 style="color:white"> This is.... </h3>
         <div style="background-color:white">
-            <app-checkingAccount [account]="account[0]" [master]="mastername">
+            <app-checkingAccount [account]="infoAccount" [master]="mastername">
             </app-checkingAccount>
         </div>
     </div>

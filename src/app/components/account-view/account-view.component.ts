@@ -15,13 +15,15 @@ export class AccountViewComponent implements OnInit {
   account = ACCOUNT;
   master = 'Account - Details';
 
+  infoAccount: Account;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  getAccount(Id: number) {
+  getAccount(account: Account) {
     //logic here
-    
+    this.infoAccount = account;
   }
 }
