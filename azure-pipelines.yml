@@ -11,7 +11,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  doPush: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  doPush: $[and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))]
 
 stages:
 - stage: Build
@@ -36,7 +36,7 @@ stages:
 
     - task: Docker@2
       displayName: Push Release
-      condition: doPush
+      condition: $(doPush)
       inputs:
         containerRegistry: 'p3bankacr_connection'
         command: 'push'
@@ -61,7 +61,7 @@ stages:
         
     - task: Docker@2
       displayName: Push Debug
-      condition: doPush
+      condition: $(doPush)
       inputs:
         containerRegistry: 'p3bankacr_connection'
         command: 'push'
