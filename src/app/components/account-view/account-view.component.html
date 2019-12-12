@@ -44,14 +44,23 @@
 
     </div>
 
-
     <div>
         <h2>{{master}}</h2>
         <h3 style="color:white"> This is.... </h3>
-        <div style="background-color:white">
-            <app-checking-account [account]="infoAccount">
-            </app-checking-account>
-        </div>
+        <div *ngIf="showInfo; then thenBlock else elseBlock">
+            </div>
+            <ng-template #thenBlock>
+                <div style="background-color:white">
+                    <app-checking-account [account]="infoAccount">
+                    </app-checking-account>
+                </div>
+            </ng-template>
+            <ng-template #elseBlock>
+                <div style="height: 150px; background-color: white;">
+                    <h3>Please Select an account</h3>
+                </div>
+            </ng-template>
     </div>
+    
 
 </div>

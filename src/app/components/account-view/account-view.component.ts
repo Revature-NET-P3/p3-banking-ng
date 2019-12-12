@@ -21,6 +21,7 @@ export class AccountViewComponent implements OnInit {
   master = 'Account - Details';
 
   infoAccount: Account;
+  showInfo  = false;
 
   constructor(private accounts: AccountsService) { }
 
@@ -29,6 +30,7 @@ export class AccountViewComponent implements OnInit {
 
   getAccount(account: Account) {
     //logic here
+    this.showInfo = true;
     this.infoAccount = account;
   }
 }
