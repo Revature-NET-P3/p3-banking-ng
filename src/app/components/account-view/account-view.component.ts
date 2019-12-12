@@ -4,13 +4,13 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { ACCOUNT } from '../account';
 
 @Component({
-  selector: 'app-accountview',
-  templateUrl: './accountview.component.html',
-  styleUrls: ['./accountview.component.css'],
+  selector: 'app-account-view',
+  templateUrl: './account-view.component.html',
+  styleUrls: ['./account-view.component.css'],
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 
 })
-export class AccountviewComponent implements OnInit {
+export class AccountViewComponent implements OnInit {
 
   account = ACCOUNT;
   master = 'Account - Details';
