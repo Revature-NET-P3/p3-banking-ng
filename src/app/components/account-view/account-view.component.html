@@ -23,9 +23,10 @@
                 </ul>
               </div>
 
-        <accordion [closeOthers]="true">
-            <accordion-group *ngFor="let a of accounts" heading={{a.accountname}} (click)="getAccount(a)">
-                <p><b>Account Number:</b> {{a.accountnumber}}</p>
+        <accordion [closeOthers]="true" [isAnimated]="true">
+            <accordion-group *ngFor="let a of accounts" heading={{a.accountName}} 
+            (click)="getAccount(a)" (isOpenChange)="openChange(a)">
+                <p><b>Account Number:</b> {{a.accountNumber}}</p>
                 <p><b>Balance:</b> {{a.balance}}</p>
             </accordion-group>
         </accordion>
@@ -35,9 +36,8 @@
 
     <div>
         <h2>{{master}}</h2>
-        <h3 style="color:white"> This is.... </h3>
         <div style="background-color:white">
-            <app-checking-account [account]="infoAccount">
+            <app-checking-account [account]="currentAccount">
             </app-checking-account>
         </div>
     </div>

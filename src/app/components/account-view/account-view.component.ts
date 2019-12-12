@@ -18,12 +18,11 @@ import { MOCK_ACCOUNTS, CheckingAccount, BusinessAccount, LoanAccount, TermAccou
 export class AccountViewComponent implements OnInit {
 
   oneAtATime: boolean = true;
-  menuTypes = [typeof CheckingAccount, typeof BusinessAccount, typeof LoanAccount, typeof TermAccount]
-  filterOptions = ["None", "Checking", "Business", "Loan", "CD"]
-  accounts = MOCK_ACCOUNTS;
+  currentAccount: Account = null;
+  //menuTypes = [typeof CheckingAccount, typeof BusinessAccount, typeof LoanAccount, typeof TermAccount]
+  filterOptions = ["Checking", "Business", "Loan", "CD"]
+  accounts = this.accountsSvc.getAccounts<CheckingAccount>();
   master = 'Account - Details';
-
-  infoAccount: Account;
 
   constructor(private accountsSvc: AccountsService) { }
 
@@ -32,14 +31,31 @@ export class AccountViewComponent implements OnInit {
 
   getAccount(account: Account) {
     //logic here
-    this.infoAccount = account;
+    this.currentAccount = account;
+  }
+
+  openChange(account: Account){
+    if(account == this.currentAccount)
+      this.currentAccount = null;
   }
 
   filter(option: string){
+    var type;
     switch(option){
-      //find type
+      case "Checking":
+        type = CheckingAccount;
+        break;
+      case "Business":
+        type = BusinessAccount;
+        break;
+      case "Loan":
+        type = LoanAccount;
+        break;
+      case "CD":
+        type = TermAccount;
+        break;
     }
-//    accounts = this.accountsSvc.getAccounts<type>();
+    this.accounts = this.accountsSvc.getAccounts<typeof type>();
     console.log(option);
   }
 }
