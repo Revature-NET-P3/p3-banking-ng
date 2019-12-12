@@ -36,6 +36,10 @@ export class AccountViewComponent implements OnInit {
   }
 
   filter(option: string){
+    switch(option){
+      //find type
+    }
+//    accounts = this.accountsSvc.getAccounts<type>();
     console.log(option);
   }
 }
