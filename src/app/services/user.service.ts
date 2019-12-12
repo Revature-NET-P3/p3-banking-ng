@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService implements OnInit {
   private loggedIn = new BehaviorSubject<boolean>(false);
   private user = new BehaviorSubject<any>('');
   
-  constructor(private cookies: CookieService) { }
+  constructor(private cookies: CookieService, private api: ApiService) { }
 
   ngOnInit(): void {
     if (this.cookies.check('User')) {
@@ -41,7 +42,7 @@ export class UserService implements OnInit {
     this.user.next(user);
     this.cookies.set('User', user);
     this.loggedIn.next(true);
-    //TODO Use api.service.ts
+    this.api.login(user);
   }
 
 
