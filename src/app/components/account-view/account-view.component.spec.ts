@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountViewComponent } from './account-view.component';
 
-describe('AccountviewComponent', () => {
+describe('AccountViewComponent', () => {
   let component: AccountViewComponent;
   let fixture: ComponentFixture<AccountViewComponent>;
 
