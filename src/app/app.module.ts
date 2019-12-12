@@ -14,6 +14,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentareaComponent } from './components/contentarea/contentarea.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { UserService } from './services/user.service';
+import { CookieService } from 'ngx-cookie-service';
 import { AccountviewComponent } from "./components/accountview/accountview.component"
 
 @NgModule({
@@ -33,9 +35,11 @@ import { AccountviewComponent } from "./components/accountview/accountview.compo
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
     BsDropdownModule.forRoot(),
-    
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    UserService,    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
