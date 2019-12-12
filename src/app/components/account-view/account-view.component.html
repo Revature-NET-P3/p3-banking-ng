@@ -21,8 +21,8 @@
 
         <accordion >
             <accordion-group *ngFor="let a of account" heading={{a.accountname}} (click)="getAccount(a)">
-                <p><b>Account Number:</b> {{a.accountnumber}}</p>
-                <p><b>Balance:</b> {{a.balance}}</p>
+                <!--<p><b>Account Number:</b> {{a.accountnumber}}</p>
+                <p><b>Balance:</b> {{a.balance}}</p>-->
             </accordion-group>
            <!--<accordion-group heading="Account ID : 1234">
                 <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
@@ -49,8 +49,8 @@
         <h2>{{master}}</h2>
         <h3 style="color:white"> This is.... </h3>
         <div style="background-color:white">
-            <app-checkingAccount [account]="infoAccount" [master]="mastername">
-            </app-checkingAccount>
+            <app-checking-account [account]="infoAccount">
+            </app-checking-account>
         </div>
     </div>
 
