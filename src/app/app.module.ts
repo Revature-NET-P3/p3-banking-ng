@@ -7,6 +7,7 @@ import { AccordionModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -21,6 +22,7 @@ import { CheckingAccountComponent } from './components/checking-account/checking
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { ApiService } from './services/api.service';
     AccountsComponent,
     LandingPageComponent,
     AccountViewComponent,
+    UserDetailsComponent,
     CheckingAccountComponent,
   ],
   imports: [
@@ -41,6 +44,7 @@ import { ApiService } from './services/api.service';
     AccordionModule.forRoot(),
     BsDropdownModule.forRoot(),
     HttpClientModule,
+    MatTableModule,
   ],
   providers: [
     CookieService,
