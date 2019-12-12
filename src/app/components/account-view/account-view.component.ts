@@ -3,7 +3,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { TypeofExpr } from '@angular/compiler';
 
-import { ACCOUNT } from '../account';
+import { MOCK_ACCOUNTS, CheckingAccount, BusinessAccount, LoanAccount, TermAccount, Account } from '../../models/account';
 
 @Component({
   selector: 'app-account-view',
@@ -17,12 +17,15 @@ import { ACCOUNT } from '../account';
 })
 export class AccountViewComponent implements OnInit {
 
-  account = ACCOUNT;
+  oneAtATime: boolean = true;
+  menuTypes = [typeof CheckingAccount, typeof BusinessAccount, typeof LoanAccount, typeof TermAccount]
+  filterOptions = ["None", "Checking", "Business", "Loan", "CD"]
+  accounts = MOCK_ACCOUNTS;
   master = 'Account - Details';
 
   infoAccount: Account;
 
-  constructor(private accounts: AccountsService) { }
+  constructor(private accountsSvc: AccountsService) { }
 
   ngOnInit() {
   }
@@ -30,5 +33,9 @@ export class AccountViewComponent implements OnInit {
   getAccount(account: Account) {
     //logic here
     this.infoAccount = account;
+  }
+
+  filter(option: string){
+    console.log(option);
   }
 }
