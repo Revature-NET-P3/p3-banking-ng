@@ -15,7 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentareaComponent } from './components/contentarea/contentarea.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { AccountViewComponent } from "./components/account-view/account-view.component"
+import { AccountViewComponent } from './components/account-view/account-view.component';
+import { CheckingAccountComponent } from './components/checking-account/checking-account.component';
 
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -30,7 +31,8 @@ import { ApiService } from './services/api.service';
     ContentareaComponent,
     AccountsComponent,
     LandingPageComponent,
-    AccountViewComponent
+    AccountViewComponent,
+    CheckingAccountComponent,
   ],
   imports: [
     BrowserModule,
