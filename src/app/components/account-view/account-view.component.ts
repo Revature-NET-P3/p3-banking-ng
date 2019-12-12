@@ -8,7 +8,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 
 })
-export class AccountviewComponent implements OnInit {
+export class AccountViewComponent implements OnInit {
 
   constructor() { }
 
