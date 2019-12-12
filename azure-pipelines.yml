@@ -4,12 +4,14 @@
 
 trigger:
 - master
+- test-ci-*
 
 resources:
 - repo: self
 
 variables:
   tag: '$(Build.BuildId)'
+  doPush: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 stages:
 - stage: Build
@@ -34,7 +36,7 @@ stages:
 
     - task: Docker@2
       displayName: Push Release
-      condition: ne(variables['Build.Reason'], 'PullRequest')
+      condition: doPush
       inputs:
         containerRegistry: 'p3bankacr_connection'
         command: 'push'
@@ -59,7 +61,7 @@ stages:
         
     - task: Docker@2
       displayName: Push Debug
-      condition: ne(variables['Build.Reason'], 'PullRequest')
+      condition: doPush
       inputs:
         containerRegistry: 'p3bankacr_connection'
         command: 'push'
