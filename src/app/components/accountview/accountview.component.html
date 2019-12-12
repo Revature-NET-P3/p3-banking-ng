@@ -19,31 +19,39 @@
                 </ul>
               </div>
 
-        <accordion>
-            <accordion-group heading="Account ID : ">
+        <accordion >
+            <accordion-group *ngFor="let a of account" heading={{a.accountname}} (click)="getAccount(a.id)">
+                <p><b>Account Number:</b> {{a.accountnumber}}</p>
+                <p><b>Balance:</b> {{a.balance}}</p>
+            </accordion-group>
+           <!--<accordion-group heading="Account ID : 1234">
                 <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
                 </p>
             </accordion-group>
-            <accordion-group heading="Account ID :">
+            <accordion-group heading="Account ID : 2345">
                 <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
                 </p>
             </accordion-group>
-            <accordion-group heading="Account ID :">
+            <accordion-group heading="Account ID : 3456">
                 <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
                 </p>
             </accordion-group>
-            <accordion-group heading="Account ID :">
+            <accordion-group heading="Account ID : 4567">
                 <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
                 </p>
-            </accordion-group>
+            </accordion-group> --> 
         </accordion>
 
     </div>
 
 
     <div>
-        <h2>Account</h2>
-
+        <h2>{{master}}</h2>
+        <h3 style="color:white"> This is.... </h3>
+        <div style="background-color:white">
+            <app-checkingAccount [account]="account[0]" [master]="mastername">
+            </app-checkingAccount>
+        </div>
     </div>
 
 </div>

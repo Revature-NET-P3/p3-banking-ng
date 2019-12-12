@@ -16,30 +16,36 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
-import { AccountviewComponent } from "./components/accountview/accountview.component"
+import { AccountviewComponent } from './components/accountview/accountview.component';
+import { CheckingAccountComponent } from './components/checkingAccount/checkingAccount.component';
+
+import { Account } from './components/account';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    NavbarComponent,
-    FooterComponent,
-    ContentareaComponent,
-    AccountsComponent,
-    LandingPageComponent,
-    AccountviewComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AccordionModule.forRoot(),
-    BsDropdownModule.forRoot(),
-  ],
-  providers: [
-    CookieService,
-    UserService,    
-  ],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      LayoutComponent,
+      NavbarComponent,
+      FooterComponent,
+      ContentareaComponent,
+      AccountsComponent,
+      LandingPageComponent,
+      AccountviewComponent,
+      CheckingAccountComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      AccordionModule.forRoot(),
+      BsDropdownModule.forRoot()
+   ],
+   providers: [
+      CookieService,
+      UserService
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

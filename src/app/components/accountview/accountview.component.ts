@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
+import { ACCOUNT } from '../account';
+
 @Component({
   selector: 'app-accountview',
   templateUrl: './accountview.component.html',
@@ -10,9 +12,16 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class AccountviewComponent implements OnInit {
 
+  account = ACCOUNT;
+  master = 'Account - Details';
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  getAccount(Id: number) {
+    //logic here
+    
+  }
 }
