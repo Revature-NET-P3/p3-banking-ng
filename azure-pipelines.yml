@@ -17,6 +17,10 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:  
+  - job: Test:
+    steps:
+    - bash: echo $(doPush)
+    
   - job: Build
     displayName: Build and Push
     pool:
