@@ -16,7 +16,7 @@ import { ContentareaComponent } from './components/contentarea/contentarea.compo
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { AccountViewComponent } from './components/account-view/account-view.component';
-import { CheckingAccountComponent } from './components/checkingAccount/checkingAccount.component';
+import { CheckingAccountComponent } from './components/checking-account/checking-account.component';
 
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
