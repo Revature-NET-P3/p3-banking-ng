@@ -15,23 +15,27 @@
   				</div>
   				<form>
   					<div class="col-3">
-			        	<input class="effect-2" type="text" placeholder="User Name" userName = "userName">
+			        	<input class="effect-2" type="text" placeholder="User Name" #userNameInput required>
 			            <span class="focus-border"></span>
 
-			            <input class="effect-2" type="password" placeholder="Password" password= "password">
+			            <input class="effect-2" type="password" placeholder="Password" #passwordInput required>
                         <span class="focus-border"></span>
 			        </div>
 
-			        <div class="forget">
+			        <!-- <div class="forget">
 			        	<button class="btn btn-default btn-sm">FORGOT PASSWORD?</button>
-			        </div>
+					</div> -->
+					
+					<div class="forget">
+							<button class="btn btn-default btn-sm" routerLink = "/register">Register</button>
+						</div>
 
   				</form>
   			</div>
-  			<a href="#">
+  			<a routerLink = "/accounts">
   				<div class="enterButton" (click) = "onEnter()">
 	  				<i class="fa fa-lock fa-2x text-white"></i><br>
-	  				<span class="enterText text-white">Enter</span>
+					  <span class="enterText text-white">Enter</span>
 	  			</div>
   			</a>
 		</div>

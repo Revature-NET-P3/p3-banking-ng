@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  title: "P3Bank",
+  production: true,
+  apiUrl: "https://p3bankapi.azurewebsites.net",
 };

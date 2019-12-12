@@ -6,5 +6,8 @@
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
+
+        <a class="right" *ngIf="!(loggedIn | async)" routerLink="/home"> Login </a>
+        <a class="right" *ngIf="loggedIn | async" routerLink="/home"> Logout </a>
 </div>
 
