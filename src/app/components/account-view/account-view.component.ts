@@ -14,8 +14,8 @@ import { TypeofExpr } from '@angular/compiler';
 
 })
 export class AccountViewComponent implements OnInit {
-  
-  constructor(private accounts:AccountsService) { }
+
+  constructor(private accounts: AccountsService) { }
 
   ngOnInit() {
   }
