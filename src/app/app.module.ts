@@ -16,7 +16,7 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
-import { AccountviewComponent } from "./components/accountview/accountview.component"
+import { AccountViewComponent } from "./components/account-view/account-view.component"
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { AccountviewComponent } from "./components/accountview/accountview.compo
     ContentareaComponent,
     AccountsComponent,
     LandingPageComponent,
-    AccountviewComponent
+    AccountViewComponent
   ],
   imports: [
     BrowserModule,
