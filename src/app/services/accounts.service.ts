@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Account, MOCK_ACCOUNTS } from '../models/account';
+import { Account, MOCK_ACCOUNTS, AccountType } from '../models/account';
 
 @Injectable()
 export class AccountsService {
@@ -9,10 +9,10 @@ export class AccountsService {
 
   //TODO: Type to models
   //TODO: Use ApiService 
-  getAccounts<T extends Account>() {
+  getAccounts(t:AccountType) {
     //var accounts = this.api.getAccounts();
     var accounts: Account[] = MOCK_ACCOUNTS;
-    return accounts.filter((a:Account): a is T => (a as T) !== undefined);
+    return accounts.filter((a:Account) => a.type == t);
   }
 
 }
