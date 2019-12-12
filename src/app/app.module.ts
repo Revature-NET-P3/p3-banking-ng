@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -18,11 +19,7 @@ import { AccountViewComponent } from "./components/account-view/account-view.com
 
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
-<<<<<<< HEAD
-import { ApiBaseService } from './services/api-base.service';
-=======
-import { AccountViewComponent } from "./components/account-view/account-view.component"
->>>>>>> rename-account-view
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -41,11 +38,12 @@ import { AccountViewComponent } from "./components/account-view/account-view.com
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
     BsDropdownModule.forRoot(),
+    HttpClientModule,
   ],
   providers: [
     CookieService,
     UserService,
-    {provide: ApiBaseService, useClass: environment.apiService }   
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })

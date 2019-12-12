@@ -5,7 +5,7 @@
 export const environment = {
   title: "P3Bank (Debug)",
   production: false,
-  apiService: ApiService, // Add a different implementation to test
+  apiUrl: "https://p3bankapi-debug.azurewebsites.net",
 };
 
 /*
@@ -16,5 +16,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 import 'zone.js/dist/zone-error';  // Included with Angular CLI.import { ApiService } from 'src/app/services/api.service';
-import { ApiService } from 'src/app/services/api.service';
 
