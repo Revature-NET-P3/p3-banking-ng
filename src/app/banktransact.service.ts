@@ -9,7 +9,7 @@ export class BanktransactService {
   constructor(private client: HttpClient) { }
 
 
-  putDeposit(id, token, account, amount,deposit){
+  putDeposit(id, token, account,amount,deposit){
      this.client.put("request from API team transaction controller", [id,token, account, amount,deposit]);
   }
 
