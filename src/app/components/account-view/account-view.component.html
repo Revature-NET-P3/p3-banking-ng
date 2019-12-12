@@ -31,8 +31,7 @@
     <div>
         <h2>{{master}}</h2>
         <h3 style="color:white"> This is.... </h3>
-        <div *ngIf="showInfo; then thenBlock else elseBlock">
-            </div>
+        <div *ngIf="showInfo; then thenBlock else elseBlock"></div>
             <ng-template #thenBlock>
                 <div style="background-color:white">
                     <app-checking-account [account]="infoAccount">
