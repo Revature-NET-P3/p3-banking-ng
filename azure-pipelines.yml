@@ -15,7 +15,7 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: Stage 0 (Docker)
   jobs:  
   - job: Test
     steps:
