@@ -18,7 +18,11 @@ import { AccountViewComponent } from "./components/account-view/account-view.com
 
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
+<<<<<<< HEAD
 import { ApiBaseService } from './services/api-base.service';
+=======
+import { AccountViewComponent } from "./components/account-view/account-view.component"
+>>>>>>> rename-account-view
 
 @NgModule({
   declarations: [
