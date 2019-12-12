@@ -21,23 +21,39 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - task: Docker@2
-      displayName: Build and Push Release
+      displayName: Build Release
+      inputs:
+        repository: 'ng-release'
+        command: 'build'
+        Dockerfile: 'Dockerfile'
+
+    - task: Docker@2
+      displayName: Push Release
+      condition: ne(variables['Build.Reason'], 'PullRequest')
       inputs:
         containerRegistry: 'p3bankacr_connection'
+        command: 'push'
         repository: 'ng-release'
-        command: 'buildAndPush'
-        Dockerfile: 'Dockerfile'
         tags: |
           $(Build.BuildId)
           release
           latest
+
     - task: Docker@2
-      displayName: Build and Push Debug
+      displayName: Build Debug
+      condition: succeededOrFailed()
+      inputs:
+        repository: 'ng-debug'
+        command: 'build'
+        Dockerfile: 'Dockerfile-debug'
+        
+    - task: Docker@2
+      displayName: Push Debug
+      condition: ne(variables['Build.Reason'], 'PullRequest')
       inputs:
         containerRegistry: 'p3bankacr_connection'
+        command: 'push'
         repository: 'ng-debug'
-        command: 'buildAndPush'
-        Dockerfile: 'Dockerfile-debug'
         tags: |
           $(Build.BuildId)
           debug
