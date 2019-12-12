@@ -1,0 +1,57 @@
+<div ID="AccountViewWrapper">
+
+    <div>
+        <h2>Accounts</h2>
+
+        <div class="btn-group" dropdown>
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-animated">
+                  Filter Accounts <span class="caret"></span>
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                    role="menu" aria-labelledby="button-animated">
+                  <li role="menuitem"><a class="dropdown-item" href="#">Checking</a></li>
+                  <li role="menuitem"><a class="dropdown-item" href="#">Business</a>
+                  </li>
+                  <li role="menuitem"><a class="dropdown-item" href="#">Loan</a></li>
+                  <li role="menuitem"><a class="dropdown-item" href="#">CD</a></li>
+
+                </ul>
+              </div>
+
+        <accordion >
+            <accordion-group *ngFor="let a of account" heading={{a.accountname}} (click)="getAccount(a)">
+                <p><b>Account Number:</b> {{a.accountnumber}}</p>
+                <p><b>Balance:</b> {{a.balance}}</p>
+            </accordion-group>
+           <!--<accordion-group heading="Account ID : 1234">
+                <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
+                </p>
+            </accordion-group>
+            <accordion-group heading="Account ID : 2345">
+                <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
+                </p>
+            </accordion-group>
+            <accordion-group heading="Account ID : 3456">
+                <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
+                </p>
+            </accordion-group>
+            <accordion-group heading="Account ID : 4567">
+                <p> We can add info hear or display it on accordian, we can also add some shortcuts to account actions.
+                </p>
+            </accordion-group> --> 
+        </accordion>
+
+    </div>
+
+
+    <div>
+        <h2>{{master}}</h2>
+        <h3 style="color:white"> This is.... </h3>
+        <div style="background-color:white">
+            <app-checking-account [account]="infoAccount">
+            </app-checking-account>
+        </div>
+    </div>
+
+</div>
