@@ -1,16 +1,17 @@
 export class Account {
-    id: string;
-    accountname: string;
-    accountnumber: number;
+    id: number;
+    UserId: number;
+    accounttypeId: number;
     balance: number;
-    interest: number;
-    opendate: Date;
+    Createddate: Date;
+    Isclosed: boolean;
+    Name: string;
 }
 
 export const ACCOUNT = [
-    { id: 1, accountname: 'Checking-34', accountnumber: '1234', balance: 300 },
-    { id: 2, accountname: 'Business-45', accountnumber: '2345', balance: 190 },
-    { id: 3, accountname: 'Checking-56', accountnumber: '3456', balance: 32000 },
-    { id: 4, accountname: 'Checking-67', accountnumber: '4567', balance: 2100 },
-    { id: 5, accountname: 'Checking-78', accountnumber: '5678', balance: 21300 }
+    { id: 1, UserId: 1, accounttypeId: '1', balance: 300, Name: 'Checking' },
+    { id: 2, UserId: 2, accounttypeId: '2', balance: 190, Name: 'Business' },
+    { id: 3, UserId: 3, accounttypeId: '1', balance: 32000, Name: 'Checkimg' },
+    { id: 4, UserId: 4, accounttypeId: '4', balance: 2100, Name: 'Term Deposit' },
+    { id: 5, UserId: 5, accounttypeId: '1', balance: 21300, Name: 'Checking' }
 ];

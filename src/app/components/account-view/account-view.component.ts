@@ -4,6 +4,7 @@ import { AccountsService } from 'src/app/services/accounts.service';
 import { TypeofExpr } from '@angular/compiler';
 
 import { ACCOUNT } from '../account';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-account-view',
