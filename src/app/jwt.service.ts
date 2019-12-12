@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from './services/api.service';
 
 
 @Injectable({
@@ -7,10 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class JwtService {
 
-  constructor(private httpClient: HttpClient) { }
+  private loginService: ApiService;
+  constructor(private login: ApiService ) { }
 
-  public login(userName:string, password:string)
+  // not sure how i want to do this yet...planning on using Auth0 for the token generation
+  //placeholder for now. 
+  public generateToken()
   {
-   // return this.httpClient.post(//api login url)
+    this.loginService = this.login; 
   }
 }

@@ -32,6 +32,9 @@ npm-debug.log
 nativescript-angular*.tgz
 package-lock.json
 
+# Visual Studio 2019 cache/options directory
+.vs/
+
 # Apps' JS files
 tests/app/**/*.js
 tests/test-output.txt
