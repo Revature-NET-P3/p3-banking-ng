@@ -17,7 +17,7 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:  
-  - job: Test:
+  - job: Test
     steps:
     - bash: echo $(doPush)
     
