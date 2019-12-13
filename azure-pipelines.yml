@@ -23,22 +23,22 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
      - task: Docker@2
-      displayName: Build Debug
-      condition: succeededOrFailed()
-      inputs:
-        containerRegistry: 'p3bankacr_connection'
-        repository: 'ng-debug'
-        command: 'build'
-        Dockerfile: 'Dockerfile-debug'
-        tags: |
+       displayName: Build Debug
+       condition: succeededOrFailed()
+       inputs:
+         containerRegistry: 'p3bankacr_connection'
+         repository: 'ng-debug'
+         command: 'build'
+         Dockerfile: 'Dockerfile-debug'
+         tags: |
           $(Build.BuildId)
           debug
           latest
         
-    - task: Docker@2
-      displayName: Push Debug
-      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-      inputs:
+     - task: Docker@2
+       displayName: Push Debug
+       condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+       inputs:
         containerRegistry: 'p3bankacr_connection'
         command: 'push'
         repository: 'ng-debug'
