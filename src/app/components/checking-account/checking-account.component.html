@@ -1,6 +1,6 @@
 <fieldset>
-        <legend>{{account.Name}}-0{{account.id}}</legend>
-        <h3 align="center"><b>Balance: </b>${{account.balance}}</h3>
+        <legend>{{account.accountName}}-0{{account.id}}</legend>
+        <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
         <div>
                 <accordion [closeOthers]="true" [isAnimated]="true">
                         <accordion-group heading="++ Deposit"> 
@@ -67,5 +67,5 @@
                                 
                         </accordion-group>
                 </accordion>
-        </div>        
+        </div> 
 </fieldset>

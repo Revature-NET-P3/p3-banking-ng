@@ -7,7 +7,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 
 const routes: Routes = [
   { path: 'accounts', component: AccountsComponent },
-  { path: 'accounttype', component: AccountViewComponent },
+  { path: 'accountList', component: AccountViewComponent, data: { type: 0 } },
   { path: '', component: LandingPageComponent },
   { path: 'profile', component: UserDetailsComponent },
 
