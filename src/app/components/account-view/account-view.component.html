@@ -3,6 +3,7 @@
     <h1 class="headerTitleAcc">Accounts</h1>
 </div>
 
+
 <!--Information Wrapper ahead-->
 
 <div ID="AccountViewWrapper">
@@ -10,6 +11,7 @@
         <h2 class="blockStyle">Existing Accounts</h2>
         <!--Filter Button-->
         <div style="margin-top:3rem; float: right;">
+            <!--
             <div class="btn-group" dropdown style="display: inline-flex !important;">
                 <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
                     Filter Accounts
@@ -22,7 +24,18 @@
                     <li role="menuitem"><label style="cursor: pointer;" class="dropdown-item">Loan</label></li>
                     <li class="divider dropdown-divider"></li>
                     <li role="menuitem"><label style="cursor: pointer;" class="dropdown-item">CD</label></li>
-    
+                -->
+            <div class="btn-group" dropdown style="display: inline-flex !important;">
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-animated">
+                  Filter Accounts
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                    role="menu" aria-labelledby="button-animated">
+                    <li *ngFor="let option of filterOptions" (click)="filter(option)"
+                    class="dropdown-item" role="menuitem" style="cursor: pointer;">
+                         {{option}} 
+                    </li>
                 </ul>
             </div>
         </div>
@@ -34,29 +47,37 @@
     <!--List and show info using child component-->
     <div class="DivideAccountView">
         <accordion [closeOthers]="true" [isAnimated]="true">
-            <accordion-group *ngFor="let a of account" heading="{{a.Name}}-0{{a.id}}" (click)="getAccount(a)">
-                    <p><b>Account Number:</b> 001230{{a.id}}</p>
-                    <p><b>Rounting Number:</b> 1234590001</p>
+
+            <accordion-group *ngFor="let a of accounts" heading={{a.accountName}} 
+            (click)="getAccount(a)" (isOpenChange)="openChange(a)">
+                <p><b>Account Number:</b> {{a.accountNumber}}</p>
             </accordion-group>
         </accordion>
     </div>
 
+
     <div class="DivideAccountView">
+        <div style="background-color:white">
+            <ng-template app-view-container></ng-template>
+        </div>
+        <!--
         <div *ngIf="showInfo; then thenBlock else elseBlock"></div>
-            <ng-template #thenBlock>
-                <div style="background-color:white">
-                    <app-checking-account [account]="infoAccount">
-                    </app-checking-account>
-                </div>
-            </ng-template>
-            <ng-template #elseBlock>
-                <div style="height: 150px; background-color: white;">
-                    <h3>Please Select an account</h3>
-                </div>
-            </ng-template>
+        <ng-template #thenBlock>
+            <div style="background-color:white">
+                <app-checking-account [account]="infoAccount">
+                </app-checking-account>
+            </div>
+        </ng-template>
+        <ng-template #elseBlock>
+            <div style="height: 150px; background-color: white;">
+                <h3>Please Select an account</h3>
+            </div>
+        </ng-template>
+        -->
     </div>
     <div class="DivideAccountView">
         <h3 style="cursor:pointer; color:rgb(27, 79, 253);">+ Create a new Account</h3>
+
     </div>
 
 </div>
