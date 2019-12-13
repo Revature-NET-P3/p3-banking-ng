@@ -12,7 +12,7 @@ export enum AccountType{
     Checking,
     Business,
     Loan,
-    Interest
+    Term
 }
 
 export class CheckingAccount extends Account { }
