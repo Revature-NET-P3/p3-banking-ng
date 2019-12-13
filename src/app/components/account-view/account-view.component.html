@@ -1,5 +1,5 @@
 
-<div style="background-color: #a7d1f0;">
+<div style="background-color: #a7d1f0;"> 
     <h1 class="headerTitleAcc">Accounts</h1>
 </div>
 
@@ -41,26 +41,20 @@
         </accordion>
     </div>
 
-    <div class="DivideAccountView">
+    <div class="DivideAccountView" >
         <div *ngIf="showInfo; then thenBlock else elseBlock"></div>
-            <ng-template #thenBlock>
-                <div style="background-color:white">
-                    <app-checking-account [account]="infoAccount">
-                    </app-checking-account>
-                </div>
-                <accordion [closeOthers]="true" [isAnimated]="true">
-                        <accordion-group heading="Deposit">
-                            <p><b>Amount:</b></p>
-                            <input type="text" value="Amount">
-                            <input type="submit" value="Submit">
-                        </accordion-group>
-                    </accordion>
-            </ng-template>
-            <ng-template #elseBlock>
-                <div style="height: 150px; background-color: white;">
-                    <h3>Please Select an account</h3>
-                </div>
-            </ng-template>
+                <ng-template #thenBlock>
+                    <div style="background-color:white">
+                        <app-checking-account [account]="infoAccount">
+                        </app-checking-account>
+                    </div>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <div style="height: 150px; background-color: white;">
+                            <h3>Please Select an account</h3>
+                        </div>
+                        
+                    </ng-template>      
     </div>
     <div class="DivideAccountView">
         <h3 style="cursor:pointer; color:rgb(27, 79, 253);">+ Create a new Account</h3>
