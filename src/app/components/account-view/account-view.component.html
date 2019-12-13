@@ -7,11 +7,11 @@
 <!--Information Wrapper ahead-->
 
 <div ID="AccountViewWrapper">
+
     <div class="DivideAccountView">
-        <h2 class="blockStyle">Your Accounts</h2>
+        <h2 class=" header" >Your Accounts</h2>
         <!--Filter Button-->
         <div style="margin-top:1rem;">
-            <h3 style="display:inline; cursor:pointer; color:rgb(27, 79, 253);">+ Create a new Account</h3>
             <div class="btn-group" dropdown style=" float: right; display: inline-flex !important;">
                 <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
                         aria-controls="dropdown-animated">
@@ -25,29 +25,29 @@
                     </li>
                 </ul>
             </div>
+            <h3 style="display:inline; cursor:pointer; color:rgb(27, 79, 253);">+ Create a new Account</h3>
+
         </div>
-    </div>
-    <div class="DivideAccountView">
-        <h2 class="blockStyle">Details</h2>
-    </div>
 
     <!--List and show info using child component-->
-    <div class="DivideAccountView">
-        <accordion [closeOthers]="true" [isAnimated]="true">
 
-            <accordion-group *ngFor="let a of accounts" heading={{a.accountName}} 
-            (click)="getAccount(a)" (isOpenChange)="openChange(a)">
-                <p><b>Account Number:</b> {{a.accountNumber}}</p>
-            </accordion-group>
-        </accordion>
-    </div>
-    <div class="DivideAccountView">
-        <div style="background-color:white">
-            <ng-template app-view-container></ng-template>
+        <div class="DivideAccountView">
+            <accordion [closeOthers]="true" [isAnimated]="true">
+        
+                <accordion-group *ngFor="let a of accounts" heading={{a.accountName}} (click)="getAccount(a)"
+                    (isOpenChange)="openChange(a)">
+                    <p><b>Account Number:</b> {{a.accountNumber}}</p>
+                </accordion-group>
+            </accordion>
         </div>
-    </div>
-    <div class="DivideAccountView">
 
     </div>
+
+    <div class="DivideAccountView">
+        <h2 class=" header">Details</h2>
+
+        <ng-template app-view-container></ng-template>       
+    </div>
+   
 
 </div>
