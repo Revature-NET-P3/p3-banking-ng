@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { Account, MOCK_ACCOUNTS, AccountType } from '../models/account';
 
 @Injectable()
 export class AccountsService {
@@ -8,20 +9,10 @@ export class AccountsService {
 
   //TODO: Type to models
   //TODO: Use ApiService 
-  getCheckingAccounts(){
-    return [{name:'nice', balance:5}, {name:'cool', balance:56.78}];
-  }
-
-  getBusinessAccounts(){
-    return [{ name: 'nice', balance: 6 }, { name: 'cool', balance: 56.78 }];
-  }
-
-  getLoanAccounts(){
-    return [{ name: 'nice', balance: 7 }, { name: 'cool', balance: 56.78 }];
-  }
-
-  getTermAccounts(){ //(Same as CD)
-    return [{ name: 'nice', balance: 8 }, { name: 'cool', balance: 56.78 }];
+  getAccounts(t:AccountType) {
+    //var accounts = this.api.getAccounts();
+    var accounts: Account[] = MOCK_ACCOUNTS;
+    return accounts.filter((a:Account) => a.type == t);
   }
 
 }

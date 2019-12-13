@@ -6,22 +6,21 @@
         <div class="btn-group" dropdown>
                 <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
                         aria-controls="dropdown-animated">
-                  Filter Accounts <span class="caret"></span>
+                  Filter Accounts
                 </button>
                 <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
                     role="menu" aria-labelledby="button-animated">
-                  <li role="menuitem"><a class="dropdown-item" href="#">Checking</a></li>
-                  <li role="menuitem"><a class="dropdown-item" href="#">Business</a>
-                  </li>
-                  <li role="menuitem"><a class="dropdown-item" href="#">Loan</a></li>
-                  <li role="menuitem"><a class="dropdown-item" href="#">CD</a></li>
-
+                    <li *ngFor="let option of filterOptions" (click)="filter(option)"
+                    class="dropdown-item" role="menuitem">
+                         {{option}} 
+                    </li>
                 </ul>
               </div>
 
         <accordion [closeOthers]="true" [isAnimated]="true">
-            <accordion-group *ngFor="let a of account" heading={{a.accountname}} (click)="getAccount(a)">
-                <p><b>Account Number:</b> {{a.accountnumber}}</p>
+            <accordion-group *ngFor="let a of accounts" heading={{a.accountName}} 
+            (click)="getAccount(a)" (isOpenChange)="openChange(a)">
+                <p><b>Account Number:</b> {{a.accountNumber}}</p>
                 <p><b>Balance:</b> {{a.balance}}</p>
             </accordion-group>
         </accordion>
@@ -32,8 +31,7 @@
     <div>
         <h2>{{master}}</h2>
         <div style="background-color:white">
-            <app-checking-account [account]="infoAccount">
-            </app-checking-account>
+            <ng-template app-view-container></ng-template>
         </div>
     </div>
 
