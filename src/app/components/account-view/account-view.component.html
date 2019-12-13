@@ -35,9 +35,9 @@
     <div class="DivideAccountView">
         <accordion [closeOthers]="true" [isAnimated]="true">
 
-            <accordion-group *ngFor="let a of accounts" heading={{a.accountName}} 
+            <accordion-group *ngFor="let a of accounts" heading="{{a.type}} - {{a.id}}" 
             (click)="getAccount(a)" (isOpenChange)="openChange(a)">
-                <p><b>Account Number:</b> {{a.accountNumber}}</p>
+                <p><b>Account Number:</b> {{a.id}}</p>
             </accordion-group>
         </accordion>
     </div>
