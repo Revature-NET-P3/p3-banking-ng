@@ -1,10 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-<<<<<<< HEAD
-import { AccountViewComponent } from '../account-view/account-view.component';
-=======
 
-import { AccountViewComponent } from './account-view.component';
->>>>>>> master
+import { AccountViewComponent } from '../account-view/account-view.component';
+
+
 
 describe('AccountViewComponent', () => {
   let component: AccountViewComponent;
