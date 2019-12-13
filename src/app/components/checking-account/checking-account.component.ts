@@ -1,32 +1,33 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {BanktransactService } from 'src/app/banktransact.service'
-import { Account } from '../account';
+import { BanktransactService} from 'src/app/banktransact.service'
+import { Account } from '../../models/account';
+import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 
 @Component({
   selector: 'app-checking-account',
   templateUrl: './checking-account.component.html',
   styleUrls: ['./checking-account.component.css']
 })
-export class CheckingAccountComponent implements OnInit {
+export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
   @Input() account: Account;
+  amount = '0';
 
   constructor(private bts:BanktransactService) { }
 
   ngOnInit() {
   }
 
-  Deposit(id, token, account,amount,deposit){
-    this.bts.putDeposit(id, token, account,amount,deposit)
+  Deposit(amount){
+    this.bts.putDeposit(this.account.id, amount).subscribe(data => data[0])
   }
-  Withdraw(id, token, account,amount,deposit){
-    this.bts.getWithdraw(id, token, account,amount,deposit)
+  Withdraw(amount){
+     this.bts.getWithdraw(this.account.id, amount).subscribe(data => data[0])
   }
-  Transfer(id, token, account,amount,deposit){
-    this.bts.transfer(id, token, account,amount,deposit)
+  Transfer(amount){
+   this.bts.transfer(this.account.id, amount).subscribe(data => data[0])
   }
-  Loan(id, token, account){
-    this.bts.getloan(id, token, account)
+  Loan(amount){
+    this.bts.getloan(this.account.id, amount).subscribe(data => data[0])
   }
 
-  
 }

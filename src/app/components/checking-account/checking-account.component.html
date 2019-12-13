@@ -1,19 +1,17 @@
 
 <fieldset>
-        <legend>{{account.Name}}-0{{account.id}}</legend>
-        <h3><b>Balance: </b>${{account.balance}}</h3>
-        <dt></dt>
-        <dd></dd>
-        <br>
-        
-        <input type="submit" value="Submit" (click)="Deposit">Deposit<input>
-        <br/>
-        <input type="submit" value="Submit" (click)="Withdraw">Withdraw<input>
-        <br/>
-        <input type="submit" value="Submit" (click)="Transfer">Transfer<input>
-        <br/>
-        <input type="submit" value="Submit" (click)="Loan">Pay Loan<input>
-        <br/>
-        
+        <legend>{{account.accountName}}</legend>
+        <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
+        <dt>Transaction Amount</dt>     
 </fieldset>
+<input [(ngModel)]="amount" class="form-control" style="width:100px" />
+<button (click)="Deposit([amount])">Deposit</button>
+
+<button (click)="Withdraw([amount])">Withdraw</button>
+
+<button (click)="Transfer([amount])">Transfer</button>
+
+<button (click)="PayLoan([amount])">Pay Loan</button>
+
+
 

@@ -23,6 +23,9 @@ import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ViewContainerDirective } from './directives/view-container.directive';
+import { BanktransactService } from './banktransact.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     AccountViewComponent,
     UserDetailsComponent,
     CheckingAccountComponent,
+    ViewContainerDirective,
   ],
   imports: [
     BrowserModule,
@@ -45,12 +49,15 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     BsDropdownModule.forRoot(),
     HttpClientModule,
     MatTableModule,
+    FormsModule
   ],
   providers: [
     CookieService,
     UserService,
     ApiService,
+    BanktransactService
   ],
+  entryComponents: [CheckingAccountComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

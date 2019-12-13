@@ -9,23 +9,23 @@ export class BanktransactService {
   constructor(private client: HttpClient) { }
 
 
-  putDeposit(id, token, account,amount,deposit){
-     this.client.put("request from API team transaction controller", [id,token, account, amount,deposit]);
+  putDeposit(id,amount){
+     return this.client.put("request from API team transaction controller", [id, amount])
   }
 
-  getWithdraw(id,token, account, amount, withdraw){
+  getWithdraw(id,account){
 
-    this.client.get("request from API team transaction controller")
+    return this.client.get("request from API team transaction controller")
 
   }
 
-  transfer(id, token,amount,account,toaccount){
+  transfer(id,amount){
         
-    this.client.post("request from API team transaction controller", [id, token,amount,account,toaccount])
+    return this.client.post("request from API team transaction controller", [id, amount])
   }
 
-  getloan(id, token,amount){
+  getloan(id,amount){
     
-    this.client.get("request from API team transaction controller")
+    return this.client.get("request from API team transaction controller")
   }
 }
