@@ -7,8 +7,6 @@ import { CheckingAccountComponent } from '../checking-account/checking-account.c
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-view',
@@ -44,7 +42,6 @@ export class AccountViewComponent implements OnInit {
   }
 
   getAccount(account: Account) {
-    //logic here
     this.currentAccount = account;
     var childComponent: Type<any> = null;
     switch(account.type){
