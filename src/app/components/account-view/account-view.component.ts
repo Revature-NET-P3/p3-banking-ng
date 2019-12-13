@@ -19,7 +19,6 @@ import { NgIf } from '@angular/common';
 export class AccountViewComponent implements OnInit {
 
   account = ACCOUNT;
-  master = 'Account - Details';
 
   infoAccount: Account;
   showInfo  = false;
