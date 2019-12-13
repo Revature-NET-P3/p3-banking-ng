@@ -37,6 +37,13 @@
                     <app-checking-account [account]="infoAccount">
                     </app-checking-account>
                 </div>
+                <accordion [closeOthers]="true" [isAnimated]="true">
+                        <accordion-group heading="Deposit">
+                            <p><b>Amount:</b></p>
+                            <input type="text" value="Amount">
+                            <input type="submit" value="Submit">
+                        </accordion-group>
+                    </accordion>
             </ng-template>
             <ng-template #elseBlock>
                 <div style="height: 150px; background-color: white;">
