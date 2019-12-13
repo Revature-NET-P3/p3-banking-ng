@@ -6,7 +6,7 @@
 
 #navBar{
     grid-column:span 12;
-    background-color: aquamarine;
+    background-color: #333333;
 
 }
 #contentArea{
