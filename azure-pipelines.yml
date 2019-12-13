@@ -16,10 +16,37 @@ stages:
 - stage: Build
   displayName: Stage 0 (Docker)
   jobs:  
-  - job: Test
+  
+  - job: Build
+    displayName: Build and Push
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
-    - bash: echo $(doPush)
-    
+     - task: Docker@2
+      displayName: Build Debug
+      condition: succeededOrFailed()
+      inputs:
+        containerRegistry: 'p3bankacr_connection'
+        repository: 'ng-debug'
+        command: 'build'
+        Dockerfile: 'Dockerfile-debug'
+        tags: |
+          $(Build.BuildId)
+          debug
+          latest
+        
+    - task: Docker@2
+      displayName: Push Debug
+      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      inputs:
+        containerRegistry: 'p3bankacr_connection'
+        command: 'push'
+        repository: 'ng-debug'
+        tags: |
+          $(Build.BuildId)
+          debug
+          latest
+
   - job: Build
     displayName: Build and Push
     pool:
@@ -48,28 +75,4 @@ stages:
           $(Build.BuildId)
           release
           latest
-
-    - task: Docker@2
-      displayName: Build Debug
-      condition: succeededOrFailed()
-      inputs:
-        containerRegistry: 'p3bankacr_connection'
-        repository: 'ng-debug'
-        command: 'build'
-        Dockerfile: 'Dockerfile-debug'
-        tags: |
-          $(Build.BuildId)
-          debug
-          latest
-        
-    - task: Docker@2
-      displayName: Push Debug
-      condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-      inputs:
-        containerRegistry: 'p3bankacr_connection'
-        command: 'push'
-        repository: 'ng-debug'
-        tags: |
-          $(Build.BuildId)
-          debug
-          latest
+          
