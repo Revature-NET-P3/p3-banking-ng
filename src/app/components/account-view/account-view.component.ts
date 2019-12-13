@@ -35,10 +35,11 @@ export class AccountViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    var sub = this.route.paramMap.subscribe(params => {
       var type = +params.get('type') as AccountType;
       console.log('type: ' + type);
       this.accounts = this.accountsSvc.getAccounts(type);
+      sub.unsubscribe();
     });
   }
 
