@@ -12,7 +12,7 @@ export class AccountsService {
   getAccounts(t:AccountType) {
     //var accounts = this.api.getAccounts();
     var accounts: Account[] = MOCK_ACCOUNTS;
-    return accounts.filter((a:Account) => a.type == t);
+    return accounts.filter((a:Account) => a.AccountTypeId == t);
   }
 
 }

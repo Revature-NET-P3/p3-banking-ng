@@ -39,14 +39,13 @@ export class AccountViewComponent implements OnInit {
       var type = +params.get('type') as AccountType;
       console.log('type: ' + type);
       this.accounts = this.accountsSvc.getAccounts(type);
-      sub.unsubscribe();
     });
   }
 
   getAccount(account: Account) {
     this.currentAccount = account;
     var childComponent: Type<any> = null;
-    switch(account.type){
+    switch(account.AccountTypeId){
       case AccountType.Checking:
         childComponent = CheckingAccountComponent;
         break;

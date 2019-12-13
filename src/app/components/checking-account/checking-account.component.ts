@@ -18,16 +18,16 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
   }
 
   Deposit(amount){
-    this.bts.putDeposit(this.account.id, amount).subscribe(data => data[0])
+    this.bts.putDeposit(this.account.Id, amount).subscribe(data => data[0])
   }
   Withdraw(amount){
-     this.bts.getWithdraw(this.account.id, amount).subscribe(data => data[0])
+     this.bts.getWithdraw(this.account.Id, amount).subscribe(data => data[0])
   }
   Transfer(amount){
-   this.bts.transfer(this.account.id, amount).subscribe(data => data[0])
+   this.bts.transfer(this.account.Id, amount).subscribe(data => data[0])
   }
   Loan(amount){
-    this.bts.getloan(this.account.id, amount).subscribe(data => data[0])
+    this.bts.getloan(this.account.Id, amount).subscribe(data => data[0])
   }
 
 }
