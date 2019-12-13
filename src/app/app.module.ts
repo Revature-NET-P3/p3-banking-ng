@@ -17,7 +17,7 @@ import { ContentareaComponent } from './components/contentarea/contentarea.compo
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { AccountViewComponent } from './components/account-view/account-view.component';
-import { CheckingAccountComponent } from './components/checking-account/checking-account.component';
+import { RegularAccountComponent } from './components/regular-account/regular-account.component';
 
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -36,7 +36,7 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     LandingPageComponent,
     AccountViewComponent,
     UserDetailsComponent,
-    CheckingAccountComponent,
+    RegularAccountComponent,
     ViewContainerDirective,
   ],
   imports: [
@@ -53,7 +53,7 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     UserService,
     ApiService,
   ],
-  entryComponents: [CheckingAccountComponent],
+  entryComponents: [RegularAccountComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

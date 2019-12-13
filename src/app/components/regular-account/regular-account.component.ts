@@ -4,16 +4,15 @@ import { Account } from '../../models/account';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 
 @Component({
-  selector: 'app-checking-account',
-  templateUrl: './checking-account.component.html',
-  styleUrls: ['./checking-account.component.css']
+  selector: 'app-regular-account',
+  templateUrl: './regular-account.component.html',
+  styleUrls: ['./regular-account.component.css']
 })
-export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
+export class RegularAccountComponent implements OnInit, AccountViewChildComponent{
   @Input() account: Account;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

@@ -4,7 +4,7 @@ import { AccountsService } from 'src/app/services/accounts.service';
 
 
 import { Account, AccountType } from '../../models/account';
-import { CheckingAccountComponent } from '../checking-account/checking-account.component';
+import { RegularAccountComponent } from '../regular-account/regular-account.component';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
@@ -48,16 +48,16 @@ export class AccountViewComponent implements OnInit {
     var childComponent: Type<any> = null;
     switch(account.type){
       case AccountType.Checking:
-        childComponent = CheckingAccountComponent;
+        childComponent = RegularAccountComponent;
         break;
       case AccountType.Business:
-        childComponent = CheckingAccountComponent; //TODO
+        childComponent = RegularAccountComponent; //TODO
         break;
       case AccountType.Loan:
-        childComponent = CheckingAccountComponent; //TODO
+        childComponent = RegularAccountComponent; //TODO
         break;
       case AccountType.Term:
-        childComponent = CheckingAccountComponent; //TODO
+        childComponent = RegularAccountComponent; //TODO
         break;
     }
     this.loadChild(childComponent);
