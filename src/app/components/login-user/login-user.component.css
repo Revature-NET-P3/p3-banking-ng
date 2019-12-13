@@ -110,7 +110,7 @@ hr.short{
 =========================== */
 :focus{outline: none;}
 
-.col-3{width: 100%; margin-top: 70px; margin-bottom: 0; left: 50%; size: 4;} 
+.col-3{width: 100%; margin-top: 70px; margin-bottom: 0;} 
 
 input{margin-top: 15px;font: 15px/24px "Open Sans", sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px; width: 65%;}
 

@@ -1,10 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { UserModel } from 'src/app/modules/module/user-model';
-import { invalid } from '@angular/compiler/src/render3/view/util';
-
-import { AccountViewComponent } from '../account-view/account-view.component';
-import { AccordionComponent } from 'ngx-bootstrap';
 
 import {Location} from '@angular/common';
 

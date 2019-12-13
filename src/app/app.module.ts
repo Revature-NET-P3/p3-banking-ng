@@ -33,6 +33,7 @@ import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ViewContainerDirective } from './directives/view-container.directive';
 
 
 @NgModule({
@@ -48,8 +49,10 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     RegisterUserComponent,
     AccountViewComponent,
     UserDetailsComponent,
-    CheckingAccountComponent
+    CheckingAccountComponent,
+    ViewContainerDirective,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -66,6 +69,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     ApiService,
 
   ],
+  entryComponents: [CheckingAccountComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
