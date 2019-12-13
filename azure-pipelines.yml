@@ -17,8 +17,8 @@ stages:
   displayName: Stage 0 (Docker)
   jobs:  
   
-  - job: Build
-    displayName: Build and Push
+  - job: Debug
+    displayName: Build and Push Debug
     pool:
       vmImage: 'ubuntu-latest'
     steps:
@@ -47,8 +47,8 @@ stages:
           debug
           latest
 
-  - job: Build
-    displayName: Build and Push
+  - job: Release
+    displayName: Build and Push Release
     pool:
       vmImage: 'ubuntu-latest'
     steps:
