@@ -2,11 +2,13 @@ import { Component, OnInit, Input, ComponentFactoryResolver, Type, ViewChild } f
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountsService } from 'src/app/services/accounts.service';
 
+
 import { Account, AccountType } from '../../models/account';
 import { CheckingAccountComponent } from '../checking-account/checking-account.component';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-account-view',
