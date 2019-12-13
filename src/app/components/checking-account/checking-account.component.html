@@ -1,10 +1,19 @@
 
 <fieldset>
         <legend>{{account.Name}}-0{{account.id}}</legend>
-        <h3 align="center"><b>Balance: </b>${{account.balance}}</h3>
+        <h3><b>Balance: </b>${{account.balance}}</h3>
         <dt></dt>
         <dd></dd>
         <br>
-        <input type="submit" value="Submit">
+        
+        <input type="submit" value="Submit" (click)="Deposit">Deposit<input>
+        <br/>
+        <input type="submit" value="Submit" (click)="Withdraw">Withdraw<input>
+        <br/>
+        <input type="submit" value="Submit" (click)="Transfer">Transfer<input>
+        <br/>
+        <input type="submit" value="Submit" (click)="Loan">Pay Loan<input>
+        <br/>
+        
 </fieldset>
 

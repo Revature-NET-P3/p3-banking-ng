@@ -24,7 +24,7 @@ export class BanktransactService {
     this.client.post("request from API team transaction controller", [id, token,amount,account,toaccount])
   }
 
-  getloan(id, internalID,amount){
+  getloan(id, token,amount){
     
     this.client.get("request from API team transaction controller")
   }
