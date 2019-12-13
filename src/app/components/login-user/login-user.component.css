@@ -112,7 +112,7 @@ hr.short{
 
 .col-3{width: 100%; margin-top: 70px; margin-bottom: 0;} 
 
-input{margin-top: 15px;font: 15px/24px "Open Sans", sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px; width: 65%;}
+input{margin-top: 15px;font: 15px/24px "Open Sans", sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px; width: 200%;}
 
 input::placeholder{
 	text-transform: uppercase;
