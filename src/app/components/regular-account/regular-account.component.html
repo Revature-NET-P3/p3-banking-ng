@@ -35,20 +35,9 @@
                                 <form class="form-style-7">
                                         <ul>
                                         <li>
-                                                <label>From</label>
-                                                <select name="field4" class="field-select">
-                                                <option value="Advertise">Checking-01</option>
-                                                <option value="Partnership">Business-02</option>
-                                                <option value="General Question">Checking-04</option>
-                                                </select>
-                                                <span>Select the account from transfer here</span>
-                                        </li>
-                                        <li>
                                                 <label>To</label>
                                                 <select name="field4" class="field-select">
-                                                <option value="Advertise">Checking-01</option>
-                                                <option value="Partnership">Business-02</option>
-                                                <option value="General Question">Checking-04</option>
+                                                <option *ngFor="let acc of account.accountName" value="acc">{{acc}}</option>>
                                                 </select>
                                                 <span>Select the account to transfer here</span>
                                         </li>

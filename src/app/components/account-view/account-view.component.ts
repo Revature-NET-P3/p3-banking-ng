@@ -5,6 +5,8 @@ import { AccountsService } from 'src/app/services/accounts.service';
 
 import { Account, AccountType } from '../../models/account';
 import { RegularAccountComponent } from '../regular-account/regular-account.component';
+import { LoanAccountComponent } from '../loan-account/loan-account.component';
+import { TdcAccountComponent } from '../tdc-account/tdc-account.component';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
@@ -54,10 +56,10 @@ export class AccountViewComponent implements OnInit {
         childComponent = RegularAccountComponent; //TODO
         break;
       case AccountType.Loan:
-        childComponent = RegularAccountComponent; //TODO
+        childComponent = LoanAccountComponent; //TODO
         break;
       case AccountType.Term:
-        childComponent = RegularAccountComponent; //TODO
+        childComponent = TdcAccountComponent; //TODO
         break;
     }
     this.loadChild(childComponent);
