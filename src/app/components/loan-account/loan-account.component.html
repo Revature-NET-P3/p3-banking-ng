@@ -1,6 +1,7 @@
 <fieldset>
-  <legend>{{account.accountName}}-0{{account.id}}</legend>
+  <legend>{{account.accountName}}</legend>
   <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
+  <span id="balance" hidden>{{account.balance}}</span>
   <div>
           <accordion [closeOthers]="true" [isAnimated]="true">
                   <accordion-group heading="|| Pay Loan"> 
@@ -8,16 +9,16 @@
                                   <ul>
                                   <li>
                                           <label>Payment Type</label>
-                                          <select name="field4" class="field-select">
-                                          <option value="Advertise">Monthly payment</option>
-                                          <option value="Partnership">Pay All</option>
-                                          <option value="General Question">Custom amount</option>
+                                          <select id="mypaymentchoice" class="field-select" onclick="LoanPaymentChoice()"> 
+                                          <option value="Monthly">Monthly payment</option>
+                                          <option value="All">Pay All</option>
+                                          <option value="Custom">Custom amount</option>
                                           </select>
-                                          <span>Select the account from transfer here</span>
+                                          <span>Select the payment type here</span>
                                   </li>
                                   <li>
                                           <label for="name">Amount</label>
-                                          <input type="text" name="name" maxlength="100" value="0">
+                                          <input type="text" id="loanamount" maxlength="100" value={{account.balance*0.04375}} readonly>
                                           <span>Select the payment type above and confirm</span>
                                   </li>
                                   <li>

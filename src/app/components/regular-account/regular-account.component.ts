@@ -10,6 +10,7 @@ import { AccountViewChildComponent } from 'src/app/models/account-view-child.com
 })
 export class RegularAccountComponent implements OnInit, AccountViewChildComponent{
   @Input() account: Account;
+  @Input() accounts: Account[]; 
 
   constructor() { }
 

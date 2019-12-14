@@ -26,7 +26,7 @@ export class AccountViewComponent implements OnInit {
 
   oneAtATime: boolean = true;
   currentAccount: Account = null;
-  filterOptions = ["Checking", "Business", "Loan", "Term"]
+  filterOptions = ["Checking", "Business", "Loan", "Term Deposit"]
   accounts: Account[];  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
   master = 'Account Details';
   @ViewChild(ViewContainerDirective, { static: true }) childHost: ViewContainerDirective;
@@ -53,13 +53,13 @@ export class AccountViewComponent implements OnInit {
         childComponent = RegularAccountComponent;
         break;
       case AccountType.Business:
-        childComponent = RegularAccountComponent; //TODO
+        childComponent = RegularAccountComponent;
         break;
       case AccountType.Loan:
-        childComponent = LoanAccountComponent; //TODO
+        childComponent = LoanAccountComponent;
         break;
       case AccountType.Term:
-        childComponent = TdcAccountComponent; //TODO
+        childComponent = TdcAccountComponent;
         break;
     }
     this.loadChild(childComponent);

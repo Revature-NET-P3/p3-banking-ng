@@ -1,9 +1,9 @@
 <fieldset>
-        <legend>{{account.accountName}}-0{{account.id}}</legend>
+        <legend>{{account.accountName}}</legend>
         <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
         <div>
                 <accordion [closeOthers]="true" [isAnimated]="true">
-                        <accordion-group heading="++ Deposit"> 
+                        <accordion-group heading=" Deposit"> 
                                 <form class="form-style-7">
                                         <ul>
                                         <li>
@@ -12,12 +12,12 @@
                                                 <span>Enter The Amount you want to deposit here</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm" >
+                                                <input type="submit" value="Confirm">
                                         </li>
                                         </ul>
                                 </form>
                         </accordion-group>
-                        <accordion-group heading="-- Withdraw"> 
+                        <accordion-group heading=" Withdraw"> 
                                 <form class="form-style-7">
                                         <ul>
                                         <li>
@@ -26,18 +26,18 @@
                                                 <span>Enter The Amount you want to Withdraw here</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm" >
+                                                <input type="submit" value="Confirm">
                                         </li>
                                         </ul>
                                 </form>
                         </accordion-group>
-                        <accordion-group heading="|| Tranfert"> 
+                        <accordion-group heading=" Tranfer"> 
                                 <form class="form-style-7">
                                         <ul>
                                         <li>
                                                 <label>To</label>
                                                 <select name="field4" class="field-select">
-                                                <option *ngFor="let acc of account.accountName" value="acc">{{acc}}</option>>
+                                                <option *ngFor="let acc of accounts" value={{acc.id}} >{{acc.accountName}}</option>>
                                                 </select>
                                                 <span>Select the account to transfer here</span>
                                         </li>
@@ -47,12 +47,12 @@
                                                 <span>Enter The Amount you want to Transfer here</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm" >
+                                                <input type="submit" value="Confirm">
                                         </li>
                                         </ul>
                                 </form>
                         </accordion-group>
-                        <accordion-group heading="|| Transactions"> 
+                        <accordion-group heading=" Transactions"> 
                                 
                         </accordion-group>
                 </accordion>
