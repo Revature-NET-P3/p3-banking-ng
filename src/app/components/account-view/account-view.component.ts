@@ -22,11 +22,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AccountViewComponent implements OnInit {
 
-  oneAtATime: boolean = true;
   currentAccount: Account = null;
   filterOptions = ["Checking", "Business", "Loan", "Term"]
   accounts: Account[];  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
-  master = 'Account Details';
+  childName = 'Account Details';
   @ViewChild(ViewContainerDirective, { static: true }) childHost: ViewContainerDirective;
 
   constructor(private accountsSvc: AccountsService,
