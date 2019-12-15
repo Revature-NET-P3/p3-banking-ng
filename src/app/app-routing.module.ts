@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: '', redirectTo:'home', pathMatch: 'full' },
   { path: 'accounts', component: AccountsComponent },
-  { path: 'accountList', component: AccountViewComponent, data: { type: 1 } },
+  { path: 'accountList', component: AccountViewComponent, data: { type: 0 } },
   { path: 'login', component: LoginUserComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'profile', component: UserDetailsComponent },
