@@ -4,7 +4,7 @@ import { AccountsService } from 'src/app/services/accounts.service';
 
 
 import { Account, AccountType } from '../../models/account';
-import { RegularAccountComponent } from '../regular-account/regular-account.component';
+import { CheckingAccountComponent } from '../checking-account/checking-account.component';
 import { LoanAccountComponent } from '../loan-account/loan-account.component';
 import { TdcAccountComponent } from '../tdc-account/tdc-account.component';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
@@ -50,10 +50,10 @@ export class AccountViewComponent implements OnInit {
     var childComponent: Type<any> = null;
     switch(account.type){
       case AccountType.Checking:
-        childComponent = RegularAccountComponent;
+        childComponent = CheckingAccountComponent;
         break;
       case AccountType.Business:
-        childComponent = RegularAccountComponent;
+        childComponent = CheckingAccountComponent;
         break;
       case AccountType.Loan:
         childComponent = LoanAccountComponent;

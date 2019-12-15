@@ -6,7 +6,7 @@ import { AccountViewChildComponent } from 'src/app/models/account-view-child.com
 @Component({
   selector: 'app-tdc-account',
   templateUrl: './tdc-account.component.html',
-  styleUrls: ['../regular-account/regular-account.component.css']
+  styleUrls: ['../checking-account/checking-account.component.css']
 })
 export class TdcAccountComponent implements OnInit, AccountViewChildComponent {
   @Input() account: Account;

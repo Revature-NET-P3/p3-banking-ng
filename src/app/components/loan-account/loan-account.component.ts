@@ -6,7 +6,7 @@ import { AccountViewChildComponent } from 'src/app/models/account-view-child.com
 @Component({
   selector: 'app-loan-account',
   templateUrl: './loan-account.component.html',
-  styleUrls: ['../regular-account/regular-account.component.css']
+  styleUrls: ['../checking-account/checking-account.component.css']
 })
 export class LoanAccountComponent implements OnInit, AccountViewChildComponent {
   @Input() account: Account;

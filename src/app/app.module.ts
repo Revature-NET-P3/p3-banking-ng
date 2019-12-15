@@ -26,7 +26,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { AccountViewComponent } from './components/account-view/account-view.component';
-import { RegularAccountComponent } from './components/regular-account/regular-account.component';
+import { CheckingAccountComponent } from './components/checking-account/checking-account.component';
 import { LoanAccountComponent } from './components/loan-account/loan-account.component';
 import { TdcAccountComponent } from './components/tdc-account/tdc-account.component';
 
@@ -51,7 +51,7 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     RegisterUserComponent,
     AccountViewComponent,
     UserDetailsComponent,
-    RegularAccountComponent,
+    CheckingAccountComponent,
     LoanAccountComponent,
     TdcAccountComponent,
     ViewContainerDirective,
@@ -73,7 +73,7 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     ApiService,
 
   ],
-  entryComponents: [RegularAccountComponent, LoanAccountComponent, TdcAccountComponent],
+  entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
