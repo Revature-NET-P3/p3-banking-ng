@@ -1,54 +1,54 @@
 <fieldset>
-        <legend>{{account.accountName}}-0{{account.id}}</legend>
-        <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
-        <div>
-                <accordion [closeOthers]="true" [isAnimated]="true">
-                        <accordion-group heading="++ Deposit"> 
-                                <form class="form-style-7">
-                                        <ul>
+<legend>{{account.accountName}}-0{{account.id}}</legend>
+<h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
+<div>
+        <accordion [closeOthers]="true" [isAnimated]="true">
+                <accordion-group heading=" Deposit">
+                        <form class="form-style-7">
+                                <ul>
                                         <li>
                                                 <label for="name">Amount</label>
                                                 <input type="text" name="name" maxlength="100" value="0">
                                                 <span>Enter The Amount you want to deposit here</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm" >
+                                                <input type="submit" value="Confirm">
                                         </li>
-                                        </ul>
-                                </form>
-                        </accordion-group>
-                        <accordion-group heading="-- Withdraw"> 
-                                <form class="form-style-7">
-                                        <ul>
+                                </ul>
+                        </form>
+                </accordion-group>
+                <accordion-group heading=" Withdraw">
+                        <form class="form-style-7">
+                                <ul>
                                         <li>
                                                 <label for="name">Amount</label>
                                                 <input type="text" name="name" maxlength="100" value="0">
                                                 <span>Enter The Amount you want to Withdraw here</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm" >
+                                                <input type="submit" value="Confirm">
                                         </li>
-                                        </ul>
-                                </form>
-                        </accordion-group>
-                        <accordion-group heading="|| Tranfert"> 
-                                <form class="form-style-7">
-                                        <ul>
+                                </ul>
+                        </form>
+                </accordion-group>
+                <accordion-group heading=" Tranfer">
+                        <form class="form-style-7">
+                                <ul>
                                         <li>
                                                 <label>From</label>
                                                 <select name="field4" class="field-select">
-                                                <option value="Advertise">Checking-01</option>
-                                                <option value="Partnership">Business-02</option>
-                                                <option value="General Question">Checking-04</option>
+                                                        <option value="Advertise">Checking-01</option>
+                                                        <option value="Partnership">Business-02</option>
+                                                        <option value="General Question">Checking-04</option>
                                                 </select>
                                                 <span>Select the account from transfer here</span>
                                         </li>
                                         <li>
                                                 <label>To</label>
                                                 <select name="field4" class="field-select">
-                                                <option value="Advertise">Checking-01</option>
-                                                <option value="Partnership">Business-02</option>
-                                                <option value="General Question">Checking-04</option>
+                                                        <option value="Advertise">Checking-01</option>
+                                                        <option value="Partnership">Business-02</option>
+                                                        <option value="General Question">Checking-04</option>
                                                 </select>
                                                 <span>Select the account to transfer here</span>
                                         </li>
@@ -58,14 +58,14 @@
                                                 <span>Enter The Amount you want to Transfer here</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm" >
+                                                <input type="submit" value="Confirm">
                                         </li>
-                                        </ul>
-                                </form>
-                        </accordion-group>
-                        <accordion-group heading="|| Transactions"> 
-                                
-                        </accordion-group>
-                </accordion>
-        </div> 
+                                </ul>
+                        </form>
+                </accordion-group>
+                <accordion-group heading=" Transactions">
+
+                </accordion-group>
+        </accordion>
+</div>
 </fieldset>
