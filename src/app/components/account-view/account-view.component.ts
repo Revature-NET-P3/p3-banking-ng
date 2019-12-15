@@ -26,7 +26,7 @@ export class AccountViewComponent implements OnInit {
 
   oneAtATime: boolean = true;
   currentAccount: Account = null;
-  filterOptions = ["Checking", "Business", "Loan", "Term Deposit"]
+  filterOptions = AccountType.AllNames();
   accounts: Account[];  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
   master = 'Account Details';
   @ViewChild(ViewContainerDirective, { static: true }) childHost: ViewContainerDirective;
@@ -39,9 +39,8 @@ export class AccountViewComponent implements OnInit {
   ngOnInit() {
     var sub = this.route.paramMap.subscribe(params => {
       var type = +params.get('type') as AccountType;
-      console.log('type: ' + type);
+      console.log('type: ' + AccountType[type]);
       this.accounts = this.accountsSvc.getAccounts(type);
-      sub.unsubscribe();
     });
   }
 

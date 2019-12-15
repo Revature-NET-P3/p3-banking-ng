@@ -1,3 +1,5 @@
+import { TypeofExpr } from '@angular/compiler';
+
 export abstract class Account {
     id: number;
     accountName: string;
@@ -8,11 +10,18 @@ export abstract class Account {
     type: AccountType;
 }
 
-export enum AccountType{
+export enum AccountType {
     Checking,
     Business,
     Loan,
     Term
+}
+
+export namespace AccountType {
+    // These must match the enum above.
+    export function AllNames(){
+        return ["Checking", "Business", "Loan", "Term"];
+    }
 }
 
 export class CheckingAccount extends Account { }
