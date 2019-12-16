@@ -38,6 +38,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../app/services/token-interceptor.service';
 import { ViewContainerDirective } from './directives/view-container.directive';
 import { TransactionsService } from './services/transactions.service';
+import { NewsComponent } from './components/news/news/news.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { TransactionsService } from './services/transactions.service';
     LoanAccountComponent,
     TdcAccountComponent,
     ViewContainerDirective,
+    NewsComponent,
   ],
   
   imports: [
