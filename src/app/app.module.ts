@@ -34,6 +34,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ViewContainerDirective } from './directives/view-container.directive';
+import { CreateNewAccountComponent } from './components/create-new-account/create-new-account.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     UserDetailsComponent,
     CheckingAccountComponent,
     ViewContainerDirective,
+    CreateNewAccountComponent,
   ],
   
   imports: [
