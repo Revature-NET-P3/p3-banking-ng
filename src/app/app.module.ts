@@ -72,7 +72,8 @@ import { TransactionsService } from './services/transactions.service';
     CookieService,
     UserService,
     ApiService,
-    TransactionsService
+    TransactionsService,
+
 
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],

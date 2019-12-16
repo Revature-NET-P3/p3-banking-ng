@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import {Transactions} from './transactions'
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,13 @@ export class TransactionsService {
   constructor(private client: HttpClient) { }
 
 
-  putDeposit(id,amount){
-     return this.client.get(this.url, { headers: new HttpHeaders({'Accept': 'application/json','Content-Type':  'application/json'  })})
+  putDeposit(Transaction){
+     return this.client.put<Transactions>("http://localhost:37642/api/Transferables/Deposit/", JSON.stringify(Transaction), { headers: new HttpHeaders({'Accept': 'application/json','Content-Type':  'application/json' })} )
   }
 
   getWithdraw(id,amount){
 
-    return this.client.get(this.url)
+    return this.client.get("tion cont")
 
   }
 

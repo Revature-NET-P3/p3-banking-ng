@@ -5,7 +5,7 @@
 export const environment = {
   title: "P3Bank (Debug)",
   production: false,
-  apiUrl: "http://localhost:37642/api/Transferables/Deposit/1/1",
+  apiUrl: "http://localhost:37642/api/",
 };
 
 /*

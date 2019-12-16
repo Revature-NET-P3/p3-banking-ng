@@ -1,4 +1,4 @@
-export interface Transactions {
+export class Transactions {
 
 Id : number
 Token: any

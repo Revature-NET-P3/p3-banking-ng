@@ -3,6 +3,7 @@ import { TransactionsService} from 'src/app/services/transactions.service'
 import { Account } from '../../models/account';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { Observable } from 'rxjs';
+import { Transactions } from 'src/app/services/transactions';
 
 @Component({
   selector: 'app-checking-account',
@@ -13,14 +14,16 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
   @Input() account: Account;
   amount = '0';
   @Input() accounts$: Observable<Account[]>; 
+  status : any
+ 
 
   constructor(private bts:TransactionsService) { }
 
   ngOnInit() {
   }
 
-  Deposit(amount){
-    this.bts.putDeposit(this.account.id, amount).subscribe(data => this.status = data[0])
+  Deposit(transaction){
+    this.bts.putDeposit(transaction).subscribe(data => this.status = data[0])
   }
   Withdraw(amount){
      this.bts.getWithdraw(this.account.id, amount).subscribe(data => data[0])
