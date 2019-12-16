@@ -11,7 +11,7 @@
 }
 #contentArea{
     grid-column:span 12;
-    background-color: rgba(0, 38, 255, 0.705);
+    background-image: url("../../../assets/images/banking_bg1.png");
 
 }
 #footer{
