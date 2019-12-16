@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import {UserModel} from '../../modules/module/user-model';
+import { UserModel } from 'src/app/models/user-model';
 
 @Component({
   selector: 'app-register-user',

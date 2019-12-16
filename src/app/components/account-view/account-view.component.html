@@ -33,10 +33,24 @@
 
         <div class="DivideAccountView">
             <accordion [closeOthers]="true" [isAnimated]="true">
-        
-                <accordion-group *ngFor="let a of accounts" heading={{a.accountName}} (click)="getAccount(a)"
-                    (isOpenChange)="openChange(a)">
-                    <p><b>Account Number:</b> {{a.accountNumber}}</p>
+                <accordion-group *ngFor="let a of accounts$ | async" (click)="getAccount(a)"
+                    (isOpenChange)="openChange(a)" >
+                    <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
+                        <div class="pull-left float-left">
+                            ({{a.id}}) {{AccountType[a.accountTypeId]}} 
+                        </div>
+                        <span class="badge badge-secondary float-right pull-right" *ngIf="a.isClosed;else openTemplate"
+                          style="background-color:red">
+                            <b > closed </b>
+                        </span>
+                        <ng-template #openTemplate> 
+                            <span class="badge float-right pull-right"
+                             style="background-color:green">
+                            <b> open </b>
+                            </span>
+                        </ng-template>
+                    </button>
+                    <p> Opened on {{a.createDate|date:'fullDate'}}</p>
                 </accordion-group>
             </accordion>
         </div>

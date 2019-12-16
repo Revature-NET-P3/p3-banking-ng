@@ -1,21 +1,23 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
-import { CheckingAccountComponent } from './checking-account.component';
+import { TdcAccountComponent } from './tdc-account.component';
 
-describe('CheckingAccountComponent', () => {
-  let component: CheckingAccountComponent;
-  let fixture: ComponentFixture<CheckingAccountComponent>;
+describe('TdcAccountComponent', () => {
+  let component: TdcAccountComponent;
+  let fixture: ComponentFixture<TdcAccountComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckingAccountComponent ]
+      declarations: [ TdcAccountComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckingAccountComponent);
+    fixture = TestBed.createComponent(TdcAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

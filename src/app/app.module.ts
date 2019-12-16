@@ -2,7 +2,6 @@ import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +26,8 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { AccountViewComponent } from './components/account-view/account-view.component';
 import { CheckingAccountComponent } from './components/checking-account/checking-account.component';
+import { LoanAccountComponent } from './components/loan-account/loan-account.component';
+import { TdcAccountComponent } from './components/tdc-account/tdc-account.component';
 
 
 import { UserService } from './services/user.service';
@@ -34,6 +35,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ViewContainerDirective } from './directives/view-container.directive';
+import { TransactionsService } from './services/transactions.service';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     AccountViewComponent,
     UserDetailsComponent,
     CheckingAccountComponent,
+    LoanAccountComponent,
+    TdcAccountComponent,
     ViewContainerDirective,
   ],
   
@@ -62,14 +66,16 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     BsDropdownModule.forRoot(),
     HttpClientModule,
     MatTableModule,
+    FormsModule
   ],
   providers: [
     CookieService,
     UserService,
     ApiService,
+    TransactionsService
 
   ],
-  entryComponents: [CheckingAccountComponent],
+  entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
