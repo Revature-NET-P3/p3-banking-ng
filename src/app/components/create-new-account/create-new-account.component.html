@@ -4,7 +4,7 @@
     <p style="text-align: center;">_______________________________________________________________</p>
     <div style=" margin: 0 5% 5% 5%; padding: 10px; font-size:1.25rem;">
         <label>Select Account type: </label>
-        <select class="form-control" name="accountType" [(ngModel)]=newAccount.accountTypeId placeholder="Type of Account" required>
+        <select class="form-control" name="accountType" [(ngModel)]=newAccount.accountTypeId>
             <option *ngFor="let accType of filterOptions" [value]="accType">
                 {{ accType }}
             </option>  
@@ -13,7 +13,7 @@
         <label>Enter Initial Balance: $</label>
         <input type="number" step="0.01" class="form-control" [(ngModel)]="newAccount.balance">
         <br><br>
-        <input type="button" (click)="postCustomer()" value="Create" [disabled]="isSubmitted"/>
+        <input type="button" (click)="createAccount()" value="Create" />
         
 
     </div>
@@ -33,7 +33,7 @@
     
 
 
-<!--
+
     id: number;         - auto
     userId: number;     - assing
     accountTypeId: number;   - select

@@ -29,12 +29,13 @@ export class CreateNewAccountComponent implements OnInit {
     this.openCreate = true;
   }
 
-  createAccount(newAcc: Account){
-    newAcc.userId = null;
-    newAcc.accountTypeId = 1;
-    newAcc.balance = null;
-    newAcc.createDate = null;
-    newAcc.isClosed = false;
+  createAccount(){
+    //newAcc = this.newAccount;
+    this.newAccount.userId = null;
+    this.newAccount.accountTypeId = 1;
+    this.newAccount.balance = null;
+    this.newAccount.createDate = null;
+    this.newAccount.isClosed = false;
     
     //this.apiSvc
     
