@@ -22,6 +22,7 @@ export class CreateNewAccountComponent implements OnInit {
   newAccount: Account = null;
   openCreate: boolean = false;
   filterOptions = AccountType.AllNames();
+
   selectedAccountType:string = "Select an Account Type";
 
   //accountType:AccountType;
@@ -40,21 +41,26 @@ export class CreateNewAccountComponent implements OnInit {
     this.openCreate = true;
   }
 
-  createAccount(){
-    //newAcc = this.newAccount;
-    this.newAccount.userId = null;
-    this.newAccount.accountTypeId = 1;
-    this.newAccount.balance = null;
-    this.newAccount.createDate = null;
-    this.newAccount.isClosed = false;
+  createAccount(type:string){
+  /*  //newAcc = this.newAccount;*/
+    var nickname:string = 'Checking Name';
+    this.newAccount = new Account({
+        id: null,
+        userId: 1,
+        accountTypeId: AccountType[type],
+        balance: 0,
+        createDate: new Date(),
+        isClosed: false
+    });
+    console.log(AccountType[type]);
+    //this.newAccount = {1,1,1,1,new Date(), false, "Checking nick"};
+    
     if(this.newAccount.userId !=null)
     {
       if(this.newAccount.accountTypeId != 0)
       {
-        if(this.newAccount.balance >=0){
-
-        }
-
+        console.log(this.newAccount);    
+        //this.apiSvc.
       }
     }
     else
@@ -65,24 +71,24 @@ export class CreateNewAccountComponent implements OnInit {
     
   }
 
+  postRecord{
+    
+  }
+
 }
+
+
 /*
 accountToRecreate (account: Account){
 
 }
 
-
-    id: number;         - auto
-    userId: number;     - assing
-    accountTypeId: number;   - select
-    balance: number;    - Initial Balance
-    createDate: Date;   - Set auto 
-    isClosed: boolean;  - true while submitting
-
-
+{ id: 1,
+  userId: 1,
+  accountTypeId: 1,
+  balance: 12,
+  createDate = new Date(),
+  isClosed = false}
 */
 //TODO assign values to userId using current user
-//accountId
-//createDate
-//isClosed = true
-//accountTypeId
+//POST to DB
