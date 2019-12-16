@@ -27,7 +27,7 @@ export class AccountViewComponent implements OnInit {
 
   currentAccount: Account = null;
   filterOptions = AccountType.AllNames();
-  accounts: Observable<Account[]> = this.accountsSvc.accounts$();  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
+  accounts$: Observable<Account[]> = this.accountsSvc.accounts$();  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
   childName = 'Account Details';
   @ViewChild(ViewContainerDirective, { static: true }) childHost: ViewContainerDirective;
   get AccountType() {return AccountType}
