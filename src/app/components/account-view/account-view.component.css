@@ -1,11 +1,26 @@
 #AccountViewWrapper {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 0px;
+    grid-column-gap: 20px;
     grid-row-gap: 0px;
-    background-color: cornflowerblue;
-    }
-h2{
+    background-color: #ddeaf3; 
+    justify-content: space-evenly;
+}
+.headerTitleAcc{
+    color: #020e17;
+    text-align: center;
+    padding: 25px;
+    font-size: 3rem;
+    margin-bottom:0px;
+}
+
+.DivideAccountView {
+    padding: 15px 15px 0px 15px;
+}
+
+.header{
+    margin: 0 auto;
     text-align: center;
 }

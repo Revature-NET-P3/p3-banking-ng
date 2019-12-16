@@ -1,12 +1,71 @@
-
+<!-- TODO: The child components should be refactored to use mostly the same code -->
 <fieldset>
-        <legend>{{account.accountname}}</legend>
-        Account Number:
-        <input type="text" name="accountnumber" value={{account.accountnumber}} readonly>
-        <br><br>
-        Balance:
-        <input type="text" name="balance" value={{account.balance}} readonly>
-        <br><br>
-        <input type="submit" value="Submit">
-</fieldset>
+        <legend>{{account.id}}</legend>
+        <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
+<!-- <dt>Transaction Amount</dt>      -->
+<!-- <input [(ngModel)]="amount" class="form-control" style="width:100px" /> -->
+<!-- <button (click)="Deposit([amount])">Deposit</button>
 
+<button (click)="Withdraw([amount])">Withdraw</button>
+
+<button (click)="Transfer([amount])">Transfer</button>
+
+<button (click)="PayLoan([amount])">Pay Loan</button> -->
+
+        <div>
+                <accordion [closeOthers]="true" [isAnimated]="true">
+                        <accordion-group heading=" Deposit"> 
+                                <form class="form-style-7">
+                                        <ul>
+                                        <li>
+                                                <label for="name">Amount</label>
+                                                <input type="text" name="name" maxlength="100" value="0">
+                                                <span>Enter the deposit amount</span>
+                                        </li>
+                                        <li>
+                                                <input type="submit" value="Confirm">
+                                        </li>
+                                        </ul>
+                                </form>
+                        </accordion-group>
+                        <accordion-group heading=" Withdraw"> 
+                                <form class="form-style-7">
+                                        <ul>
+                                        <li>
+                                                <label for="name">Amount</label>
+                                                <input type="text" name="name" maxlength="100" value="0">
+                                                <span>Enter amount to withdraw</span>
+                                        </li>
+                                        <li>
+                                                <input type="submit" value="Confirm">
+                                        </li>
+                                        </ul>
+                                </form>
+                        </accordion-group>
+                        <accordion-group heading=" Transfer"> 
+                                <form class="form-style-7">
+                                        <ul>
+                                        <li>
+                                                <label>To</label>
+                                                <select name="field4" class="field-select">
+                                                <option *ngFor="let acc of accounts$ | async" value={{acc.id}} >{{acc.id}}</option>>
+                                                </select>
+                                                <span>Select the destination account</span>
+                                        </li>
+                                        <li>
+                                                <label for="name">Amount</label>
+                                                <input type="text" name="name" maxlength="100" value="0">
+                                                <span>Enter transfer amount</span>
+                                        </li>
+                                        <li>
+                                                <input type="submit" value="Confirm">
+                                        </li>
+                                        </ul>
+                                </form>
+                        </accordion-group>
+                        <accordion-group heading=" Transactions"> 
+                                
+                        </accordion-group>
+                </accordion>
+        </div> 
+</fieldset>

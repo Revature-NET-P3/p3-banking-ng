@@ -1,27 +1,52 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from './api.service';
+import { Account, MOCK_ACCOUNTS, AccountType } from '../models/account';
+import { UserService } from './user.service';
+import { Observable, BehaviorSubject, Subscribable, Subscription } from 'rxjs';
+import { first } from 'rxjs/operators'
 
 @Injectable()
-export class AccountsService {
+export class AccountsService implements OnDestroy {
 
-  constructor(private api: ApiService) { }
+  accountsSubject: BehaviorSubject<Account[]> = new BehaviorSubject<Account[]>([]);
+  loggedInSub: Subscription;
+  currentFilter: AccountType = null;
 
-  //TODO: Type to models
-  //TODO: Use ApiService 
-  getCheckingAccounts(){
-    return [{name:'nice', balance:5}, {name:'cool', balance:56.78}];
+  constructor(
+    private api: ApiService,
+    private userSvc: UserService,
+  ) { this.init() }
+
+  init(){
+    this.loggedInSub = this.userSvc.isLoggedIn$().subscribe(inout => {
+      if (!inout) {
+        this.accountsSubject.next([]);
+      } else {
+        this.api.getAccountsByUser(this.userSvc.getUser().id).pipe(first()).subscribe(accounts => {
+          this.accountsSubject.next(
+            accounts.filter(a => this.currentFilter == null || a.accountTypeId == this.currentFilter
+          ));
+        })
+      }
+    });
   }
 
-  getBusinessAccounts(){
-    return [{ name: 'nice', balance: 6 }, { name: 'cool', balance: 56.78 }];
+  ngOnDestroy(): void {
+    if(this.loggedInSub) this.loggedInSub.unsubscribe();
   }
 
-  getLoanAccounts(){
-    return [{ name: 'nice', balance: 7 }, { name: 'cool', balance: 56.78 }];
+  accounts$() : Observable<Account[]> {
+    return this.accountsSubject.asObservable();
   }
 
-  getTermAccounts(){ //(Same as CD)
-    return [{ name: 'nice', balance: 8 }, { name: 'cool', balance: 56.78 }];
+  filterByType(type: AccountType) {
+    //var accounts: Account[] = MOCK_ACCOUNTS;
+    this.currentFilter = type;
+    this.accountsSubject.next([]);
+    var userId = this.userSvc.getUser().id;
+    this.api.getAccountsByUser(userId).pipe(first()).subscribe(accounts => {
+      this.accountsSubject.next(accounts.filter(a => a.accountTypeId == type));
+    })
   }
 
 }
