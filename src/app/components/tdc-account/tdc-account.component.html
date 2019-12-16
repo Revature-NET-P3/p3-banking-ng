@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>{{account.accountName}}-0{{account.id}}</legend>
+  <legend>{{account.id}}</legend>
   <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
   <div>
           <accordion [closeOthers]="true" [isAnimated]="true">
@@ -9,7 +9,7 @@
                                   <li>
                                           <label for="name">Amount</label>
                                           <input type="text" readonly name="name" maxlength="100" value=${{account.balance}}>
-                                          <span>You cannot withdraw before matutity</span>
+                                          <span>You cannot withdraw before maturity</span>
                                   </li>
                                   <li>
                                           <input type="submit" value="Confirm" >
@@ -17,28 +17,28 @@
                                   </ul>
                           </form>
                   </accordion-group>
-                  <accordion-group heading="|| Tranfert"> 
-                          <form class="form-style-7">
-                                  <ul>
-                                  <li>
-                                          <label>To</label>
-                                          <select name="field4" class="field-select">
-                                          <option value="Advertise">Checking-01</option>
-                                          <option value="Partnership">Business-02</option>
-                                          <option value="General Question">Checking-04</option>
-                                          </select>
-                                          <span>Select the account to transfer here</span>
-                                  </li>
-                                  <li>
-                                          <label for="name">Amount</label>
-                                          <input type="text" readonly name="name" maxlength="100" value=${{account.balance}}>
-                                          <span>Enter The Amount you want to Transfer here</span>
-                                  </li>
-                                  <li>
-                                          <input type="submit" value="Confirm" >
-                                  </li>
-                                  </ul>
-                          </form>
+                  <accordion-group heading="|| Transfer"> 
+                          <!-- TODO: Transfers should be restricted to maturity -->
+                        <form class="form-style-7">
+                                <ul>
+                                        <li>
+                                        <label>To</label>
+                                        <select name="field4" class="field-select">
+                                        <option *ngFor="let acc of accounts$ | async" value={{acc.id}}>
+                                        {{acc.id}}</option>>
+                                        </select>
+                                        <span>Select the destination account</span>
+                                        </li>
+                                        <li>
+                                        <label for="name">Amount</label>
+                                        <input type="text" name="name" maxlength="100" value="0">
+                                        <span>Enter transfer amount</span>
+                                        </li>
+                                        <li>
+                                        <input type="submit" value="Confirm">
+                                        </li>
+                                </ul>
+                        </form>
                   </accordion-group>
           </accordion>
   </div> 

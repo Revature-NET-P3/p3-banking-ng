@@ -10,7 +10,8 @@ import { TdcAccountComponent } from '../tdc-account/tdc-account.component';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
-
+import { first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-account-view',
@@ -26,9 +27,10 @@ export class AccountViewComponent implements OnInit {
 
   currentAccount: Account = null;
   filterOptions = AccountType.AllNames();
-  accounts: Account[];  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
+  accounts$: Observable<Account[]> = this.accountsSvc.accounts$();  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
   childName = 'Account Details';
   @ViewChild(ViewContainerDirective, { static: true }) childHost: ViewContainerDirective;
+  get AccountType() {return AccountType}
 
   constructor(private accountsSvc: AccountsService,
     private componentFactoryResolver: ComponentFactoryResolver, 
@@ -36,17 +38,17 @@ export class AccountViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    var sub = this.route.paramMap.subscribe(params => {
+    this.route.paramMap.pipe(first()).subscribe(params => {
       var type = +params.get('type') as AccountType;
       console.log('type: ' + AccountType[type]);
-      this.accounts = this.accountsSvc.getAccounts(type);
+      this.accountsSvc.filterByType(type);
     });
   }
 
   getAccount(account: Account) {
     this.currentAccount = account;
     var childComponent: Type<any> = null;
-    switch(account.type){
+    switch(account.accountTypeId){
       case AccountType.Checking:
         childComponent = CheckingAccountComponent;
         break;
@@ -71,7 +73,7 @@ export class AccountViewComponent implements OnInit {
   filter(option: string){
     var type = AccountType[option];
     this.currentAccount = null;
-    this.accounts = this.accountsSvc.getAccounts(type);
+    this.accountsSvc.filterByType(type);
     this.clearChild();
   }
 
@@ -86,7 +88,10 @@ export class AccountViewComponent implements OnInit {
     const viewContainerRef = this.childHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (<AccountViewChildComponent>componentRef.instance).account = this.currentAccount;
+    var childComp = <AccountViewChildComponent>componentRef.instance;
+    childComp.account = this.currentAccount;
+    childComp.accounts$ = this.accounts$;
+
   }
 
 }

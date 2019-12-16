@@ -9,11 +9,20 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
 
-  loggedIn: Observable<boolean> = this.userSvc.isLoggedIn();
+  loggedIn: Observable<boolean> = this.userSvc.isLoggedIn$();
 
   constructor(private userSvc: UserService) { }
 
   ngOnInit() {
+  }
+
+  login(){
+    //TODO Auth update (add redirect etc.)
+    this.userSvc.login(null);
+  }
+
+  logout(){
+    this.userSvc.logout();
   }
 
 }

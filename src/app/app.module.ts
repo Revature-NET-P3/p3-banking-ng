@@ -2,7 +2,6 @@ import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +35,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ViewContainerDirective } from './directives/view-container.directive';
+import { BanktransactService } from './banktransact.service';
 
 
 @NgModule({
@@ -66,11 +66,13 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     BsDropdownModule.forRoot(),
     HttpClientModule,
     MatTableModule,
+    FormsModule
   ],
   providers: [
     CookieService,
     UserService,
     ApiService,
+    BanktransactService
 
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
