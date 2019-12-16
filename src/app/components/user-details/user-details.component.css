@@ -3,10 +3,19 @@ table {
     margin-left: 15%;
 }
 
+#UserDetails{
+  font-size: xx-large;
+  text-align: center;
+  font-weight: 500;
+  color: whitesmoke;
+}
+
 #profileContainer{
     display:flex;
     flex-wrap: wrap;
     width: 100%;
+    background-color: rgba(127, 255, 212, 0.333);
+    margin-top: 8%;
 }
 
 .card {
