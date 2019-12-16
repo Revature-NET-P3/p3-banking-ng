@@ -35,7 +35,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ViewContainerDirective } from './directives/view-container.directive';
-import { BanktransactService } from './banktransact.service';
+import { TransactionsService } from './services/transactions.service';
 
 
 @NgModule({
@@ -72,7 +72,7 @@ import { BanktransactService } from './banktransact.service';
     CookieService,
     UserService,
     ApiService,
-    BanktransactService
+    TransactionsService
 
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
