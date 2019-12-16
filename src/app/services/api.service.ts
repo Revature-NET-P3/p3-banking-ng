@@ -44,10 +44,10 @@ export class ApiService {
     });
   }
 
-  private doPost<T>(url: string, object: T): Observable<any>{
+  private doPost<T>(url: string, object: T): Observable<any> {
     var response$ = this.http.post(url, object, Options.response);
     return new Observable(s => {
-      response$.pipe(first()).subscribe(resp =>{
+      response$.pipe(first()).subscribe(resp => {
         this.evaluateResponse(resp);
         s.next(resp.body);
       });
@@ -97,6 +97,18 @@ export class ApiService {
     return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString());
   }
 
+  getTransactionsByAccountWithDateRange(accountId: number, startDate: string, endDate: string): Observable<Transaction[]> {
+    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + startDate + '/' + endDate);
+  }
+
+  getTransactionsByAccountWithLimit(accountId: number, limit: number): Observable<Transaction[]> {
+    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString());
+  }
+
+  getTransactionsByAccountWithDateRangeAndLimit(accountId: number, startDate: string, endDate: string, limit: number): Observable<Transaction[]> {
+    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString() + '/' + startDate + '/' + endDate);
+  }
+
   // AccountTypesApiController
   getAccountTypes(): Observable<AccountType[]> {
     return this.doGet<AccountType[]>(this.url + '/api/AccountTypesApiController');
@@ -109,5 +121,7 @@ export class ApiService {
   getAccountTypeByName(typeName: string): Observable<AccountType> {
     return this.doGet<AccountType>(this.url + '/api/AccountTypesApiController/byName/' + typeName);
   }
+
+  // LoanAccountController
 
 }
