@@ -2,7 +2,8 @@
 <fieldset>
         <legend>{{account.accountName}}</legend>
         <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
-        <dt>Transaction Amount</dt>     
+        <dt>Transaction Amount</dt>
+        <dd  value="status"></dd>     
 </fieldset>
 <input [(ngModel)]="amount" class="form-control" style="width:100px" />
 <button (click)="Deposit([amount])">Deposit</button>

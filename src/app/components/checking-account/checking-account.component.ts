@@ -10,7 +10,8 @@ import { AccountViewChildComponent } from 'src/app/models/account-view-child.com
 })
 export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
   @Input() account: Account;
-  amount = '0';
+  amount = 0;
+  status : any
 
   constructor(private bts:BanktransactService) { }
 
@@ -18,7 +19,7 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
   }
 
   Deposit(amount){
-    this.bts.putDeposit(this.account.id, amount).subscribe(data => data[0])
+    this.bts.putDeposit(this.account.id, amount).subscribe(data => this.status = data[0])
   }
   Withdraw(amount){
      this.bts.getWithdraw(this.account.id, amount).subscribe(data => data[0])
