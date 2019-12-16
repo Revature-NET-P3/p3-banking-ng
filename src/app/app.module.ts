@@ -36,6 +36,7 @@ import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ViewContainerDirective } from './directives/view-container.directive';
 import { TransactionsService } from './services/transactions.service';
+import { NewsComponent } from './components/news/news/news.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { TransactionsService } from './services/transactions.service';
     LoanAccountComponent,
     TdcAccountComponent,
     ViewContainerDirective,
+    NewsComponent,
   ],
   
   imports: [

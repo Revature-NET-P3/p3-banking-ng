@@ -7,6 +7,7 @@ import { AccountViewComponent } from "./components/account-view/account-view.com
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { NewsComponent } from './components/news/news/news.component';
 
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginUserComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'profile', component: UserDetailsComponent },
-  { path: 'about', component: LandingPageComponent }
+  { path: 'about', component: LandingPageComponent },
+  { path: 'news', component: NewsComponent}
 ];
 
 @NgModule({
