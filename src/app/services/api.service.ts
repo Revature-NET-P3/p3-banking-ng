@@ -5,6 +5,8 @@ import { Observable, Subscriber } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
 import { Transaction } from 'src/app/models/transaction';
 import { first } from 'rxjs/operators';
+import {LoginCredentials} from 'src/app/models/LoginCredentials'
+import { AuthService } from './auth.service';
 
 namespace Options {
   export const response: { observe: "response" } = { observe: "response"}
@@ -20,7 +22,7 @@ namespace Options {
 export class ApiService {
 
   url = environment.apiUrl;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   private successStatus<T>(r: HttpResponse<T>): boolean{
     return r.status.toString().charAt(0) == '2';
@@ -74,11 +76,18 @@ export class ApiService {
     });
   }
 
-  // Replace
-  // login(userCredentials) {
-  //   var respObs = this.http.post<string>(this.url, userCredentials, Options.useJson);
-  //   return respObs;
-  // }
+
+  login(username: string, password: string): string {
+    var cred: LoginCredentials = new LoginCredentials();
+    cred.userName=username;
+    cred.password=this.auth.HashPassword(password);
+    var response = this.http.post(this.url + "api/UserAPI/Verify", cred);
+    if (true){
+      return localStorage.token = this.auth.getToken();
+    }else {
+      return null;
+    }
+  }
 
   // Accounts Controller API calls
   getAccountsByUser(userId: number): Observable<Account[]> {
