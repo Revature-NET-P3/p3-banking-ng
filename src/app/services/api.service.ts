@@ -13,7 +13,6 @@ namespace Options {
   export const useJson = { headers: jsonHeader }
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -111,17 +110,20 @@ export class ApiService {
 
   // AccountTypesApiController
   getAccountTypes(): Observable<AccountType[]> {
-    return this.doGet<AccountType[]>(this.url + '/api/AccountTypesApiController');
+    return this.doGet<AccountType[]>(this.url + '/api/AccountTypesApi');
   }
 
   getAccountTypeById(typeId: number): Observable<AccountType> {
-    return this.doGet<AccountType>(this.url + '/api/AccountTypesApiController/' + typeId);
+    return this.doGet<AccountType>(this.url + '/api/AccountTypesApi/' + typeId);
   }
 
   getAccountTypeByName(typeName: string): Observable<AccountType> {
-    return this.doGet<AccountType>(this.url + '/api/AccountTypesApiController/byName/' + typeName);
+    return this.doGet<AccountType>(this.url + '/api/AccountTypesApi/byName/' + typeName);
   }
 
   // LoanAccountController
+  openLoan(account: Account): Observable {
+    return this.doPost<Account>(this.url + '/api/LoanAccount/open/',account);
+  }
 
 }
