@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
 import { Transaction } from 'src/app/models/transaction';
 import { first } from 'rxjs/operators';
@@ -22,30 +22,63 @@ export class ApiService {
   url = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  // Unused?
-  login(userCredentials){
-    var respObs = this.http.post<string>(this.url, userCredentials, Options.useJson );
-    return respObs;
+  private successStatus<T>(r: HttpResponse<T>): boolean{
+    return r.status.toString().charAt(0) == '2';
   }
 
-  private doGet<T>(url: string): Observable<T>{
+  private evaluateResponse<T>(r: HttpResponse<T>){
+    if (this.successStatus(r)){
+      console.log(`API call succeeded with ${r.status}`);
+    } else {
+      console.log(`API call failed with ${r.status}. Body: '${r.body}'`);
+    }
+  }
+
+  private doGet<T>(url: string): Observable<T> {
     var response$ = this.http.get<T>(url, Options.response);
     return new Observable<T>(s =>{
       response$.pipe(first()).subscribe(resp => {
-        //console.log('body: ' + resp.body);
+        this.evaluateResponse(resp); 
         s.next(resp.body);
       });
     });
   }
 
-  private doPost<T>(url: string, object:T){
-    var response$ = this.http.post(url, object);
+  private doPost<T>(url: string, object: T): Observable<any>{
+    var response$ = this.http.post(url, object, Options.response);
     return new Observable(s => {
       response$.pipe(first()).subscribe(resp =>{
-        s.next(resp);
+        this.evaluateResponse(resp);
+        s.next(resp.body);
       });
     });
   }
+
+  private doPut<T>(url: string, object: T): Observable<any> {
+    var response$ = this.http.put(url, object, Options.response);
+    return new Observable(s => {
+      response$.pipe(first()).subscribe(resp => {
+        this.evaluateResponse(resp);
+        s.next(resp.body);
+      });
+    });
+  }
+
+  private doDelete<T>(url: string) {
+    var response$ = this.http.delete(url, Options.response);
+    return new Observable<boolean>(s => {
+      response$.pipe(first()).subscribe(resp => {
+        this.evaluateResponse(resp);
+        s.next(this.successStatus(resp));
+      });
+    });
+  }
+
+  // Replace
+  // login(userCredentials) {
+  //   var respObs = this.http.post<string>(this.url, userCredentials, Options.useJson);
+  //   return respObs;
+  // }
 
   // Accounts Controller API calls
   getAccountsByUser(userId: number): Observable<Account[]> {
