@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ComponentFactoryResolver, Type, ViewChild } f
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountsService } from 'src/app/services/accounts.service';
 
-
 import { Account, AccountType } from '../../models/account';
 import { CheckingAccountComponent } from '../checking-account/checking-account.component';
 import { LoanAccountComponent } from '../loan-account/loan-account.component';

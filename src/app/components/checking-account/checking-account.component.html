@@ -1,6 +1,7 @@
 <!-- TODO: The child components should be refactored to use mostly the same code -->
+<h2 class=" header"> {account.accNickname}} Details</h2>
 <fieldset>
-        <legend>{{account.id}}</legend>
+        <legend>Id: {{account.id}}</legend>
         <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
 <!-- <dt>Transaction Amount</dt>      -->
 <!-- <input [(ngModel)]="amount" class="form-control" style="width:100px" /> -->
@@ -48,7 +49,7 @@
                                         <li>
                                                 <label>To</label>
                                                 <select name="field4" class="field-select">
-                                                <option *ngFor="let acc of accounts$ | async" value={{acc.id}} >{{acc.id}}</option>>
+                                                <option *ngFor="let acc of accounts$ | async" value={{acc.id}} > {{acc.accNickname}} ({{acc.id}})</option>>
                                                 </select>
                                                 <span>Select the destination account</span>
                                         </li>

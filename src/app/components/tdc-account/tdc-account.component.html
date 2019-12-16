@@ -1,5 +1,6 @@
+<h2 class=" header"> {account.accNickname}} Details</h2>
 <fieldset>
-  <legend>{{account.id}}</legend>
+  <legend>Id: {{account.id}}</legend>
   <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
   <div>
           <accordion [closeOthers]="true" [isAnimated]="true">
@@ -25,7 +26,8 @@
                                         <label>To</label>
                                         <select name="field4" class="field-select">
                                         <option *ngFor="let acc of accounts$ | async" value={{acc.id}}>
-                                        {{acc.id}}</option>>
+                                        {{acc.accNickname}} ({{acc.id}})
+                                        </option>>
                                         </select>
                                         <span>Select the destination account</span>
                                         </li>
