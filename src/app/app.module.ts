@@ -34,6 +34,8 @@ import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from '../app/services/token-interceptor.service';
 import { ViewContainerDirective } from './directives/view-container.directive';
 import { TransactionsService } from './services/transactions.service';
 import { NewsComponent } from './components/news/news/news.component';
@@ -74,8 +76,13 @@ import { NewsComponent } from './components/news/news/news.component';
     CookieService,
     UserService,
     ApiService,
+    TransactionsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     TransactionsService
-
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]

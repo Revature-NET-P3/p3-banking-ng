@@ -4,11 +4,26 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+
+  public getToken(): string {
+    return environment.auth0Token;
+    //return localStorage.token;
+  }
+
+  HashPassword(password: string):string{
+    let hash = CryptoJS.SHA256(password);
+    let stringhash = hash.toString(CryptoJS.enc.Base64);
+    return stringhash
+  }
+
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
     createAuth0Client({

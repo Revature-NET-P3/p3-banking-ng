@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserModel } from 'src/app/models/user-model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register-user',
@@ -15,7 +16,7 @@ export class RegisterUserComponent implements OnInit {
   @ViewChild('userNameInput', {static: true}) passwordConfirmInput: ElementRef;
   
 
-  constructor() { }
+  constructor(private auth:AuthService) { }
 
   ngOnInit() {
   }
@@ -25,8 +26,9 @@ export class RegisterUserComponent implements OnInit {
     this.user.userName = this.userNameInput.nativeElement.value;
     this.user.email = this.emailInput.nativeElement.value;
     this.user.password = this.passwordInput.nativeElement.value;
-
-    //this.user.confirmPassword = this.passwordConfirmInput.nativeElement.value;
+    //this.auth.login(this.user.userName,this.user.password);
+    
+    
     
   }
 }
