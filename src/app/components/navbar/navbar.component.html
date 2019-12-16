@@ -7,7 +7,8 @@
           <i class="fa fa-bars"></i>
         </a>
 
-        <a class="right" (click) = "auth.login()" *ngIf="!auth.loggedIn"> Log In </a>
-        <a class="right" (click)="auth.logout()" *ngIf="auth.loggedIn"> Logout </a>
+        <a class="right" routerLink="/login" *ngIf="!auth.loggedIn"> Log In </a>
+        <a class="right" routerLink="/register" *ngIf="!auth.loggedIn">Register </a>
+        <a class="right" routerLink="/Logout" *ngIf="auth.loggedIn"> Logout </a>
 </div>
 
