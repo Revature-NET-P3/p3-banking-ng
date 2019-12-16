@@ -1,13 +1,13 @@
 <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">Home</a>
+        <a routerLink="/home" class="active">Home</a>
         <a routerLink="/profile">Profile</a>
         <a routerLink="/accounts" >Accounts</a>
-        <a href="#about">News</a>
+        <a routerLink="/about">News</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
 
-        <a class="right" *ngIf="!(loggedIn | async)" routerLink="/home"> Login </a>
-        <a class="right" *ngIf="loggedIn | async" routerLink="/home"> Logout </a>
+        <a class="right" *ngIf="!(loggedIn | async)" (click)="login()"> Login </a>
+        <a class="right" *ngIf="loggedIn | async" (click)="logout()"> Logout </a>
 </div>
 

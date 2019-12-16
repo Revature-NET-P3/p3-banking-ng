@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { UserModel } from 'src/app/modules/module/user-model';
+import { UserModel } from 'src/app/models/user-model';
 
 import {Location} from '@angular/common';
 

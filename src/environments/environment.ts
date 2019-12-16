@@ -5,7 +5,7 @@
 export const environment = {
   title: "P3Bank (Debug)",
   production: false,
-  apiUrl: "https://p3bankapi-debug.azurewebsites.net",
+  apiUrl: "https://p3api.azurewebsites.net",
 };
 
 /*
