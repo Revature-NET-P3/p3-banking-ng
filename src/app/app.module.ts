@@ -23,6 +23,8 @@ import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from '../app/services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,11 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     CookieService,
     UserService,
     ApiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
