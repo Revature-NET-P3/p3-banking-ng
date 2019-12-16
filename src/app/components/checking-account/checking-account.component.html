@@ -2,7 +2,7 @@
 <h2 class=" header"> {{account.accNickname}} Details</h2>
 <fieldset>
         <legend>Id: {{account.id}}</legend>
-        <h3 style="text-align:center;"><b>Balance: </b>$ {{account.balance}}</h3>
+        <h3 style="text-align:center;"><b>Balance: </b>{{account.balance | currency}}</h3>
 <!-- <dt>Transaction Amount</dt>      -->
 <!-- <input [(ngModel)]="amount" class="form-control" style="width:100px" /> -->
 <!-- <button (click)="Deposit([amount])">Deposit</button>
