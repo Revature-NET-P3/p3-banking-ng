@@ -82,7 +82,6 @@ import { NewsComponent } from './components/news/news/news.component';
       useClass: TokenInterceptor,
       multi: true
     },
-    TransactionsService
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]
