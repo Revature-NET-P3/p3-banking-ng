@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BanktransactService} from 'src/app/banktransact.service'
+import { TransactionsService} from 'src/app/services/transactions.service'
 import { Account } from '../../models/account';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
   amount = '0';
   @Input() accounts$: Observable<Account[]>; 
 
-  constructor(private bts:BanktransactService) { }
+  constructor(private bts:TransactionsService) { }
 
   ngOnInit() {
   }
