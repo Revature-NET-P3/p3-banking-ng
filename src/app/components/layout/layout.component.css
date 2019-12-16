@@ -11,11 +11,11 @@
 }
 #contentArea{
     grid-column:span 12;
-    background-color: rgba(0, 38, 255, 0.705);
+    background-color: rgba(239,244,255, 0.705);
 
 }
 #footer{
     grid-column:span 12;
-    background-color: aquamarine;
+    background-color: rgba(239,244,255, 0.705);
 
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subscriber } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
+import { UserModel } from 'src/app/models/user-model';
 import { Transaction } from 'src/app/models/transaction';
 import { first } from 'rxjs/operators';
 import {LoginCredentials} from 'src/app/models/LoginCredentials'
@@ -88,7 +89,17 @@ export class ApiService {
       return null;
     }
   }
-
+  //User Controller API calls
+  createUser(username: string, email: string, password: string)
+  {
+    var user = new UserModel();
+    user.email = email;
+    user.userName = username;
+    
+    user.password = password;
+    this.auth.HashPassword(user.password);
+    this.doPost<UserModel>(this.url + '/api/UsersAPI/CreateUser', user);
+  }
   // Accounts Controller API calls
   getAccountsByUser(userId: number): Observable<Account[]> {
     return this.doGet<Account[]>(this.url + '/api/Accounts/' + userId);
