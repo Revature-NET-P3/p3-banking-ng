@@ -27,6 +27,8 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { AccountViewComponent } from './components/account-view/account-view.component';
 import { CheckingAccountComponent } from './components/checking-account/checking-account.component';
+import { LoanAccountComponent } from './components/loan-account/loan-account.component';
+import { TdcAccountComponent } from './components/tdc-account/tdc-account.component';
 
 
 import { UserService } from './services/user.service';
@@ -50,6 +52,8 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     AccountViewComponent,
     UserDetailsComponent,
     CheckingAccountComponent,
+    LoanAccountComponent,
+    TdcAccountComponent,
     ViewContainerDirective,
   ],
   
@@ -69,7 +73,7 @@ import { ViewContainerDirective } from './directives/view-container.directive';
     ApiService,
 
   ],
-  entryComponents: [CheckingAccountComponent],
+  entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

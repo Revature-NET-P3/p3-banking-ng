@@ -1,0 +1,45 @@
+<fieldset>
+  <legend>{{account.accountName}}-0{{account.id}}</legend>
+  <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
+  <div>
+          <accordion [closeOthers]="true" [isAnimated]="true">
+                  <accordion-group heading="-- Withdraw"> 
+                          <form class="form-style-7">
+                                  <ul>
+                                  <li>
+                                          <label for="name">Amount</label>
+                                          <input type="text" readonly name="name" maxlength="100" value=${{account.balance}}>
+                                          <span>You cannot withdraw before matutity</span>
+                                  </li>
+                                  <li>
+                                          <input type="submit" value="Confirm" >
+                                  </li>
+                                  </ul>
+                          </form>
+                  </accordion-group>
+                  <accordion-group heading="|| Tranfert"> 
+                          <form class="form-style-7">
+                                  <ul>
+                                  <li>
+                                          <label>To</label>
+                                          <select name="field4" class="field-select">
+                                          <option value="Advertise">Checking-01</option>
+                                          <option value="Partnership">Business-02</option>
+                                          <option value="General Question">Checking-04</option>
+                                          </select>
+                                          <span>Select the account to transfer here</span>
+                                  </li>
+                                  <li>
+                                          <label for="name">Amount</label>
+                                          <input type="text" readonly name="name" maxlength="100" value=${{account.balance}}>
+                                          <span>Enter The Amount you want to Transfer here</span>
+                                  </li>
+                                  <li>
+                                          <input type="submit" value="Confirm" >
+                                  </li>
+                                  </ul>
+                          </form>
+                  </accordion-group>
+          </accordion>
+  </div> 
+</fieldset>

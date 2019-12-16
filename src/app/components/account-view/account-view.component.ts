@@ -5,6 +5,8 @@ import { AccountsService } from 'src/app/services/accounts.service';
 
 import { Account, AccountType } from '../../models/account';
 import { CheckingAccountComponent } from '../checking-account/checking-account.component';
+import { LoanAccountComponent } from '../loan-account/loan-account.component';
+import { TdcAccountComponent } from '../tdc-account/tdc-account.component';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
@@ -23,7 +25,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AccountViewComponent implements OnInit {
 
   currentAccount: Account = null;
-  filterOptions = ["Checking", "Business", "Loan", "Term"]
+  filterOptions = AccountType.AllNames();
   accounts: Account[];  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
   childName = 'Account Details';
   @ViewChild(ViewContainerDirective, { static: true }) childHost: ViewContainerDirective;
@@ -36,9 +38,8 @@ export class AccountViewComponent implements OnInit {
   ngOnInit() {
     var sub = this.route.paramMap.subscribe(params => {
       var type = +params.get('type') as AccountType;
-      console.log('type: ' + type);
+      console.log('type: ' + AccountType[type]);
       this.accounts = this.accountsSvc.getAccounts(type);
-      sub.unsubscribe();
     });
   }
 
@@ -50,13 +51,13 @@ export class AccountViewComponent implements OnInit {
         childComponent = CheckingAccountComponent;
         break;
       case AccountType.Business:
-        childComponent = CheckingAccountComponent; //TODO
+        childComponent = CheckingAccountComponent;
         break;
       case AccountType.Loan:
-        childComponent = CheckingAccountComponent; //TODO
+        childComponent = LoanAccountComponent;
         break;
       case AccountType.Term:
-        childComponent = CheckingAccountComponent; //TODO
+        childComponent = TdcAccountComponent;
         break;
     }
     this.loadChild(childComponent);
