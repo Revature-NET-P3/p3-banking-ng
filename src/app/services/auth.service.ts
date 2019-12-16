@@ -13,9 +13,9 @@ import * as CryptoJS from 'crypto-js';
 export class AuthService {
 
 
-  public getToken(): string {
+  public getToken(username: string, password: string): string {
     return environment.auth0Token;
-    //return localStorage.token;
+    //Logic to call auth0 would go here
   }
 
   HashPassword(password: string):string{

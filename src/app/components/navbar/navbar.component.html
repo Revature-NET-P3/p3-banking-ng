@@ -7,7 +7,7 @@
           <i class="fa fa-bars"></i>
         </a>
 
-        <a class="right" *ngIf="!(loggedIn | async)" (click)="login()"> Login </a>
+        <a class="right" *ngIf="!(loggedIn | async)" routerLink="/login"> Login </a>
         <a class="right" *ngIf="loggedIn | async" (click)="logout()"> Logout </a>
 </div>
 

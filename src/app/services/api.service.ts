@@ -7,6 +7,7 @@ import { Transaction } from 'src/app/models/transaction';
 import { first } from 'rxjs/operators';
 import {LoginCredentials} from 'src/app/models/LoginCredentials'
 import { AuthService } from './auth.service';
+import { UserModel } from '../models/user-model';
 
 namespace Options {
   export const response: { observe: "response" } = { observe: "response"}
@@ -81,12 +82,19 @@ export class ApiService {
     var cred: LoginCredentials = new LoginCredentials();
     cred.userName=username;
     cred.password=this.auth.HashPassword(password);
-    var response = this.http.post(this.url + "api/UserAPI/Verify", cred);
-    if (true){
-      return localStorage.token = this.auth.getToken();
-    }else {
-      return null;
-    }
+    var response: Observable<boolean> = this.http.post<boolean>(this.url + "api/UserAPI/Verify", cred);
+    response.pipe(first()).subscribe(resp => {
+      if (resp){
+        return this.auth.getToken(username, password);
+      }else {
+        return null;
+      }
+    })
+    return null;
+  }
+
+  getUserByUserName(username: string):Observable<UserModel>{
+    return this.doGet<UserModel>(this.url + '/api/UserAPI/' + username);
   }
 
   // Accounts Controller API calls

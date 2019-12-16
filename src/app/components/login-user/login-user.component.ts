@@ -42,17 +42,13 @@ export class LoginUserComponent implements OnInit {
     this.userName = this.userNameInput.nativeElement.value;
     this.password = this.passwordInput.nativeElement.value;
 
-    var user: UserModel = {id: 1, userName: 'Blabla', email: 'b@gmail.com', password: 'test123'};
-    
-    if(user.userName === this.userName && user.password === this.password) {
+    this.user.login(this.userName, this.password)
+    if(this.user.isLoggedIn){
       window.alert("Success");
       // this.router.navigate(['accounts']);
       this.location.path();
-
     } else {
       window.alert('Invalid user name or password');
     }
-    
   }
-
 }
