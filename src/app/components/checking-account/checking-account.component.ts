@@ -11,23 +11,24 @@ import { AccountViewChildComponent } from 'src/app/models/account-view-child.com
 export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
   @Input() account: Account;
   amount = '0';
+  // @Input() accounts: Account[]; 
 
   constructor(private bts:BanktransactService) { }
 
   ngOnInit() {
   }
 
-  Deposit(amount){
-    this.bts.putDeposit(this.account.Id, amount).subscribe(data => data[0])
-  }
-  Withdraw(amount){
-     this.bts.getWithdraw(this.account.Id, amount).subscribe(data => data[0])
-  }
-  Transfer(amount){
-   this.bts.transfer(this.account.Id, amount).subscribe(data => data[0])
-  }
-  Loan(amount){
-    this.bts.getloan(this.account.Id, amount).subscribe(data => data[0])
-  }
+  // Deposit(amount){
+  //   this.bts.putDeposit(this.account.Id, amount).subscribe(data => data[0])
+  // }
+  // Withdraw(amount){
+  //    this.bts.getWithdraw(this.account.Id, amount).subscribe(data => data[0])
+  // }
+  // Transfer(amount){
+  //  this.bts.transfer(this.account.Id, amount).subscribe(data => data[0])
+  // }
+  // Loan(amount){
+  //   this.bts.getloan(this.account.Id, amount).subscribe(data => data[0])
+  // }
 
 }

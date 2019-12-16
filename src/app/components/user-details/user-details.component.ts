@@ -21,7 +21,10 @@ const HARDCODED_USER: IUser[] = [{
 })
 export class UserDetailsComponent implements OnInit {
   dataSource = HARDCODED_USER;
+  Username = "John Doe"
+  Email = "test@user.com"
   displayedColumns: string[] = ['Id', 'Username', 'Email', 'PasswordHash'];
+  
   constructor() { }
 
   ngOnInit() {

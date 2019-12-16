@@ -4,6 +4,15 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
 import { Transaction } from 'src/app/models/transaction';
+import { first } from 'rxjs/operators';
+
+namespace Options {
+  export const response: { observe: "response" } = { observe: "response"}
+  // TODO: I don't think these are needed
+  export const jsonHeader = new HttpHeaders().set('Content-Type', 'application/json');
+  export const useJson = { headers: jsonHeader }
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,74 +24,57 @@ export class ApiService {
 
   // Unused?
   login(userCredentials){
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    var respObs = this.http.post<string>(this.url, userCredentials, { headers });
+    var respObs = this.http.post<string>(this.url, userCredentials, Options.useJson );
     return respObs;
   }
 
-  // Accounts Controller API calls
-  GetAllAccountsByUserId(UserId: number): Observable<Account[]> {
-    var response = this.http.get<HttpResponse<Account[]>>(this.url + '/api/Accounts/' + UserId.toString());
-    return new Observable<Account[]>(s => {
-      response.subscribe(resp => {
-        s.next(resp.body)
-      })
+  private doGet<T>(url: string): Observable<T>{
+    var response$ = this.http.get<T>(url, Options.response);
+    return new Observable<T>(s =>{
+      response$.pipe(first()).subscribe(resp => {
+        //console.log('body: ' + resp.body);
+        s.next(resp.body);
+      });
     });
   }
 
-  GetAllAccountsByUserIdAndTypeId(UserId: number, TypeId: number): Observable<Account[]> {
-    var response = this.http.get<HttpResponse<Account[]>>(this.url + '/api/Accounts/' + UserId.toString() + '/' + TypeId.toString());
-    return new Observable<Account[]>(s => {
-      response.subscribe(resp => {
-        s.next(resp.body)
-      })
+  private doPost<T>(url: string, object:T){
+    var response$ = this.http.post(url, object);
+    return new Observable(s => {
+      response$.pipe(first()).subscribe(resp =>{
+        s.next(resp);
+      });
     });
+  }
+
+  // Accounts Controller API calls
+  getAccountsByUser(userId: number): Observable<Account[]> {
+    return this.doGet<Account[]>(this.url + '/api/Accounts/' + userId);
+  }
+
+  getAccountsByUserAndType(userId: number, typeId: number): Observable<Account[]> {
+    return this.doGet<Account[]>(this.url + '/api/Accounts/' + userId.toString() + '/' + typeId.toString());
   }
   
-  GetAccountDetailsByAccountId(AccId: number): Observable<Account> {
-    var response = this.http.get<HttpResponse<Account>>(this.url + '/api/Accounts/details/' + AccId.toString());
-    return new Observable<Account>(s => {
-      response.subscribe(resp => {
-        s.next(resp.body)
-      })
-    });
+  getAccountDetails(accountId: number): Observable<Account> {
+    return this.doGet<Account>(this.url + '/api/Accounts/details/' + accountId);
   }
 
-  GetTransactionDetailsByAccountId(AccId: number): Observable<Transaction[]> {
-    var response = this.http.get<HttpResponse<Transaction[]>>(this.url + '/api/Accounts/transactions/' + AccId.toString());
-    return new Observable<Transaction[]>(s => {
-      response.subscribe(resp => {
-        s.next(resp.body)
-      })
-    });
+  getTransactionsByAccount(accountId: number): Observable<Transaction[]> {
+    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString());
   }
 
   // AccountTypesApiController
-  GetAccountTypes(): Observable<AccountType[]> {
-    var response = this.http.get<HttpResponse<AccountType[]>>(this.url + '/api/AccountTypesApiController');
-    return new Observable<AccountType[]>(s => {
-      response.subscribe(resp => {
-        s.next(resp.body)
-      })
-    });
+  getAccountTypes(): Observable<AccountType[]> {
+    return this.doGet<AccountType[]>(this.url + '/api/AccountTypesApiController');
   }
 
-  GetAccountTypeById(TypeId: number): Observable<AccountType> {
-    var response = this.http.get<HttpResponse<AccountType>>(this.url + '/api/AccountTypesApiController/' + TypeId.toString());
-    return new Observable<AccountType>(s => {
-      response.subscribe(resp => {
-        s.next(resp.body)
-      })
-    });
+  getAccountTypeById(typeId: number): Observable<AccountType> {
+    return this.doGet<AccountType>(this.url + '/api/AccountTypesApiController/' + typeId);
   }
 
-  GetAccountTypeByName(TypeName: string): Observable<AccountType> {
-    var response = this.http.get<HttpResponse<AccountType>>(this.url + '/api/AccountTypesApiController/byName/' + TypeName);
-    return new Observable<AccountType>(s => {
-      response.subscribe(resp => {
-        s.next(resp.body)
-      })
-    });
+  getAccountTypeByName(typeName: string): Observable<AccountType> {
+    return this.doGet<AccountType>(this.url + '/api/AccountTypesApiController/byName/' + typeName);
   }
 
 }

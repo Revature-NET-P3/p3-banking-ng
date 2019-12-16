@@ -7,6 +7,17 @@ export abstract class Transaction {
     TimeStamp: Date;
 }
 
+// export enum TransactionType {
+//     Withdraw = 1,
+//     Deposit,
+//     TransferTo,
+//     TransferFrom,
+//     Overdraft,
+//     Pay,
+//     Open,
+//     Close,
+// }
+
 /*
     Transaction Types
     1: Withdraw
