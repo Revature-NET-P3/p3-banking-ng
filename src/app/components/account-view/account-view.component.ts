@@ -88,7 +88,10 @@ export class AccountViewComponent implements OnInit {
     const viewContainerRef = this.childHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (<AccountViewChildComponent>componentRef.instance).account = this.currentAccount;
+    var childComp = <AccountViewChildComponent>componentRef.instance;
+    childComp.account = this.currentAccount;
+    childComp.accounts = this.accounts$;
+
   }
 
 }
