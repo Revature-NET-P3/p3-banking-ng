@@ -4,7 +4,8 @@ import { AccountsService } from 'src/app/services/accounts.service';
 import { Account, AccountType } from '../../models/account';
 import { ApiService } from 'src/app/services/api.service';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
-
+import { environment } from 'src/environments/environment';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-create-new-account',
@@ -22,11 +23,14 @@ export class CreateNewAccountComponent implements OnInit {
   newAccount: Account = null;
   openCreate: boolean = false;
   filterOptions = AccountType.AllNames();
-
+  url = environment.apiUrl;
+  creatingAccount: boolean = true;
+  postedAccount: Account;
   selectedAccountType:string = "Select an Account Type";
 
   //accountType:AccountType;
   constructor(private apiSvc: ApiService) { 
+    this.url += "/api/Transferables"
     //currentAccount: Account = null;
   }
 
@@ -42,8 +46,8 @@ export class CreateNewAccountComponent implements OnInit {
   }
 
   createAccount(type:string){
-  /*  //newAcc = this.newAccount;*/
-    var nickname:string = 'Checking Name';
+
+    //var currentTime = formatDate(Date.now(), 'yyyy-MM-dd', 'en-US', '+0500') + 'T' + formatDate(Date.now(), 'hh:mm:ss', 'en-US', '+0500') + '.00'
     this.newAccount = new Account({
         id: null,
         userId: 1,
@@ -59,21 +63,21 @@ export class CreateNewAccountComponent implements OnInit {
     {
       if(this.newAccount.accountTypeId != 0)
       {
-        console.log(this.newAccount);    
+        console.log(this.newAccount);
+        this.postRecord(this.newAccount);
         //this.apiSvc.
       }
-    }
-    else
-    {
-
     }
     //this.apiSvc
     
   }
 
-  postRecord{
-    
+  postRecord(account: Account){
+    this.apiSvc.openAccount(account).subscribe(postResponse=> 
+      {this.creatingAccount=false; /*this.postedAccount = postResponse as Account;*/ console.log(postResponse)});
   }
+
+
 
 }
 

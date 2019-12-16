@@ -1,61 +1,58 @@
+<div *ngIf="creatingAccount; then thenBlock else elseBlock"></div>
 
-<div style = "margin: 5%; background-color: #ddeaf3; padding:10px;">
-    <h1 style="text-align: center; font-size:3rem">Create New Account</h1>
-    <p style="text-align: center;">_______________________________________________________________</p>
-    <div style=" margin: 0 5% 5% 5%; padding: 10px; font-size:1.25rem;">
-        <label>Select Account type: </label>
-        <select class="form-control" name="accountTypes" #accountType>
-            
-            <option *ngFor="let accType of filterOptions" [value]="accType">
-                {{ accType }}
-            </option>  <!--
-            <option value=0>---Select Account Type---</option>
-            <option value=1>Checking</option>
-            <option value=2>Business</option>
-            <option value=3>Loan</option>
-            <option-- value=4>Term Deposit</option-->
-        </select><!--
-        <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                aria-controls="dropdown-animated">
-            {{ selectedAccountType }}
-        </button>
-        <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
-            role="menu" aria-labelledby="button-animated">
-            <li *ngFor="let option of filterOptions" class="dropdown-item" role="menuitem" style="cursor: pointer;"
-            (click)="setAccountType(option)">
-                    {{option}} 
-            </li>
-        </ul>
-    --
-        <br>
-        <label>Enter Initial Balance: $</label>
-        <input type="number" step="0.01" class="form-control" [(ngModel)]="newAccount.balance">-->
-        <br><br>
-        <input type="button" class="btn btn-info" (click)="createAccount(accountType.value)" value="Create" />
-        
-
+<ng-template #thenBlock>
+    <div class="createWrap">
+        <h1>Create New Account</h1>
+        <p style="text-align: center;">_______________________________________________________________</p>
+        <div class="contentArea">
+            <label>Select Account type: </label>
+            <select class="form-control" name="accountTypes" #accountType>
+                
+                <option *ngFor="let accType of filterOptions" [value]="accType">
+                    {{ accType }}
+                </option>
+            </select>
+            <br><br>
+            <input type="button" class="btn btn-info" (click)="createAccount(accountType.value)" value="Create" />
+        </div>
     </div>
+        
+        
+        
+</ng-template>
+<ng-template #elseBlock>
+    <div class="createWrap">
+        <h1>Account Created!</h1>
+        <div class="contentArea">
+            <dl class="row">
+                <dt class="col-sm-3">Account Id: </dt>
+                <dd class="col-sm-7">{{postedAccount.id}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Account Type:</dt>
+                <dd class="col-sm-7">{{postedAccount.accountTypeId}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Created Date:</dt>
+                <dd class="col-sm-7">{{postedAccount.createDate}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Balance: </dt>
+                <dd class="col-sm-7">$ {{postedAccount.balance}}</dd>
+            </dl>
+        </div>
+    </div>
+</ng-template>
 
-</div>
-    
-    <!--
+<!--
         (click)="showSelectedType(accType)" 
     <div class="alert alert-danger" *ngIf="accountType.touched && !accountType.valid">
         Please select the type of account
-    </div>
-
-    
-
-    
-
-    
-
-
-
-    id: number;         - auto
-    userId: number;     - assing
-    accountTypeId: number;   - select
-    balance: number;    - Initial Balance
-    createDate: Date;   - Set auto 
-    isClosed: boolean;  - true while submitting
+    </div>  
+id: 1,
+  userId: 1,
+  accountTypeId: 1,
+  balance: 12,
+  createDate = new Date(),
+  isClosed = false
 -->
