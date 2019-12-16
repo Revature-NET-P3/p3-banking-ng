@@ -21,8 +21,9 @@ namespace Options {
 })
 export class ApiService {
 
-  url = environment.apiUrl;
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  url = environment.apiUrl
+  showResponse = !environment.production
+  constructor(private http: HttpClient) { }
 
   private successStatus<T>(r: HttpResponse<T>): boolean{
     return r.status.toString().charAt(0) == '2';
@@ -34,6 +35,8 @@ export class ApiService {
     } else {
       console.log(`API call failed with ${r.status}. Body: '${r.body}'`);
     }
+    if(this.showResponse)
+      console.log(r.body)
   }
 
   private doGet<T>(url: string): Observable<T> {

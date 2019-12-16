@@ -9,8 +9,20 @@
     justify-content: space-around;
 
 
+}
+
+button{
+    height:7%;
+    min-width: 80px;
+    font-size:large;
 
 }
-#bigboi{
-    background-color: rgba(233,236,239,.93);
+p{
+    font-size:40px;
+    font-weight: 500;
+    text-align: center;
+    border: solid;
+    border-width: 7px;
+    color: #333333;
+    border-color: #007BFF;
 }
