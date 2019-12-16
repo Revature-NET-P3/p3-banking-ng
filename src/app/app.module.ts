@@ -37,6 +37,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { ViewContainerDirective } from './directives/view-container.directive';
 import { CreateNewAccountComponent } from './components/create-new-account/create-new-account.component';
 import { TransactionsService } from './services/transactions.service';
+import { NewsComponent } from './components/news/news/news.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { TransactionsService } from './services/transactions.service';
     TdcAccountComponent,
     ViewContainerDirective,
     CreateNewAccountComponent,
+    NewsComponent,
   ],
   
   imports: [

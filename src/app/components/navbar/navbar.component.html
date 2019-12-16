@@ -2,13 +2,17 @@
         <a routerLink="/home" class="active">Home</a>
         <a routerLink="/profile">Profile</a>
         <a routerLink="/accounts" >Accounts</a>
-        <a routerLink="/about">News</a>
+        
         <a routerLink="/createnewaccount">Open New Account</a>
+        <a routerLink="/news">News</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
 
-        <a class="right" *ngIf="!(loggedIn | async)" (click)="login()"> Login </a>
+
+        <a class="right" routerLink="/login" *ngIf="!(loggedIn | async)" > Login </a>
+        <a class="right" routerLink="/register" *ngIf="!(loggedIn | async)" > Register </a>
         <a class="right" *ngIf="loggedIn | async" (click)="logout()"> Logout </a>
+
 </div>
 
