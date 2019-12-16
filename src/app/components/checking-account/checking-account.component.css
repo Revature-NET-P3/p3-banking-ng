@@ -6,6 +6,13 @@ legend{
 	text-align: center;
 }
 
+.panel{
+	width:125%;
+	margin-left:-15px;
+}
+h2{
+	text-align: center;
+}
 
 
 .form-style-7{

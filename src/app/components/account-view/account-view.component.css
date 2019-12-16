@@ -7,10 +7,10 @@
     grid-row-gap: 0px;
     background-color: #ddeaf3; 
     justify-content: space-evenly;
-    
 }
 .panel-group{
     width: 125%;
+
 }
 .pull-left{
     font-size: large;
@@ -26,6 +26,9 @@
 .DivideAccountView {
     padding: 15px 15px 0px 15px;
     width: 300px;
+    margin-left: -30px;
+   
+
 }
 
 .header{

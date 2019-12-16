@@ -12,7 +12,7 @@
         <h2 class=" header" >Your Accounts</h2>
         <!--Filter Button-->
         <div style="margin-top:1rem;">
-            <div class="btn-group" dropdown style=" float: right; display: inline-flex !important;">
+            <div class="btn-group" dropdown >
                 <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
                         aria-controls="dropdown-animated">
                   Select Account Type
@@ -25,7 +25,6 @@
                     </li>
                 </ul>
             </div>
-            <h3 style="display:inline; cursor:pointer; color:rgb(27, 79, 253);">+ Create a new Account</h3>
 
         </div>
 
@@ -54,6 +53,8 @@
                     <p> Opened on {{a.createDate|date:'fullDate'}}</p>
                 </accordion-group>
             </accordion>
+            <h3 style="display:inline; cursor:pointer; color:rgb(27, 79, 253); border: solid; border-color: rgba(127, 191, 255, 0.809);">+ Create a new Account</h3>
+
         </div>
 
     </div>
