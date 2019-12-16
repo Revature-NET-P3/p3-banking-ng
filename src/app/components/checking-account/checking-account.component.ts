@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BanktransactService} from 'src/app/banktransact.service'
+import { TransactionsService} from 'src/app/services/transactions.service'
 import { Account } from '../../models/account';
 import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-checking-account',
@@ -10,10 +11,10 @@ import { AccountViewChildComponent } from 'src/app/models/account-view-child.com
 })
 export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
   @Input() account: Account;
-  amount = 0;
-  status : any
+  amount = '0';
+  @Input() accounts$: Observable<Account[]>; 
 
-  constructor(private bts:BanktransactService) { }
+  constructor(private bts:TransactionsService) { }
 
   ngOnInit() {
   }
