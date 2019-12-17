@@ -33,8 +33,6 @@ import { TdcAccountComponent } from './components/tdc-account/tdc-account.compon
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../app/services/token-interceptor.service';
-import { ViewContainerDirective } from './directives/view-container.directive';
-import { TransactionsService } from './services/transactions.service';
 import { NewsComponent } from './components/news/news/news.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
