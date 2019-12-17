@@ -27,6 +27,8 @@ dist
 .tscache
 .nvm
 .vscode
+.vs
+
 .DS_Store
 npm-debug.log
 nativescript-angular*.tgz
