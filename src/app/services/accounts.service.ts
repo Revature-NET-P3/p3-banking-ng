@@ -4,12 +4,14 @@ import { Account, MOCK_ACCOUNTS, AccountType } from '../models/account';
 import { UserService } from './user.service';
 import { Observable, BehaviorSubject, Subscribable, Subscription } from 'rxjs';
 import { first } from 'rxjs/operators'
+import { DBTransaction, Transaction } from '../models/transaction';
+import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class AccountsService implements OnDestroy {
 
   accountsSubject: BehaviorSubject<Account[]> = new BehaviorSubject<Account[]>([]);
-  loggedInSub: Subscription;
+  subscriptions: Subscription[] = [];
   currentFilter: AccountType = null;
 
   constructor(
@@ -18,7 +20,7 @@ export class AccountsService implements OnDestroy {
   ) { this.init() }
 
   init(){
-    this.loggedInSub = this.userSvc.isLoggedIn$().subscribe(inout => {
+    this.subscriptions.push(this.userSvc.isLoggedIn$().subscribe(inout => {
       if (!inout) {
         this.accountsSubject.next([]);
       } else {
@@ -28,14 +30,23 @@ export class AccountsService implements OnDestroy {
           ));
         })
       }
-    });
+    }));
+    // TODO!
+    // this.subscriptions.push(this.transactionSvc.getChanges().subscribe(change => {
+    //   this.api.getAccountsByUser(this.userSvc.getUser().id).pipe(first()).subscribe(accounts => {
+    //     this.allAccountsSubject.next(accounts);
+    //     this.accountsSubject.next(
+    //       accounts.filter(a => this.currentFilter == null || a.accountTypeId == this.currentFilter
+    //       ));
+    //   })
+    // }));
   }
 
   ngOnDestroy(): void {
-    if(this.loggedInSub) this.loggedInSub.unsubscribe();
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  accounts$() : Observable<Account[]> {
+  filteredAccounts$() : Observable<Account[]> {
     return this.accountsSubject.asObservable();
   }
 
@@ -47,6 +58,23 @@ export class AccountsService implements OnDestroy {
     this.api.getAccountsByUser(userId).pipe(first()).subscribe(accounts => {
       this.accountsSubject.next(accounts.filter(a => a.accountTypeId == type));
     })
+  }
+
+  private getName(id: number): null|string{
+    if(id == 0) return "-";
+    console.log('getName id: ' + id);
+    var accounts = this.accountsSubject.getValue();
+    var res = accounts.find(a => a.id == id);
+    if(res == undefined) return "-";
+    else if(isNullOrUndefined(res.accNickname)) return "(No name)";
+    return res.accNickname
+  }
+
+  convertTransaction(d: DBTransaction): Transaction{
+    var t: Transaction = d as Transaction;
+    t.accountName = this.getName(t.accountId);
+    t.associatedAccountName = this.getName(t.associatedAccountId);
+    return t;
   }
 
 }

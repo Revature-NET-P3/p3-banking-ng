@@ -3,14 +3,18 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subscriber, from } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
+
 import { UserModel } from 'src/app/models/user-model';
-import { Transaction } from 'src/app/models/transaction';
+
+import { DBTransaction } from 'src/app/models/transaction';
+
 import { first } from 'rxjs/operators';
 import {LoginCredentials} from 'src/app/models/LoginCredentials'
 import { AuthService } from './auth.service';
 
 namespace Options {
   export const response: { observe: "response" } = { observe: "response"}
+  //export const events = {observe: 'events'} //TODO: use this (https://angular.io/guide/http#listening-to-progress-events)
   // TODO: I don't think these are needed
   export const jsonHeader = new HttpHeaders().set('Content-Type', 'application/json');
   export const useJson = { headers: jsonHeader }
@@ -36,37 +40,31 @@ export class ApiService {
     }
   }
 
-  private doGet<T>(url: string): Observable<T> {
-    var response$ = this.http.get<T>(url, Options.response);
-    return new Observable<T>(s =>{
+  private obsFirst<T>(response$: Observable<HttpResponse<T>>){
+    return new Observable<T>(s => {
       response$.pipe(first()).subscribe(resp => {
-        this.evaluateResponse(resp); 
+        this.evaluateResponse(resp);
         s.next(resp.body);
       });
     });
+  }
+
+  private doGet<T>(url: string): Observable<T> {
+    var response$ = this.http.get<T>(url, Options.response);
+    return this.obsFirst(response$);
   }
 
   private doPost<T>(url: string, object: T): Observable<any> {
     var response$ = this.http.post(url, object, Options.response);
-    return new Observable(s => {
-      response$.pipe(first()).subscribe(resp => {
-        this.evaluateResponse(resp);
-        s.next(resp.body);
-      });
-    });
+    return this.obsFirst(response$);
   }
 
   private doPut<T>(url: string, object: T): Observable<any> {
     var response$ = this.http.put(url, object, Options.response);
-    return new Observable(s => {
-      response$.pipe(first()).subscribe(resp => {
-        this.evaluateResponse(resp);
-        s.next(resp.body);
-      });
-    });
+    return this.obsFirst(response$);
   }
 
-  private doDelete<T>(url: string) {
+  private doDelete(url: string) {
     var response$ = this.http.delete(url, Options.response);
     return new Observable<boolean>(s => {
       response$.pipe(first()).subscribe(resp => {
@@ -140,20 +138,20 @@ export class ApiService {
     return this.doGet<Account>(this.url + '/api/Accounts/details/' + accountId);
   }
 
-  getTransactionsByAccount(accountId: number): Observable<Transaction[]> {
-    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString());
+  getTransactionsByAccount(accountId: number): Observable<DBTransaction[]> {
+    return this.doGet<DBTransaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString());
   }
 
-  getTransactionsByAccountWithDateRange(accountId: number, startDate: string, endDate: string): Observable<Transaction[]> {
-    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + startDate + '/' + endDate);
+  getTransactionsByAccountWithDateRange(accountId: number, startDate: string, endDate: string): Observable<DBTransaction[]> {
+    return this.doGet<DBTransaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + startDate + '/' + endDate);
   }
 
-  getTransactionsByAccountWithLimit(accountId: number, limit: number): Observable<Transaction[]> {
-    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString());
+  getTransactionsByAccountWithLimit(accountId: number, limit: number): Observable<DBTransaction[]> {
+    return this.doGet<DBTransaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString());
   }
 
-  getTransactionsByAccountWithDateRangeAndLimit(accountId: number, startDate: string, endDate: string, limit: number): Observable<Transaction[]> {
-    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString() + '/' + startDate + '/' + endDate);
+  getTransactionsByAccountWithDateRangeAndLimit(accountId: number, startDate: string, endDate: string, limit: number): Observable<DBTransaction[]> {
+    return this.doGet<DBTransaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString() + '/' + startDate + '/' + endDate);
   }
 
   // AccountTypesApiController
