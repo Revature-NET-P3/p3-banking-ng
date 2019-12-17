@@ -35,7 +35,7 @@ RUN npm run build -- --prod --output-path=dist
 # base image
 FROM nginx:1.16.0-alpine
 
-COPY /config/nginx.conf /etc/nginx
+COPY /config/nginx.conf /etc/nginx/conf.d/default.conf
 # copy artifact build from the 'build environment'
 COPY --from=build /app/dist /usr/share/nginx/html
 
