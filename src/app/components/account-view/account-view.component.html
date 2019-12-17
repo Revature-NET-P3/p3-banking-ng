@@ -51,7 +51,10 @@
                             </span>
                         </ng-template>
                     </button>
-                    <p> Opened on {{a.createDate|date:'fullDate'}} <a [routerLink]="['/transactions', {account: a.id}]" routerLinkActive="true" > View all transactions. </a> </p>
+                    <span><p> Opened on {{a.createDate|date:'fullDate'}} </p>
+                        <button type="button" class="btn btn-primary" [routerLink]="['/transactions', {account: a.id}]" routerLinkActive="true" > View transactions. </button>
+                        <button type="button" class="btn btn-danger" (click)="closeAccount(a)" > Close this account. </button>       
+                    </span>
                 </accordion-group>
             </accordion>
         </div>

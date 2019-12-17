@@ -78,6 +78,10 @@ export class AccountViewComponent implements OnInit {
     this.clearChild();
   }
 
+  closeAccount(a: Account){
+    //TODO
+  }
+
   clearChild(){
     const viewContainerRef = this.childHost.viewContainerRef;
     viewContainerRef.clear();
@@ -93,9 +97,5 @@ export class AccountViewComponent implements OnInit {
     childComp.account = this.currentAccount;
     childComp.accounts$ = this.accounts$;
 
-  }
-
-  createAccView(){
-    this.router.navigate(['/createnewaccount']);
   }
 }
