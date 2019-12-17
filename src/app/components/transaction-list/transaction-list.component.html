@@ -1,0 +1,32 @@
+<div style="margin: 1rem;">
+</div>
+<mat-toolbar > Transactions </mat-toolbar>
+<table mat-table class="pad-right" class="mat-elevation-z8" [dataSource]="transactions$ | async">
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let trans"> {{trans.timeStamp|date:'medium'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef> Amount </th>
+    <td mat-cell *matCellDef="let trans"> {{trans.ammount|currency}} </td>
+  </ng-container>
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let trans"> {{trans.transactionTypeId|transaction}} </td>
+  </ng-container>
+  <ng-container matColumnDef="account">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let trans"> {{trans.accountName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="associatedAccount">
+    <th mat-header-cell *matHeaderCellDef> Associated Account </th>
+    <td mat-cell *matCellDef="let trans">
+      <span> {{trans.associatedAccountName}}
+      <a *ngIf="trans.associatedAccountId != 0" [routerLink]="['/routePath']" routerLinkActive="false"> View ({{trans.associatedAccountId}}) </a>
+      </span>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+</table>
