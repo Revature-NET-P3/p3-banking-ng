@@ -17,16 +17,17 @@ import { TransactionListComponent } from './components/transaction-list/transact
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: '', redirectTo:'home', pathMatch: 'full' },
+  { path: 'login', component: LoginUserComponent },
+  { path: 'Login', component: LoginUserComponent },
+  { path: 'news', component: NewsComponent},
+  { path: 'register', component: RegisterUserComponent },
+  { path: 'about', component: LandingPageComponent },
   { path: 'accounts', component: AccountsComponent, canActivate: [AuthGuard] },
   { path: 'accountList', component: AccountViewComponent, data: { type: 0 }, canActivate: [AuthGuard] },
   { path: 'transactions', component: TransactionListComponent, data: {account: 0}, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginUserComponent },
-  { path: 'register', component: RegisterUserComponent },
   { path: 'profile', component: UserDetailsComponent , canActivate: [AuthGuard]},
-  { path: 'about', component: LandingPageComponent },
-  { path: 'createnewaccount', component: CreateNewAccountComponent },
-  { path: 'Login', component: LoginUserComponent },
-  { path: 'news', component: NewsComponent}
+  { path: 'createnewaccount', component: CreateNewAccountComponent , canActivate: [AuthGuard] }
+
 ];
 
 @NgModule({
