@@ -33,6 +33,10 @@ import { TdcAccountComponent } from './components/tdc-account/tdc-account.compon
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import { CreateNewAccountComponent } from './components/create-new-account/create-new-account.component';
+>>>>>>> f4dcaec51a6a8d8f3b665b6a38c405da3ec32ccf
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../app/services/token-interceptor.service';
 import { ViewContainerDirective } from './directives/view-container.directive';
@@ -66,6 +70,7 @@ import { TransactionPipe } from './components/pipes/transaction.pipe';
     LoanAccountComponent,
     TdcAccountComponent,
     ViewContainerDirective,
+    CreateNewAccountComponent,
     NewsComponent,
     TransactionListComponent,
     TransactionPipe,
