@@ -5,7 +5,7 @@ import { ApiService } from './api.service';
 import { UserModel } from '../models/user-model';
 
 namespace REMOVE_THIS {
-  export const exampleUser: UserModel = { id: 60, userName: "Idk", email: "Idk", password: "Idk" }
+  export const exampleUser: UserModel = { id: 1, userName: "Idk", email: "Idk", password: "Idk" }
 }
 
 @Injectable({
