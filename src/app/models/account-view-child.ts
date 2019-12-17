@@ -1,7 +1,7 @@
-import { Account } from './account';
+import { Account } from '../../models/account';
 import { Observable } from 'rxjs';
 
-export interface AccountViewChildComponent{
+export interface AccountViewChild{
     account: Account;
     accounts$: Observable<Account[]>;
 }

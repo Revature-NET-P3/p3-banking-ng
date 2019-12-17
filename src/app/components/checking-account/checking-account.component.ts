@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TransactionsService} from 'src/app/services/transactions.service'
 import { Account } from '../../models/account';
-import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
+import { AccountViewChild } from 'src/app/models/account-view-child';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   templateUrl: './checking-account.component.html',
   styleUrls: ['./checking-account.component.css']
 })
-export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
+export class CheckingAccountComponent implements OnInit, AccountViewChild{
   @Input() account: Account;
   amount = '0';
   @Input() accounts$: Observable<Account[]>; 

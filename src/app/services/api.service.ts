@@ -176,7 +176,7 @@ export class ApiService {
     return this.doPut(this.url + '/api/LoanAccount/payLoan/' + accId.toString() + '/' + amount.toString(), null);
   }
 
-  closeLoan(accId: number): Observable<any> {
+  closeLoan(accId: number): Observable<boolean> {
     return this.doDelete(this.url + '/api/LoanAccount/close/' + accId.toString());
   }
 
@@ -198,8 +198,8 @@ export class ApiService {
     return this.doPost(this.url + '/api/Transferables', account);
   }
   
-  closeAccount(accId: number): Observable<any> {
-    return this.doDelete(this.url + '/api/Transferables/delete/' + accId.toString());
+  closeAccount(accId: number): Observable<boolean> {
+    return this.doDelete(this.url + '/api/Transferables/' + accId.toString());
   }
 
   deposit(accId: number, amount: number): Observable<any> {

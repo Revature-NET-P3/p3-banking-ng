@@ -8,7 +8,7 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { CreateNewAccountComponent } from './components/create-new-account/create-new-account.component';
-import { NewsComponent } from './components/news/news/news.component';
+import { NewsComponent } from './components/news/news.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 

@@ -3,11 +3,11 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { Router } from '@angular/router';
 
-import { Account, AccountType } from '../../models/account';
+import { Account, AccountType } from 'src/app/models/account';
 import { CheckingAccountComponent } from '../checking-account/checking-account.component';
 import { LoanAccountComponent } from '../loan-account/loan-account.component';
 import { TdcAccountComponent } from '../tdc-account/tdc-account.component';
-import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
+import { AccountViewChild } from 'src/app/models/account-view-child';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -80,7 +80,9 @@ export class AccountViewComponent implements OnInit {
   }
 
   closeAccount(a: Account){
-    this.api.closeAccount(a.id);
+    this.api.closeAccount(a.id).pipe(first()).subscribe(resp => {
+      a.isClosed = resp;
+    })
   }
 
   clearChild(){
@@ -94,7 +96,7 @@ export class AccountViewComponent implements OnInit {
     const viewContainerRef = this.childHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    var childComp = <AccountViewChildComponent>componentRef.instance;
+    var childComp = <AccountViewChild>componentRef.instance;
     childComp.account = this.currentAccount;
     childComp.accounts$ = this.accounts$;
 
