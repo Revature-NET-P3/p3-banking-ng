@@ -29,6 +29,7 @@ export class CreateNewAccountComponent implements OnInit {
   creatingAccount: boolean = true;
   postedAccount: Account;
   selectedAccountType:string = "Select an Account Type";
+  nickName: string = null;
 
   //accountType:AccountType;
   constructor(private apiSvc: ApiService) { 
@@ -50,17 +51,18 @@ export class CreateNewAccountComponent implements OnInit {
   createAccount(type:string){
     // |date:'fullDate'
     
-    //var currentTime = formatDate(Date.now(), 'yyyy-MM-dd', 'en-US', '+0500') + 'T' + formatDate(Date.now(), 'hh:mm:ss', 'en-US', '+0500') + '.00'
-    //currentTime : string = new Date().toISOString();
+    var currentTime = formatDate(Date.now(), 'yyyy-MM-dd', 'en-US', '+0500') + 'T' + formatDate(Date.now(), 'hh:mm:ss', 'en-US', '+0500') + '.00';
+    //var currentTime : string = new Date().toISOString();
     //var currentTime = formatDate(Date.now(), 'yyyy-MM-dd', 'en-US', '+0500');
-    var currentTime = new Date();
+    //var currentTime = new Date();
     this.newAccount = new Account({
         id: 1,
-        userId: 1,
+        userId: 4,
         accountTypeId: AccountType[type],
         balance: 0,
-        createDate: new Date(),
-        isClosed: false
+        createDate: currentTime,
+        isClosed: false,
+        accNickname: this.nickName
     });
     console.log(AccountType[type]);
     //this.newAccount = {1,1,1,1,new Date(), false, "Checking nick"};
@@ -69,8 +71,11 @@ export class CreateNewAccountComponent implements OnInit {
     {
       if(this.newAccount.accountTypeId != 0)
       {
-        console.log(this.newAccount);
-        this.postRecord(this.newAccount);
+        if(this.nickName != "" && this.nickName != null){
+          console.log(this.newAccount);
+          this.postRecord(this.newAccount);
+        }
+        
         //this.apiSvc.
       }
     }
