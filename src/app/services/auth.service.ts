@@ -13,14 +13,17 @@ import * as CryptoJS from 'crypto-js';
 export class AuthService {
 
 
-  public getToken(username: string, password: string): string {
+  public getToken(username: string, password: string) {
+    console.log('getting token', environment.auth0Token)
     return environment.auth0Token;
     //Logic to call auth0 would go here
   }
 
   HashPassword(password: string):string{
+    console.log('password',password)
     let hash = CryptoJS.SHA256(password);
     let stringhash = hash.toString(CryptoJS.enc.Base64);
+    console.log('hashed password',stringhash)
     return stringhash
   }
 

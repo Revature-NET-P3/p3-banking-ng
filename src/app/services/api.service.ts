@@ -78,23 +78,44 @@ export class ApiService {
   }
 
 
-  login(username: string, password: string): string {
-    var cred: LoginCredentials = new LoginCredentials();
+  login(username: string, passhash: string) {
+
+    //let token = "";
+    console.log('url', this.url);
+    let cred: LoginCredentials = new LoginCredentials();
     cred.userName=username;
-    cred.password=this.auth.HashPassword(password);
-    var response: Observable<boolean> = this.http.post<boolean>(this.url + "api/UserAPI/Verify", cred);
-    response.pipe(first()).subscribe(resp => {
-      if (resp){
-        return this.auth.getToken(username, password);
-      }else {
-        return null;
-      }
-    })
-    return null;
+    //let pwd = '$2y$10$8XcQw//Q1Lik3Mg6Nx2hdeODJWd808AOAmUqwbbvshp/r4se4KspC';
+    //let pwd =this.auth.HashPassword(password);
+    
+    cred.passhash = passhash;
+
+    //console.log('password', cred.passhash);
+    let response = this.http.post<boolean>(this.url + "/api/UserAPI/Verify", cred);
+
+    console.log('response', response);
+    return response;
+    // response.toPromise().then(data => console.log('promise:data', data));
+    // response.subscribe(data => {
+    //   console.log('data', data);
+    // })
+    //response.pipe(first()).subscribe(resp => {
+      // response.toPromise().then(resp => {
+      //   return resp;
+      // if (resp){
+        // console.log('promise resp', resp);
+        // token = this.auth.getToken(username, password);
+        // console.log('api token', token);
+        // return token;
+      // }else {
+        // console.log('resp = false');
+      // }
+    //})
+
   }
 
   getUserByUserName(username: string):Observable<UserModel>{
-    return this.doGet<UserModel>(this.url + '/api/UserAPI/' + username);
+    let response = this.http.get<UserModel>(this.url + '/api/UserAPI/username/' + username);
+    return response;
   }
   //User Controller API calls
   createUser(username: string, email: string, password: string)
