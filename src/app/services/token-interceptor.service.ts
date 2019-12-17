@@ -7,18 +7,16 @@ import {
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
+//import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(public auth: AuthService) {}
+  constructor(){}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (localStorage.token){
-      request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-      });
-    }
+    request = request.clone({
+      headers:request.headers.append('Authorization', 'Bearer ' + environment.auth0Token)
+    });
     return next.handle(request);
   }
 }
