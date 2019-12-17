@@ -23,18 +23,20 @@ export class RegisterUserComponent implements OnInit {
   }
   
   onRegister() {
-    
+    console.log("registering");
+    this.user = new UserModel();
     this.user.userName = this.userNameInput.nativeElement.value;
     this.user.email = this.emailInput.nativeElement.value;
     this.user.password = this.passwordInput.nativeElement.value;
+    //return window.location.origin;
     var success = this.newUser.createUser(this.user);
     if(success)
     {
-      this.loginNewUser.login(this.user.userName, this.user.password);
+    console.log("Success!");
     }
-    else{
-      return;
-    }
+    // else{
+    //   return;
+    // }
     //this.user.confirmPassword = this.passwordConfirmInput.nativeElement.value;
     
   }

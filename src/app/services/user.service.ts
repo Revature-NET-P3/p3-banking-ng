@@ -78,9 +78,4 @@ export class UserService {
     //  console.log('No token!!!');
     //}
   }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 23d17f2b7a34b304c7c31ac630f8db317d18436b
 }
