@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: UserDetailsComponent },
   { path: 'about', component: LandingPageComponent },
   { path: 'createnewaccount', component: CreateNewAccountComponent },
+  { path: 'Login', component: LoginUserComponent },
   { path: 'news', component: NewsComponent}
 ];
 
