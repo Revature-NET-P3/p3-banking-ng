@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionListComponent implements OnInit {
 
+  columnsToDisplay = [/*'reorder',*/ 'price', 'time', 'description',];
+
   constructor() { }
 
   ngOnInit() {
