@@ -22,7 +22,7 @@ export class ApiService {
 
   url = environment.apiUrl
   showResponse = !environment.production
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth:AuthService) { }
 
   private successStatus<T>(r: HttpResponse<T>): boolean{
     return r.status.toString().charAt(0) == '2';
