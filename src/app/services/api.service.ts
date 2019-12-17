@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable, Subscriber } from 'rxjs';
+import { Observable, Subscriber, from } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
 import { UserModel } from 'src/app/models/user-model';
 import { Transaction } from 'src/app/models/transaction';
@@ -15,7 +15,6 @@ namespace Options {
   export const jsonHeader = new HttpHeaders().set('Content-Type', 'application/json');
   export const useJson = { headers: jsonHeader }
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -47,10 +46,10 @@ export class ApiService {
     });
   }
 
-  private doPost<T>(url: string, object: T): Observable<any>{
+  private doPost<T>(url: string, object: T): Observable<any> {
     var response$ = this.http.post(url, object, Options.response);
     return new Observable(s => {
-      response$.pipe(first()).subscribe(resp =>{
+      response$.pipe(first()).subscribe(resp => {
         this.evaluateResponse(resp);
         s.next(resp.body);
       });
@@ -145,17 +144,75 @@ export class ApiService {
     return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString());
   }
 
+  getTransactionsByAccountWithDateRange(accountId: number, startDate: string, endDate: string): Observable<Transaction[]> {
+    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + startDate + '/' + endDate);
+  }
+
+  getTransactionsByAccountWithLimit(accountId: number, limit: number): Observable<Transaction[]> {
+    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString());
+  }
+
+  getTransactionsByAccountWithDateRangeAndLimit(accountId: number, startDate: string, endDate: string, limit: number): Observable<Transaction[]> {
+    return this.doGet<Transaction[]>(this.url + '/api/Accounts/transactions/' + accountId.toString() + '/' + limit.toString() + '/' + startDate + '/' + endDate);
+  }
+
   // AccountTypesApiController
   getAccountTypes(): Observable<AccountType[]> {
-    return this.doGet<AccountType[]>(this.url + '/api/AccountTypesApiController');
+    return this.doGet<AccountType[]>(this.url + '/api/AccountTypesApi');
   }
 
   getAccountTypeById(typeId: number): Observable<AccountType> {
-    return this.doGet<AccountType>(this.url + '/api/AccountTypesApiController/' + typeId);
+    return this.doGet<AccountType>(this.url + '/api/AccountTypesApi/' + typeId);
   }
 
   getAccountTypeByName(typeName: string): Observable<AccountType> {
-    return this.doGet<AccountType>(this.url + '/api/AccountTypesApiController/byName/' + typeName);
+    return this.doGet<AccountType>(this.url + '/api/AccountTypesApi/byName/' + typeName);
   }
 
+  // LoanAccountController
+  openLoan(account: Account): Observable<any> {
+    return this.doPost<Account>(this.url + '/api/LoanAccount/open/',account);
+  }
+
+  processLoanPayment(accId: number, amount: number): Observable<any> {
+    return this.doPut(this.url + '/api/LoanAccount/payLoan/' + accId.toString() + '/' + amount.toString(), null);
+  }
+
+  closeLoan(accId: number): Observable<any> {
+    return this.doDelete(this.url + '/api/LoanAccount/close/' + accId.toString());
+  }
+
+  // TermCDController
+  withdrawCD(accId: number, amount: number): Observable<any> {
+    return this.doPut(this.url + '/api/TermCD/withdraw/' + accId.toString() + '/' + amount.toString(), null);
+  }
+
+  transferCD(fromAcc: number, toAcc: number, amount: number): Observable<any> {
+    return this.doPut(this.url + '/api/TermCD/transfer/' + fromAcc.toString() + '/' + toAcc.toString() + '/' + amount.toString(), null);
+  }
+
+  openCD(account: Account): Observable<any> {
+    return this.doPost<Account>(this.url + '/api/TermCD/open', account);
+  }
+
+  // TransferablesController
+  openAccount(account: Account): Observable<any> {
+    return this.doPost(this.url + '/api/Transferables', account);
+  }
+
+  deposit(accId: number, amount: number): Observable<any> {
+    return this.doPut(this.url + '/api/Transferables/deposit/' + accId.toString() + '/' + amount.toString(), null);
+  }
+
+  withdraw(accId: number, amount: number): Observable<any> {
+    return this.doPut(this.url + '/api/Transferables/withdraw/' + accId.toString() + '/' + amount.toString(), null);
+  }
+
+  transfer(fromAcc: number, toAcc: number, amount: number): Observable<any> {
+    return this.doPut(this.url + '/api/Transferables/transfer/' + fromAcc.toString() + '/' + toAcc.toString() + '/' + amount.toString(), null);
+  }
+
+  delete(accId: number): Observable<any> {
+    return this.doDelete(this.url + '/api/Transferables/delete/' + accId.toString());
+  }
 }
