@@ -22,6 +22,7 @@ namespace Options {
 })
 export class ApiService {
 
+  registerSuccessful: boolean;
   url = environment.apiUrl;
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -97,16 +98,40 @@ export class ApiService {
     return this.doGet<UserModel>(this.url + '/api/UserAPI/' + username);
   }
   //User Controller API calls
-  createUser(username: string, email: string, password: string)
+  // createUser(username: string, email: string, password: string)
+  // {
+  //   var user = new UserModel();
+  //   user.email = email;
+  //   user.userName = username;
+    
+  //   user.password = password;
+  //   this.auth.HashPassword(user.password);
+  //   this.doPost<UserModel>(this.url + '/api/UsersAPI/CreateUser', user);
+  // }
+
+  createUser(newUser: UserModel): boolean
   {
     var user = new UserModel();
-    user.email = email;
-    user.userName = username;
     
-    user.password = password;
-    this.auth.HashPassword(user.password);
-    this.doPost<UserModel>(this.url + '/api/UsersAPI/CreateUser', user);
-  }
+    // user.email = newUser.email;
+    // user.userName = newUser.userName;  
+    // user.password = newUser.password;
+    this.auth.HashPassword(newUser.password);
+    var response: Observable<boolean> = this.http.post<boolean>(this.url + '/api/UsersAPI/CreateUser', user);
+    response.pipe(first()).subscribe(resp => {
+      if (resp){
+        this.registerSuccessful = true;
+        return this.registerSuccessful;
+      }
+      else{
+        this.registerSuccessful = false;
+        return this.registerSuccessful;
+      }     
+  })
+  return false;
+}
+
+  
   // Accounts Controller API calls
   getAccountsByUser(userId: number): Observable<Account[]> {
     return this.doGet<Account[]>(this.url + '/api/Accounts/' + userId);
