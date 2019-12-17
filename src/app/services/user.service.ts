@@ -3,11 +3,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { UserModel } from '../models/user-model';
+import { RegisterUserComponent } from '../components/register-user/register-user.component';
 
 //namespace REMOVE_THIS {
 //  export const exampleUser: UserModel = { id: 60, userName: "Idk", email: "Idk", password: "Idk" }
 //}
-
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +78,4 @@ export class UserService {
     //  console.log('No token!!!');
     //}
   }
-
-
 }
