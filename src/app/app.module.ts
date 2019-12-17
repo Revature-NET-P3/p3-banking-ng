@@ -31,6 +31,8 @@ import { CheckingAccountComponent } from './components/checking-account/checking
 import { LoanAccountComponent } from './components/loan-account/loan-account.component';
 import { TdcAccountComponent } from './components/tdc-account/tdc-account.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from '../app/services/token-interceptor.service';
 import { NewsComponent } from './components/news/news/news.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
@@ -75,7 +77,13 @@ import { TransactionPipe } from './components/pipes/transaction.pipe';
     CookieService,
     UserService,
     ApiService,
-    TransactionsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    TransactionsService
+
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]
