@@ -6,21 +6,22 @@ export class Account {
     userId: number;
     accountTypeId: number;
     balance: number;
-    createDate: Date;
+    createDate: string;
     isClosed: boolean;
-    private _nickname: null | string;
+    accNickname: string;
+    //private _nickname: null | string;
     // TODO: Make this display please
-    get accNickname(){ 
+    /*get accNickname(){ 
         return !isNullOrUndefined(this._nickname) ? this._nickname : "(No nickname)" 
     }
-    set accNickname(n: null|string){ this._nickname = n }
+    set accNickname(n: null|string){ this._nickname = n }*/
     public constructor(
         fields?: {
             id: number,
             userId: number,
             accountTypeId: number, // actually AccountType though
             balance: number,
-            createDate: Date,
+            createDate: string,
             isClosed: boolean,
             accNickname?: null|string,
         }
@@ -43,15 +44,16 @@ export namespace AccountType {
     }
 }
 
-const date: Date = new Date(Date.now());
+//const date: Date = new Date(Date.now());
+const openDate : string = new Date().toISOString();
 //const intr: number = .05;
 
 export const MOCK_ACCOUNTS: Account[] = [
-    new Account({ id: 1, userId: 2, accountTypeId: 1, balance: 300, createDate: date, isClosed: false }),
-    new Account({ id: 2, userId: 2, accountTypeId: 2, balance: 190, createDate: date, isClosed: false }),
-    new Account({ id: 3, userId: 3, accountTypeId: 1, balance: 32000, createDate: date, isClosed: false }),
-    new Account({ id: 4, userId: 1, accountTypeId: 1, balance: 2100, createDate: date, isClosed: false }),
-    new Account({ id: 5, userId: 4, accountTypeId: 1, balance: 21300, createDate: date, isClosed: false }),
+    new Account({ id: 1, userId: 2, accountTypeId: 1, balance: 300, createDate: openDate, isClosed: false }),
+    new Account({ id: 2, userId: 2, accountTypeId: 2, balance: 190, createDate: openDate, isClosed: false }),
+    new Account({ id: 3, userId: 3, accountTypeId: 1, balance: 32000, createDate: openDate, isClosed: false }),
+    new Account({ id: 4, userId: 1, accountTypeId: 1, balance: 2100, createDate: openDate, isClosed: false }),
+    new Account({ id: 5, userId: 4, accountTypeId: 1, balance: 21300, createDate: openDate, isClosed: false }),
 ]
 // export const MOCK_ACCOUNTS : Account[] = [
 //     { Id: 1, name: 'Checking-34', accountNumber: 1234, balance: 300, opendate: date, interest:intr, type: AccountType.Checking },
