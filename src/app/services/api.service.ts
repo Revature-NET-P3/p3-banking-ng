@@ -89,8 +89,9 @@ export class ApiService {
     return response;
   }
 
-  getUserByUserName(username: string):Observable<UserModel>{
-    return this.doGet<UserModel>(this.url + '/api/UserAPI/username/' + username);
+  getUserByUserName(username: string): Observable<UserModel> {
+    let response = this.http.get<UserModel>(this.url + '/api/UserAPI/username/' + username);
+    return response;
   }
 
   createUser(newUser: UserModel): Observable<boolean>
