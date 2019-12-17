@@ -8,19 +8,20 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { NewsComponent } from './components/news/news/news.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: '', redirectTo:'home', pathMatch: 'full' },
-  { path: 'accounts', component: AccountsComponent },
-  { path: 'accountList', component: AccountViewComponent, data: { type: 0 } },
+  { path: 'accounts', component: AccountsComponent, canActivate: [AuthGuard]},
+  { path: 'accountList', component: AccountViewComponent, data: { type: 0 } , canActivate: [AuthGuard]},
   { path: 'login', component: LoginUserComponent },
   { path: 'register', component: RegisterUserComponent },
-  { path: 'profile', component: UserDetailsComponent },
+  { path: 'profile', component: UserDetailsComponent , canActivate: [AuthGuard]},
   { path: 'about', component: LandingPageComponent },
-  { path: 'Login', component: LoginUserComponent },
+  { path: 'Login', component: LoginUserComponent , canActivate: [AuthGuard]},
   { path: 'news', component: NewsComponent}
 ];
 

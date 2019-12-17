@@ -9,7 +9,7 @@
 
         <a class="right" routerLink="/login" *ngIf="!(loggedIn | async)" > Login </a>
         <a class="right" routerLink="/register" *ngIf="!(loggedIn | async)" > Register </a>
-        <a class="right" *ngIf="loggedIn | async" (click)="logout()"> Logout </a>
+        <a class="right" routerLink="/home" *ngIf="loggedIn | async" (click)="logout()"> Logout </a>
 
 </div>
 
