@@ -38,7 +38,7 @@ export class ApiService {
     } else {
       console.log(`API call failed with ${r.status}. Body: '${r.body}'`);
     }
-  }
+  } 
 
   private obsFirst<T>(response$: Observable<HttpResponse<T>>){
     return new Observable<T>(s => {
@@ -194,7 +194,7 @@ export class ApiService {
   }
 
   // TransferablesController
-  openAccount(account: Account): Observable<any> {
+  openAccount(account: Account): Observable<Account> {
     return this.doPost(this.url + '/api/Transferables', account);
   }
 

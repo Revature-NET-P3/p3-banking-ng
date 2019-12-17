@@ -7,7 +7,6 @@
         <div class="contentArea">
             <label>Select Account type: </label>
             <select class="form-control" name="accountTypes" #accountType>
-                
                 <option *ngFor="let accType of filterOptions" [value]="accType">
                     {{ accType }}
                 </option>
@@ -18,10 +17,7 @@
             <br><br>
             <input type="button" class="btn btn-info" (click)="createAccount(accountType.value)" value="Create" />
         </div>
-    </div>
-        
-        
-        
+    </div>       
 </ng-template>
 <ng-template #elseBlock>
     <div class="createWrap">
@@ -34,11 +30,11 @@
             </dl>
             <dl class="row">
                 <dt class="col-sm-3">Account Type:</dt>
-                <dd class="col-sm-7">{{postedAccount.accountTypeId}}</dd>
+                <dd class="col-sm-7">{{AccountType[postedAccount.accountTypeId]}}</dd>
             </dl>
             <dl class="row">
                 <dt class="col-sm-3">Created Date:</dt>
-                <dd class="col-sm-7">{{postedAccount.createDate}}</dd>
+                <dd class="col-sm-7">{{postedAccount.createDate|date:'fullDate'}}</dd>
             </dl>
             <dl class="row">
                 <dt class="col-sm-3">Balance: </dt>
