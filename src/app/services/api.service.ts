@@ -131,7 +131,7 @@ export class ApiService {
   }
 
   getUserByUserName(username: string):Observable<UserModel>{
-    return this.doGet<UserModel>(this.url + '/api/UserAPI/' + username);
+    return this.doGet<UserModel>(this.url + '/api/UserAPI/username/' + username);
   }
   //User Controller API calls
   // createUser(username: string, email: string, password: string)
