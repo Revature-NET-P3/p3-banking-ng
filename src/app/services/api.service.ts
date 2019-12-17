@@ -3,9 +3,8 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subscriber, from } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
-
 import { UserModel } from 'src/app/models/user-model';
-
+import { Transaction } from 'src/app/models/transaction';
 import { DBTransaction } from 'src/app/models/transaction';
 
 import { first } from 'rxjs/operators';
@@ -25,6 +24,7 @@ namespace Options {
 })
 export class ApiService {
 
+  registerSuccessful: boolean;
   url = environment.apiUrl;
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -82,50 +82,85 @@ export class ApiService {
     let cred: LoginCredentials = new LoginCredentials();
     cred.userName=username;
     //let pwd = '$2y$10$8XcQw//Q1Lik3Mg6Nx2hdeODJWd808AOAmUqwbbvshp/r4se4KspC';
-    //let pwd =this.auth.HashPassword(password);
-    
+    //let pwd =this.auth.HashPassword(password);   
     cred.passhash = passhash;
-
     //console.log('password', cred.passhash);
+
     let response = this.http.post<boolean>(this.url + "/api/UserAPI/Verify", cred);
 
+
+
     console.log('response', response);
+
     return response;
+
     // response.toPromise().then(data => console.log('promise:data', data));
+
     // response.subscribe(data => {
+
     //   console.log('data', data);
+
     // })
+
     //response.pipe(first()).subscribe(resp => {
+
       // response.toPromise().then(resp => {
+
       //   return resp;
+
       // if (resp){
+
         // console.log('promise resp', resp);
+
         // token = this.auth.getToken(username, password);
+
         // console.log('api token', token);
+
         // return token;
+
       // }else {
+
         // console.log('resp = false');
+
       // }
+
     //})
+
+
 
   }
 
   getUserByUserName(username: string):Observable<UserModel>{
-    let response = this.http.get<UserModel>(this.url + '/api/UserAPI/username/' + username);
-    return response;
+    return this.doGet<UserModel>(this.url + '/api/UserAPI/' + username);
   }
   //User Controller API calls
-  createUser(username: string, email: string, password: string)
-  {
-    var user = new UserModel();
-    user.email = email;
-    user.userName = username;
+  // createUser(username: string, email: string, password: string)
+  // {
+  //   var user = new UserModel();
+  //   user.email = email;
+  //   user.userName = username;
     
-    user.password = password;
-    this.auth.HashPassword(user.password);
-    this.doPost<UserModel>(this.url + '/api/UsersAPI/CreateUser', user);
-  }
+  //   user.password = password;
+  //   this.auth.HashPassword(user.password);
+  //   this.doPost<UserModel>(this.url + '/api/UsersAPI/CreateUser', user);
+  // }
+
+  createUser(newUser: UserModel): Observable<boolean>
+  {
+    //var user = new UserModel();
+    
+    // user.email = newUser.email;
+    // user.userName = newUser.userName;  
+    // user.password = newUser.password;
+    var newPassword = this.auth.HashPassword(newUser.passwordHash);
+    newUser.passwordHash = newPassword;
+    var response: Observable<boolean> = this.http.post<boolean>(this.url + '/api/UserAPI/register', newUser);
+    return response;
+}
+
+  
   // Accounts Controller API calls
+  // AccountsController
   getAccountsByUser(userId: number): Observable<Account[]> {
     return this.doGet<Account[]>(this.url + '/api/Accounts/' + userId);
   }
