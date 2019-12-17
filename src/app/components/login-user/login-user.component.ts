@@ -66,7 +66,6 @@ export class LoginUserComponent implements OnInit {
                 this.location.path();
               } else {
                 window.alert('Invalid user name or password');
-                //this.router.navigateByUrl(['login']);
               }
             });
 
