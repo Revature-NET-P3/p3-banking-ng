@@ -8,7 +8,7 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { NewsComponent } from './components/news/news/news.component';
-
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 
 const routes: Routes = [
@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch: 'full' },
   { path: 'accounts', component: AccountsComponent },
   { path: 'accountList', component: AccountViewComponent, data: { type: 0 } },
+  { path: 'transactions', component: TransactionListComponent, data: {account: 0} },
   { path: 'login', component: LoginUserComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'profile', component: UserDetailsComponent },
