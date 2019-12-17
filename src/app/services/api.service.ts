@@ -4,11 +4,19 @@ import { environment } from 'src/environments/environment';
 import { Observable, Subscriber, from } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { UserModel } from 'src/app/models/user-model';
 import { Transaction } from 'src/app/models/transaction';
 =======
 import { DBTransaction } from 'src/app/models/transaction';
 >>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
+=======
+
+import { UserModel } from 'src/app/models/user-model';
+
+import { DBTransaction } from 'src/app/models/transaction';
+
+>>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
 import { first } from 'rxjs/operators';
 import {LoginCredentials} from 'src/app/models/LoginCredentials'
 import { AuthService } from './auth.service';
@@ -77,8 +85,16 @@ export class ApiService {
   }
 
 
+<<<<<<< HEAD
   login(username: string, password: string): string {
     var cred: LoginCredentials = new LoginCredentials();
+=======
+  login(username: string, passhash: string) {
+
+    //let token = "";
+    console.log('url', this.url);
+    let cred: LoginCredentials = new LoginCredentials();
+>>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
     cred.userName=username;
     cred.passhash=this.auth.HashPassword(password);
     var response: Observable<boolean> = this.http.post<boolean>(this.url + "api/UserAPI/Verify", cred);
@@ -133,9 +149,12 @@ export class ApiService {
 
   
   // Accounts Controller API calls
+<<<<<<< HEAD
 =======
   // AccountsController
 >>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
+=======
+>>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
   getAccountsByUser(userId: number): Observable<Account[]> {
     return this.doGet<Account[]>(this.url + '/api/Accounts/' + userId);
   }

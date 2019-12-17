@@ -6,6 +6,7 @@ import { UserModel } from '../models/user-model';
 import { RegisterUserComponent } from '../components/register-user/register-user.component';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //namespace REMOVE_THIS {
 //  export const exampleUser: UserModel = { id: 60, userName: "Idk", email: "Idk", password: "Idk" }
 //}
@@ -14,6 +15,12 @@ namespace REMOVE_THIS {
   export const exampleUser: UserModel = { id: 1, userName: "Idk", email: "Idk", password: "Idk" }
 }
 >>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
+=======
+//namespace REMOVE_THIS {
+//  export const exampleUser: UserModel = { id: 60, userName: "Idk", email: "Idk", password: "Idk" }
+//}
+
+>>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
 
 @Injectable({
   providedIn: 'root'
