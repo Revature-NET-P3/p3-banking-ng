@@ -43,7 +43,7 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
     
     if (this.deposit_amount > 0){
       this.api.deposit(this.account.id, this.deposit_amount).subscribe( item =>
-        location.reload()
+       location.reload()
       )
     }
     else{
@@ -54,7 +54,7 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
   OnSubmitWithdraw() { 
     if (this.withdraw_amount > 0){
       this.api.withdraw(this.account.id, this.withdraw_amount).subscribe( item =>
-        location.reload
+        location.reload()
       )
     }
     else{
@@ -72,7 +72,4 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
       this.transfer_message = 'Please enter number value greater than 0.'
     }
   }
-
-  
-
 }
