@@ -11,7 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-transaction-list',
   templateUrl: './transaction-list.component.html',
-  styleUrls: ['./transaction-list.component.css']
+  styleUrls: ['./transaction-list.component.css'],
+  providers: [AccountsService]
 })
 export class TransactionListComponent implements OnInit, OnDestroy {
 

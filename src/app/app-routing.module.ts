@@ -11,7 +11,6 @@ import { NewsComponent } from './components/news/news/news.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 
-
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: '', redirectTo:'home', pathMatch: 'full' },

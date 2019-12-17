@@ -16,7 +16,6 @@ import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from './services/api.service';
 import { TransactionsService } from './services/transactions.service';
-import { AccountsService } from './services/accounts.service';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -77,7 +76,6 @@ import { TransactionPipe } from './components/pipes/transaction.pipe';
     UserService,
     ApiService,
     TransactionsService,
-    AccountsService,
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]

@@ -10,7 +10,6 @@ import { isNullOrUndefined } from 'util';
 @Injectable()
 export class AccountsService implements OnDestroy {
 
-  allAccountsSubject: BehaviorSubject<Account[]> = new BehaviorSubject<Account[]>([]);
   accountsSubject: BehaviorSubject<Account[]> = new BehaviorSubject<Account[]>([]);
   subscriptions: Subscription[] = [];
   currentFilter: AccountType = null;
@@ -26,7 +25,6 @@ export class AccountsService implements OnDestroy {
         this.accountsSubject.next([]);
       } else {
         this.api.getAccountsByUser(this.userSvc.getUser().id).pipe(first()).subscribe(accounts => {
-          this.allAccountsSubject.next(accounts);
           this.accountsSubject.next(
             accounts.filter(a => this.currentFilter == null || a.accountTypeId == this.currentFilter
           ));
@@ -65,7 +63,7 @@ export class AccountsService implements OnDestroy {
   private getName(id: number): null|string{
     if(id == 0) return "-";
     console.log('getName id: ' + id);
-    var accounts = this.allAccountsSubject.getValue();
+    var accounts = this.accountsSubject.getValue();
     var res = accounts.find(a => a.id == id);
     if(res == undefined) return "-";
     else if(isNullOrUndefined(res.accNickname)) return "(No name)";
