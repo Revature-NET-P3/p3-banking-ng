@@ -53,6 +53,7 @@ tsconfig.tns.json
 .settings/
 
 # IDE - VSCode
+.vs/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
