@@ -1,7 +1,7 @@
 <h2 class=" header"> {{account.accNickname}} Details</h2>
 <fieldset>
   <legend>Id: {{account.id}}</legend>
-  <h3 style="text-align:center;"><b>Balance: </b>${{account.balance}}</h3>
+  <h3 style="text-align:center;"><b>Balance: </b>{{account.balance | currency}}</h3>
   <div>
           <accordion [closeOthers]="true" [isAnimated]="true">
                   <accordion-group heading="-- Withdraw"> 
@@ -9,7 +9,8 @@
                                   <ul>
                                   <li>
                                           <label for="name">Amount</label>
-                                          <input type="text" readonly name="name" maxlength="100" value=${{account.balance}}>
+                                          <input type="text" readonly name="name" maxlength="100" [value]="account.balance|currency">
+                                          <!-- TODO: Fix hardcode -->
                                           <span>You cannot withdraw before maturity</span>
                                   </li>
                                   <li>
@@ -25,8 +26,8 @@
                                         <li>
                                         <label>To</label>
                                         <select name="field4" class="field-select">
-                                        <option *ngFor="let acc of accounts$ | async" value={{acc.id}}>
-                                        {{acc.accNickname}} ({{acc.id}})
+                                        <option *ngFor="let acc of accounts$ | async" [value]="acc.id">
+                                                {{acc.accNickname}} ({{acc.id}})
                                         </option>>
                                         </select>
                                         <span>Select the destination account</span>

@@ -5,9 +5,15 @@ import { ApiService } from './api.service';
 import { UserModel } from '../models/user-model';
 import { RegisterUserComponent } from '../components/register-user/register-user.component';
 
+<<<<<<< HEAD
 //namespace REMOVE_THIS {
 //  export const exampleUser: UserModel = { id: 60, userName: "Idk", email: "Idk", password: "Idk" }
 //}
+=======
+namespace REMOVE_THIS {
+  export const exampleUser: UserModel = { id: 1, userName: "Idk", email: "Idk", password: "Idk" }
+}
+>>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
 
 @Injectable({
   providedIn: 'root'
