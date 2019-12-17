@@ -39,7 +39,6 @@ export class CreateNewAccountComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO check logged in
   }
 
   setAccountType(typeAcc: string){
@@ -47,7 +46,7 @@ export class CreateNewAccountComponent implements OnInit {
   }
 
   createAccount(type:string){  
-    var currentTime = formatDate(Date.now(), 'yyyy-MM-ddThh:mm:ss.00', 'en-US', '+0500')// + 'T' + formatDate(Date.now(), 'hh:mm:ss', 'en-US', '+0500') + '.00';
+    var currentTime = formatDate(Date.now(), 'yyyy-MM-ddThh:mm:ss.00', 'en-US', '+0500');
     var newAccount: Account = new Account({
         id: 0,
         userId: this.userSvc.getUser().id,
@@ -56,38 +55,21 @@ export class CreateNewAccountComponent implements OnInit {
         createDate: currentTime,
         isClosed: false,
         accNickname: this.nickName
-    });
-    console.log(AccountType[type]);
-    //this.newAccount = {1,1,1,1,new Date(), false, "Checking nick"};
-    
-    if(newAccount.userId !=null)
-    
-      if(newAccount.accountTypeId != 0)
-      {
-        if(this.nickName != "" && this.nickName != null){
-          console.log(newAccount);
-          this.postRecord(newAccount);
-        }
-        
-        //this.apiSvc.
-      }
-    }
+    });    
+    if(newAccount.accountTypeId != 0)
+    {
+      this.postRecord(newAccount);
+    }      
+  }
     //this.apiSvc
 
   postRecord(a: Account){
     this.apiSvc.openAccount(a).subscribe(postResponse => 
     {
-      this.creatingAccount=false; 
-      this.postedAccount = postResponse as Account;
+      this.creatingAccount = false; 
+      this.postedAccount = postResponse;
     });
   }
-
-
-  //looks for string value
-  formatDate(date: string) : string {
-    return formatDate(date, 'medium', this.locale);
-  }
-
 }
 
 
