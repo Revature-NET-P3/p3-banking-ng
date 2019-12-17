@@ -50,11 +50,9 @@
                             </span>
                         </ng-template>
                     </button>
-                    <p> Opened on {{a.createDate|date:'fullDate'}}</p>
+                    <p> Opened on {{a.createDate|date:'fullDate'}} <a [routerLink]="['/transactions', {account: a.id}]" routerLinkActive="true" > View all transactions. </a> </p>
                 </accordion-group>
             </accordion>
-            <h3 style="display:inline; cursor:pointer; color:rgb(27, 79, 253); border: solid; border-color: rgba(127, 191, 255, 0.809);">+ Create a new Account</h3>
-
         </div>
 
     </div>

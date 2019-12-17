@@ -6,14 +6,15 @@ export class Account {
     userId: number;
     accountTypeId: number;
     balance: number;
-    createDate: Date;
+    createDate: string;
     isClosed: boolean;
-    private _nickname: null | string;
+    private _accNickname?: null | string;
     // TODO: Make this display please
     get accNickname(){ 
-        return !isNullOrUndefined(this._nickname) ? this._nickname : "(No nickname)" 
+        console.log("get accNickname");
+        return !isNullOrUndefined(this._accNickname) ? this._accNickname : "(No nickname)" 
     }
-    set accNickname(n: null|string){ this._nickname = n }
+    set accNickname(n: null|string){ this.accNickname = n }
     public constructor(
         fields?: {
             id: number,
