@@ -31,22 +31,14 @@ import { CheckingAccountComponent } from './components/checking-account/checking
 import { LoanAccountComponent } from './components/loan-account/loan-account.component';
 import { TdcAccountComponent } from './components/tdc-account/tdc-account.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 import { CreateNewAccountComponent } from './components/create-new-account/create-new-account.component';
->>>>>>> f4dcaec51a6a8d8f3b665b6a38c405da3ec32ccf
+
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../app/services/token-interceptor.service';
-import { ViewContainerDirective } from './directives/view-container.directive';
-import { TransactionsService } from './services/transactions.service';
-=======
->>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
-=======
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from '../app/services/token-interceptor.service';
->>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
+
+
+
 import { NewsComponent } from './components/news/news/news.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
@@ -92,23 +84,14 @@ import { TransactionPipe } from './components/pipes/transaction.pipe';
     CookieService,
     UserService,
     ApiService,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
     },
     TransactionsService
-<<<<<<< HEAD
-=======
-    TransactionsService,
->>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
-=======
 
->>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
   ],
   entryComponents: [CheckingAccountComponent, LoanAccountComponent, TdcAccountComponent],
   bootstrap: [AppComponent]

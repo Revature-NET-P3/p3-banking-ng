@@ -3,20 +3,10 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subscriber, from } from 'rxjs';
 import { Account, AccountType } from 'src/app/models/account';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { UserModel } from 'src/app/models/user-model';
 import { Transaction } from 'src/app/models/transaction';
-=======
-import { DBTransaction } from 'src/app/models/transaction';
->>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
-=======
-
-import { UserModel } from 'src/app/models/user-model';
-
 import { DBTransaction } from 'src/app/models/transaction';
 
->>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
 import { first } from 'rxjs/operators';
 import {LoginCredentials} from 'src/app/models/LoginCredentials'
 import { AuthService } from './auth.service';
@@ -85,27 +75,59 @@ export class ApiService {
   }
 
 
-<<<<<<< HEAD
-  login(username: string, password: string): string {
-    var cred: LoginCredentials = new LoginCredentials();
-=======
   login(username: string, passhash: string) {
 
     //let token = "";
     console.log('url', this.url);
     let cred: LoginCredentials = new LoginCredentials();
->>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
     cred.userName=username;
-    cred.passhash=this.auth.HashPassword(password);
-    var response: Observable<boolean> = this.http.post<boolean>(this.url + "api/UserAPI/Verify", cred);
-    response.pipe(first()).subscribe(resp => {
-      if (resp){
-        return this.auth.getToken(username, password);
-      }else {
-        return null;
-      }
-    })
-    return null;
+    //let pwd = '$2y$10$8XcQw//Q1Lik3Mg6Nx2hdeODJWd808AOAmUqwbbvshp/r4se4KspC';
+    //let pwd =this.auth.HashPassword(password);   
+    cred.passhash = passhash;
+    //console.log('password', cred.passhash);
+
+    let response = this.http.post<boolean>(this.url + "/api/UserAPI/Verify", cred);
+
+
+
+    console.log('response', response);
+
+    return response;
+
+    // response.toPromise().then(data => console.log('promise:data', data));
+
+    // response.subscribe(data => {
+
+    //   console.log('data', data);
+
+    // })
+
+    //response.pipe(first()).subscribe(resp => {
+
+      // response.toPromise().then(resp => {
+
+      //   return resp;
+
+      // if (resp){
+
+        // console.log('promise resp', resp);
+
+        // token = this.auth.getToken(username, password);
+
+        // console.log('api token', token);
+
+        // return token;
+
+      // }else {
+
+        // console.log('resp = false');
+
+      // }
+
+    //})
+
+
+
   }
 
   getUserByUserName(username: string):Observable<UserModel>{
@@ -123,38 +145,22 @@ export class ApiService {
   //   this.doPost<UserModel>(this.url + '/api/UsersAPI/CreateUser', user);
   // }
 
-<<<<<<< HEAD
-  createUser(newUser: UserModel): boolean
+  createUser(newUser: UserModel): Observable<boolean>
   {
     //var user = new UserModel();
     
     // user.email = newUser.email;
     // user.userName = newUser.userName;  
     // user.password = newUser.password;
-    var newPassword = this.auth.HashPassword(newUser.password);
-    newUser.password = newPassword;
-    var response: Observable<boolean> = this.http.post<boolean>(this.url + '/api/UserAPI/', newUser);
-    response.pipe(first()).subscribe(resp => {
-      if (resp){
-        this.registerSuccessful = true;
-        return this.registerSuccessful;
-      }
-      else{
-        this.registerSuccessful = false;
-        return this.registerSuccessful;
-      }     
-  })
-  return;
+    var newPassword = this.auth.HashPassword(newUser.passwordHash);
+    newUser.passwordHash = newPassword;
+    var response: Observable<boolean> = this.http.post<boolean>(this.url + '/api/UserAPI/register', newUser);
+    return response;
 }
 
   
   // Accounts Controller API calls
-<<<<<<< HEAD
-=======
   // AccountsController
->>>>>>> 75d9a8b093141f233a7f8a72c23a20995e654c62
-=======
->>>>>>> 08b97680bca45201182a2ca3d8363610d1c8295e
   getAccountsByUser(userId: number): Observable<Account[]> {
     return this.doGet<Account[]>(this.url + '/api/Accounts/' + userId);
   }
