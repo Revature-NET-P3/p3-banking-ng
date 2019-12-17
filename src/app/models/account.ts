@@ -12,6 +12,7 @@ export class Account {
     //private _nickname: null | string;
     // TODO: Make this display please
     /*get accNickname(){ 
+        console.log("get accNickname");
         return !isNullOrUndefined(this._nickname) ? this._nickname : "(No nickname)" 
     }
     set accNickname(n: null|string){ this._nickname = n }*/
