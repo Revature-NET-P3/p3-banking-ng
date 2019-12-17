@@ -12,6 +12,7 @@ import { ViewContainerDirective } from 'src/app/directives/view-container.direct
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-account-view',
@@ -35,7 +36,7 @@ export class AccountViewComponent implements OnInit {
   constructor(private accountsSvc: AccountsService,
     private componentFactoryResolver: ComponentFactoryResolver, 
     private route: ActivatedRoute,   
-    private router: Router
+    private api: ApiService,
   ) { }
 
   ngOnInit() {
@@ -79,7 +80,7 @@ export class AccountViewComponent implements OnInit {
   }
 
   closeAccount(a: Account){
-    //TODO
+    this.api.closeAccount(a.id);
   }
 
   clearChild(){
