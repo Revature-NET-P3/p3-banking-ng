@@ -15,7 +15,7 @@
             <label>Enter a Nickname: </label>
             <input type="text" class="form-control" [(ngModel)]="nickName">
             <br><br>
-            <p *ngIf="TypeName == 'Loan'">
+            <p *ngIf="TypeName == 'Loan' || TypeName == 'Term' ">
             <label>Enter amount: </label>
             <input type="text" class="form-control" [(ngModel)]="amount">           
             </p>

@@ -66,7 +66,8 @@ export class CheckingAccountComponent implements OnInit, AccountViewChild{
   OnSubmitTransfer() {
     if (this.transfer_amount > 0){
       this.api.transfer(this.account.id, this.transferAcc, this.transfer_amount).subscribe( item =>
-        location.reload()
+        location.reload(),
+        err => alert(err.message)
       )
     }
     else{
