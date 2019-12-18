@@ -5,8 +5,8 @@
         <h1>Create New Account</h1>
         <hr>
         <div class="contentArea">
-            <label>Select Account type: </label>
-            <select class="form-control" name="accountTypes" #accountType>
+            <label>Select Account type:</label>
+            <select class="form-control" name="accountTypes" #accountType [(ngModel)] = "TypeName">
                 <option *ngFor="let accType of filterOptions" [value]="accType">
                     {{ accType }}
                 </option>
@@ -15,6 +15,11 @@
             <label>Enter a Nickname: </label>
             <input type="text" class="form-control" [(ngModel)]="nickName">
             <br><br>
+            <p *ngIf="TypeName == 'Loan' || TypeName == 'Term' ">
+            <label>Enter amount: </label>
+            <input type="text" class="form-control" [(ngModel)]="amount">           
+            </p>
+            <br><p><strong>{{amount_message}}</strong></p><br>
             <input type="button" class="btn btn-info" (click)="createAccount(accountType.value)" value="Create" />
         </div>
     </div>       

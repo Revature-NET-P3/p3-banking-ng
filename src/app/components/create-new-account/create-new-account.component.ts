@@ -29,7 +29,12 @@ export class CreateNewAccountComponent implements OnInit {
   postedAccount: Account;
   selectedAccountType:string = "Select an Account Type";
   nickName: string = null;
+  amount: number = 0;
+  amount_message: string = null;
   get AccountType() { return AccountType }
+  TypeName: string = null;
+
+  
 
   //accountType:AccountType;
   constructor(
@@ -46,6 +51,9 @@ export class CreateNewAccountComponent implements OnInit {
   }
 
   createAccount(type:string){  
+    if(this.amount < 0){this.amount_message = 'Enter a positive number value.'}
+    else if(this.TypeName == null){this.amount_message = 'Select an account type.'}
+    else {
     var currentTime = formatDate(Date.now(), 'yyyy-MM-ddThh:mm:ss.00', 'en-US', '+0500');
     var newAccount: Account = new Account({
         id: 0,
@@ -56,10 +64,11 @@ export class CreateNewAccountComponent implements OnInit {
         isClosed: false,
         accNickname: this.nickName
     });    
-    if(newAccount.accountTypeId != 0)
+    newAccount.balance = +this.amount;
+    if(newAccount.accountTypeId != 0 && this.TypeName != null)
     {
       this.postRecord(newAccount);
-    }      
+    }     } 
   }
     //this.apiSvc
 
