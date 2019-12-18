@@ -6,13 +6,13 @@
   			<!-- Login Form -->
   			<div class="loginForm">
   				<div class="title">
-  					<p>LOG INTO<br><span>Bank</span></p>
+  					<p>LOG INTO<br><span>Net Bank</span></p>
   					<hr>
   					<hr class="short">
   				</div>
   				<form>
   					<div class="col-md-6" >
-			        	<input class="form-control" type="text" placeholder="User Name" #userNameInput required>
+			        	<input class="form-control" type="text" placeholder="Username" #userNameInput required>
 			            <span class="focus-border"></span>
 
 			            <input class="form-control" type="password" placeholder="Password" #passwordInput required>
@@ -28,13 +28,11 @@
 						</div> -->
 
   				</form>
-  			</div>
-  			<a routerLink = "/home">
-  				<div class="enterButton" (click) = "onEnter()">
-	  				<i class="fa fa-lock fa-2x text-white"></i><br>
-					  <span class="enterText text-white">Enter</span>
-	  			</div>
-  			</a>
+			  </div>
+			<a><div class="enterButton" (click)="onEnter()">
+				<i class="fa fa-lock fa-2x text-white"></i><br>
+					<span class="enterText text-white">Enter</span>
+			</div></a>
 		</div>
 	</div>
 </div>

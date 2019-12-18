@@ -27,7 +27,6 @@ export class LoginUserComponent implements OnInit {
 
   users = [];
   enter = false;
- ;
 
   constructor(private user: UserService,
               private api: ApiService,
@@ -56,19 +55,14 @@ export class LoginUserComponent implements OnInit {
           console.log('token:', token)
           this.api.getUserByUserName(this.userName).toPromise().then(VUser => {
             console.log('user:', VUser);
-            this.user.login(VUser, token).toPromise().then(status => {
-              if(status){
-                console.log('status:', status);
-                window.alert("Success");
-                // this.router.navigate(['accounts']);
-                this.location.path();
-              } else {
-                window.alert('Invalid user name or password');
-              }
-            });
+            this.user.login(VUser, token);
+            this.router.navigate(['/accounts']);
           })
+        } else{
+          console.log('Login failed.');
+          window.alert('Invalid credentials.'); //Probably...
         }
       }
-    );
+    )//.catch(reason => {console.log('Login failed: ' + reason)}); // This would not be called
   }
 }

@@ -77,7 +77,6 @@ export class ApiService {
 
   login(username: string, passhash: string) {
 
-    //let token = "";
     console.log('url', this.url);
     let cred: LoginCredentials = new LoginCredentials();
     cred.userName=username;
