@@ -1,0 +1,14 @@
+.card-title{
+    font-weight: bold;
+    font-size: x-large;
+}
+.card-text{
+    font-size: x-large;
+}
+.card-link{
+    font-size: large;
+    text-decoration: underline;
+}
+.badge {
+    font-size: large;
+}

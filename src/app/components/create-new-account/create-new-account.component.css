@@ -12,6 +12,13 @@ h1{
 .contentArea{
     margin: 0 5% 5% 5%; 
     padding: 10px; 
-    font-size:1.25rem;
+    font-size:2rem;
+}
+.form-control{
+    font-size: 2rem;
+}
+.contentArea .btn{
+    font-size: 2rem;
+    
 }
 
