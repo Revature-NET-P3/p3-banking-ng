@@ -103,7 +103,7 @@ export class AccountViewComponent implements OnInit {
     const componentRef = viewContainerRef.createComponent(componentFactory);
     var childComp = <AccountViewChild>componentRef.instance;
     childComp.account = this.currentAccount;
-    this.api.getAccountsByUser(this.currentAccount.userId).subscribe(ret => {let temp = ret.filter(items=>(items.accountTypeId == 1 || items.accountTypeId==2);
+    this.api.getAccountsByUser(this.currentAccount.userId).subscribe(ret => {let temp = ret.filter(items=>(items.accountTypeId == 1 || items.accountTypeId==2));
                                                                              //console.log(ret.findIndex(I=>I.id== this.currentAccount.id)); 
                                                                              //console.log(ret);
                                                                              //console.log(temp); 
@@ -111,7 +111,7 @@ export class AccountViewComponent implements OnInit {
                                                                              //console.log(temp);
                                                                              let aIndex =temp.findIndex(I=>I.id== this.currentAccount.id); 
                                                                              if(aIndex > -1) {temp.splice(aIndex,1);};
-                                                                             childComp.accounts$=of(temp)
+                                                                             childComp.accounts$=of(temp);
                                                                             });
 
   }
