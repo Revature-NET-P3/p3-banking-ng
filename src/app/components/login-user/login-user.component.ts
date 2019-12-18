@@ -54,9 +54,7 @@ export class LoginUserComponent implements OnInit {
         if (data){
           let token = environment.auth0Token//this.auth.getToken(this.userName, this.password)
           console.log('token:', token)
-          let VerifiedUser = this.api.getUserByUserName(this.userName)
-          console.log('User:', VerifiedUser);
-          VerifiedUser.toPromise().then(VUser =>{
+          this.api.getUserByUserName(this.userName).toPromise().then(VUser => {
             console.log('user:', VUser);
             this.user.login(VUser, token).toPromise().then(status => {
               if(status){
@@ -66,12 +64,9 @@ export class LoginUserComponent implements OnInit {
                 this.location.path();
               } else {
                 window.alert('Invalid user name or password');
-                //this.router.navigateByUrl(['login']);
               }
             });
-
           })
-
         }
       }
     );

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ComponentFactoryResolver, Type, ViewChild } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 import { Account, AccountType } from '../../models/account';
 import { CheckingAccountComponent } from '../checking-account/checking-account.component';
@@ -12,13 +14,14 @@ import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-account-view',
   templateUrl: './account-view.component.html',
   styleUrls: ['./account-view.component.css'],
   providers: [
     { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },
-    AccountsService
+    AccountsService, ApiService
   ]
 
 })
@@ -34,6 +37,8 @@ export class AccountViewComponent implements OnInit {
   constructor(private accountsSvc: AccountsService,
     private componentFactoryResolver: ComponentFactoryResolver, 
     private route: ActivatedRoute,   
+    private router: Router,
+    private apisvc: ApiService
   ) { }
 
   ngOnInit() {
@@ -93,4 +98,7 @@ export class AccountViewComponent implements OnInit {
 
   }
 
+  createAccView(){
+    this.router.navigate(['/createnewaccount']);
+  }
 }
