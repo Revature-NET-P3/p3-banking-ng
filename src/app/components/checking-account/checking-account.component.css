@@ -13,6 +13,9 @@ legend{
 h2{
 	text-align: center;
 }
+.accordian-toggle{
+	font-size:50px;
+}
 
 .pull-left {
   font-size: large;
