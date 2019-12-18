@@ -69,6 +69,7 @@ export class CheckingAccountComponent implements OnInit, AccountViewChild{
         location.reload(),
         err => alert(err.message)
       )
+
     }
     else{
       this.transfer_message = 'Please enter number value greater than 0.'
