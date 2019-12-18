@@ -33,13 +33,11 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit() {
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
+  
     this.user = this._userService.getUser();
     this.Username = this.user.username;
     this.Email = this.user.email;
-    this.time = dateTime;
+    this.time = "User Profile";
     this.dataSource = [{
       Id: this.user.id,
       Username: this.user.username,
