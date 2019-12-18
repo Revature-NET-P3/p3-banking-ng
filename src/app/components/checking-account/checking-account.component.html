@@ -23,7 +23,7 @@
                                         <li>
                                                 <label for="name">Amount</label>
                                                 <input type="text" name="name" maxlength="100" [(ngModel)]="deposit_amount">
-                                                <span>Enter the deposit amount</span>
+                                                <span>{{deposit_message}}</span>
                                         </li>
                                         <li>
                                                 <input type="submit" value="Confirm" (click)="OnSubmitDeposit()">
