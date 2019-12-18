@@ -28,7 +28,7 @@ export class RegisterUserComponent implements OnInit {
   onRegister() {
     console.log("registering");
     this.user = new UserModel();
-    this.user.userName = this.userNameInput.nativeElement.value;
+    this.user.username = this.userNameInput.nativeElement.value;
     this.user.email = this.emailInput.nativeElement.value;
     this.user.passwordHash = this.passwordConfirmInput.nativeElement.value;
     //return window.location.origin;
@@ -36,7 +36,7 @@ export class RegisterUserComponent implements OnInit {
     console.log("email is:" + this.user.email);
 
     var success = this.newUser.createUser(this.user);
-    console.log("username is:" + this.user.userName);
+    console.log("username is:" + this.user.username);
     // success.pipe(first()).subscribe(resp => {
     //       if (resp){
     //         console.log("Success!");
