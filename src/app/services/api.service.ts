@@ -1,3 +1,5 @@
+import { catchError } from 'rxjs/operators';
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -56,11 +58,16 @@ export class ApiService {
 
   private doPost<T>(url: string, object: T): Observable<any> {
     var response$ = this.http.post(url, object, Options.response);
+    //response$.forEach(item => console.log(item));
     return this.obsFirst(response$);
   }
 
   private doPut<T>(url: string, object: T): Observable<any> {
-    var response$ = this.http.put(url, object, Options.response);
+
+    var response$;
+    this.http.put(url, object, Options.response).subscribe(item => response$ = item, err =>{ 
+      console.log(err.message);
+      });
     return this.obsFirst(response$);
   }
 
