@@ -49,12 +49,11 @@ export class LoginUserComponent implements OnInit {
     let apiResult = this.api.login(this.userName, passHash);
     apiResult.toPromise().then(data => 
       {
-        console.log('promise data:', data);
         if (data){
           let token = environment.auth0Token//this.auth.getToken(this.userName, this.password)
-          console.log('token:', token)
+          //console.log('token:', token)
           this.api.getUserByUserName(this.userName).toPromise().then(VUser => {
-            console.log('user:', VUser);
+            //console.log('user:', VUser);
             this.user.login(VUser, token);
             this.router.navigate(['/accounts']);
           })
