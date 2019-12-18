@@ -57,25 +57,10 @@ export class UserService {
     this.loggedIn$.next(false);
   }
 
-  login(user: UserModel, token: string):Observable<boolean>{
-    //let token;
-    //var result = this.api.login(username, password);
-    //console.log('result', result);
-    //token = result;
-    //console.log('token', token);
-    //if (token != null && token != ""){
-      //console.log('token recd.');
-      //this.api.getUserByUserName(user).subscribe(resp => {
-          this.user$.next(user);
-          this.cookies.set('User', JSON.stringify(user))
-        //}
-      //)
-      this.cookies.set('Token', JSON.stringify(token));
-      this.loggedIn$.next(true);
-      return this.loggedIn$.asObservable();
-    // }
-    // else {
-    //  console.log('No token!!!');
-    //}
+  login(user: UserModel, token: string){
+    this.user$.next(user);
+    this.cookies.set('User', JSON.stringify(user))
+    this.cookies.set('Token', JSON.stringify(token));
+    this.loggedIn$.next(true);
   }
 }

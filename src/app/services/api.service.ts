@@ -84,7 +84,6 @@ export class ApiService {
 
   login(username: string, passhash: string) {
 
-    //let token = "";
     console.log('url', this.url);
     let cred: LoginCredentials = new LoginCredentials();
     cred.userName=username;
@@ -162,7 +161,7 @@ export class ApiService {
     return this.doPut(this.url + '/api/LoanAccount/payLoan/' + accId.toString() + '/' + amount.toString(), null);
   }
 
-  closeLoan(accId: number): Observable<any> {
+  closeLoan(accId: number): Observable<boolean> {
     return this.doDelete(this.url + '/api/LoanAccount/close/' + accId.toString());
   }
 
@@ -183,6 +182,10 @@ export class ApiService {
   openAccount(account: Account): Observable<Account> {
     return this.doPost(this.url + '/api/Transferables', account);
   }
+  
+  closeAccount(accId: number): Observable<boolean> {
+    return this.doDelete(this.url + '/api/Transferables/' + accId.toString());
+  }
 
   deposit(accId: number, amount: number): Observable<any> {
     return this.doPut(this.url + '/api/Transferables/deposit/' + accId.toString() + '/' + amount.toString(), null);
@@ -194,9 +197,5 @@ export class ApiService {
 
   transfer(fromAcc: number, toAcc: number, amount: number): Observable<any> {
     return this.doPut(this.url + '/api/Transferables/transfer/' + fromAcc.toString() + '/' + toAcc.toString() + '/' + amount.toString(), null);
-  }
-
-  delete(accId: number): Observable<any> {
-    return this.doDelete(this.url + '/api/Transferables/delete/' + accId.toString());
   }
 }
