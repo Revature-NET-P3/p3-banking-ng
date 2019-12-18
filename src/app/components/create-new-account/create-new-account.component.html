@@ -1,7 +1,8 @@
-<div *ngIf="creatingAccount; then thenBlock else elseBlock"></div>
+<div class="createWrap">
+    <div *ngIf="creatingAccount; then thenBlock else elseBlock"></div>
 
-<ng-template #thenBlock>
-    <div class="createWrap">
+    <ng-template #thenBlock>
+        
         <h1>Create New Account</h1>
         <hr>
         <div class="contentArea">
@@ -22,10 +23,10 @@
             <br><p><strong>{{amount_message}}</strong></p><br>
             <input type="button" class="btn btn-info" (click)="createAccount(accountType.value)" value="Create" />
         </div>
-    </div>       
-</ng-template>
-<ng-template #elseBlock>
-    <div class="createWrap">
+            
+    </ng-template>
+    <ng-template #elseBlock>
+        
         <h1>Account Created!</h1>
         <hr>
         <div class="contentArea">
@@ -46,9 +47,11 @@
                 <dd class="col-sm-7">$ {{postedAccount.balance}}</dd>
             </dl>
         </div>
-    </div>
-</ng-template>
+    </ng-template>
+    <hr>
+    <h2 style="padding-left:3%"><a class="btn btn-primary" routerLink="/accounts">View Existing Accounts</a></h2>
 
+</div>
 <!--
         (click)="showSelectedType(accType)" 
     <div class="alert alert-danger" *ngIf="accountType.touched && !accountType.valid">

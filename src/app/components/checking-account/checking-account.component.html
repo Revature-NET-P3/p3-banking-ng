@@ -64,7 +64,7 @@
                                                 <label>To</label>
                                                 <select name="field4" class="field-select" [(ngModel)]="transferAcc">
                                                 <option *ngFor="let acc of accounts$ | async" value="{{acc.id}}" > 
-                                                        {{acc.accNickname}} ({{acc.id}})
+                                                        {{acc.accNickname}} ({{acc.id}}) -- {{acc.balance | currency}}
                                                 </option>
                                                 </select>
                                                 <span>Select the destination account</span>

@@ -71,6 +71,7 @@ export class CheckingAccountComponent implements OnInit, AccountViewChild{
       this.api.transfer(this.account.id, this.transferAcc, this.transfer_amount).subscribe( item =>
         location.reload()
       )
+
     }
     else{
       this.transfer_message = 'Please enter number value greater than 0.'
