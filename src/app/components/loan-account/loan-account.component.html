@@ -5,7 +5,13 @@
   <span id="balance" hidden>{{account.balance}}</span>
   <div>
           <accordion [closeOthers]="true" [isAnimated]="true">
-                  <accordion-group heading="|| Pay Loan"> 
+                  <accordion-group> 
+                        <button class="btn btn-link btn-block clearfix"
+                        accordion-heading type="button">
+                        <div class="pull-left float-left">
+                        Pay Loan
+                        </div>
+                        </button>
                           <form class="form-style-7">
                                   <ul>
                                   <!-- <li>
@@ -29,8 +35,13 @@
                                   </ul>
                           </form>
                   </accordion-group>
-                  <accordion-group heading="|| Transactions"> 
-                          
+                  <accordion-group> 
+                        <button class="btn btn-link btn-block clearfix"
+                        accordion-heading type="button">
+                        <div class="pull-left float-left">
+                        Transactions
+                        </div>
+                        </button>
                   </accordion-group>
           </accordion>
   </div> 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TransactionsService} from 'src/app/services/transactions.service'
 import { Account } from '../../models/account';
-import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
+import { AccountViewChild } from 'src/app/models/account-view-child';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service'
 import { takeLast } from 'rxjs/operators';
@@ -16,9 +16,7 @@ import { discardPeriodicTasks } from '@angular/core/testing';
     ApiService, TransactionsService
   ]
 })
-
-export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
-
+export class CheckingAccountComponent implements OnInit, AccountViewChild{
   @Input() account: Account;
   @Input() accounts$: Observable<Account[]>;
   deposit_amount = 0;
