@@ -13,59 +13,61 @@
 
 <button (click)="PayLoan([amount])">Pay Loan</button> -->
 
-        <div>
-                <accordion [closeOthers]="true" [isAnimated]="true">
-                        <accordion-group heading=" Deposit "> 
-                                <form class="form-style-7">
-                                        <ul>
-                                        <li>
-                                                <label for="name">Amount</label>
-                                                <input type="text" name="name" maxlength="100" value="0">
-                                                <span>Enter the deposit amount</span>
-                                        </li>
-                                        <li>
-                                                <input type="submit" value="Confirm">
-                                        </li>
-                                        </ul>
-                                </form>
-                        </accordion-group>
-                        <accordion-group heading=" Withdraw"> 
-                                <form class="form-style-7">
-                                        <ul>
-                                        <li>
-                                                <label for="name">Amount</label>
-                                                <input type="text" name="name" maxlength="100" value="0">
-                                                <span>Enter amount to withdraw</span>
-                                        </li>
-                                        <li>
-                                                <input type="submit" value="Confirm">
-                                        </li>
-                                        </ul>
-                                </form>
-                        </accordion-group>
-                        <accordion-group heading=" Transfer"> 
-                                <form class="form-style-7">
-                                        <ul>
-                                        <li>
-                                                <label>To</label>
-                                                <select name="field4" class="field-select">
-                                                <option *ngFor="let acc of accounts$ | async" value="acc.id" > 
-                                                        {{acc.accNickname}} ({{acc.id}})
-                                                </option>
-                                                </select>
-                                                <span>Select the destination account</span>
-                                        </li>
-                                        <li>
-                                                <label for="name">Amount</label>
-                                                <input type="text" name="name" maxlength="100" value="0">
-                                                <span>Enter transfer amount</span>
-                                        </li>
-                                        <li>
-                                                <input type="submit" value="Confirm">
-                                        </li>
-                                        </ul>
-                                </form>
-                        </accordion-group>
+<div>
+        <accordion [closeOthers]="true" [isAnimated]="true">
+
+                <accordion-group heading = " Deposit " > 
+
+                        <form class="form-style-7">
+                        <ul>
+                                <li>
+                                <label for="name">Amount</label>
+                                <input type="text" name="name" maxlength="100" value="0">
+                                <span>Enter the deposit amount</span>
+                                </li>
+                                <li>
+                                <input type="submit" value="Confirm">
+                                </li>
+                        </ul>
+                        </form>
+                </accordion-group>
+                <accordion-group heading=" Withdraw"> 
+                        <form class="form-style-7">
+                        <ul>
+                                <li>
+                                        <label for="name">Amount</label>
+                                        <input type="text" name="name" maxlength="100" value="0">
+                                        <span>Enter amount to withdraw</span>
+                                </li>
+                                <li>
+                                        <input type="submit" value="Confirm">
+                                </li>
+                        </ul>
+                        </form>
+                </accordion-group>
+                <accordion-group heading=" Transfer"> 
+                        <form class="form-style-7">
+                                <ul>
+                                <li>
+                                        <label>To</label>
+                                        <select name="field4" class="field-select">
+                                        <option *ngFor="let acc of accounts$ | async" value="acc.id" > 
+                                                {{acc.accNickname}} ({{acc.id}})
+                                        </option>
+                                        </select>
+                                        <span>Select the destination account</span>
+                                </li>
+                                <li>
+                                        <label for="name">Amount</label>
+                                        <input type="text" name="name" maxlength="100" value="0">
+                                        <span>Enter transfer amount</span>
+                                </li>
+                                <li>
+                                        <input type="submit" value="Confirm">
+                                </li>
+                                </ul>
+                        </form>
+                </accordion-group>
                         <accordion-group heading=" Transactions"> 
                                 <p>No transactions.</p>
                         </accordion-group>
