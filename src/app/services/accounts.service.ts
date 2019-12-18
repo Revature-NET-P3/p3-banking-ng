@@ -62,7 +62,7 @@ export class AccountsService implements OnDestroy {
 
   private getName(id: number): null|string{
     if(id == 0) return "-";
-    console.log('getName id: ' + id);
+    //console.log('getName id: ' + id);
     var accounts = this.accountsSubject.getValue();
     var res = accounts.find(a => a.id == id);
     if(res == undefined) return "-";

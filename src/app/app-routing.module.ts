@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './services/auth.guard';
+
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { AccountViewComponent } from "./components/account-view/account-view.component"
@@ -15,16 +17,17 @@ import { TransactionListComponent } from './components/transaction-list/transact
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: '', redirectTo:'home', pathMatch: 'full' },
-  { path: 'accounts', component: AccountsComponent },
-  { path: 'accountList', component: AccountViewComponent, data: { type: 0 } },
-  { path: 'transactions', component: TransactionListComponent, data: {account: 0} },
   { path: 'login', component: LoginUserComponent },
-  { path: 'register', component: RegisterUserComponent },
-  { path: 'profile', component: UserDetailsComponent },
-  { path: 'about', component: LandingPageComponent },
-  { path: 'createnewaccount', component: CreateNewAccountComponent },
   { path: 'Login', component: LoginUserComponent },
-  { path: 'news', component: NewsComponent}
+  { path: 'news', component: NewsComponent},
+  { path: 'register', component: RegisterUserComponent },
+  { path: 'about', component: LandingPageComponent },
+  { path: 'accounts', component: AccountsComponent, canActivate: [AuthGuard] },
+  { path: 'accountList', component: AccountViewComponent, data: { type: 0 }, canActivate: [AuthGuard] },
+  { path: 'transactions', component: TransactionListComponent, data: {account: 0}, canActivate: [AuthGuard] },
+  { path: 'profile', component: UserDetailsComponent , canActivate: [AuthGuard]},
+  { path: 'createnewaccount', component: CreateNewAccountComponent , canActivate: [AuthGuard] }
+
 ];
 
 @NgModule({

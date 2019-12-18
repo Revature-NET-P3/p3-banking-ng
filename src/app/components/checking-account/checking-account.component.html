@@ -6,11 +6,8 @@
 <!-- <dt>Transaction Amount</dt>      -->
 <!-- <input [(ngModel)]="amount" class="form-control" style="width:100px" /> -->
 <!-- <button (click)="Deposit([amount])">Deposit</button>
-
 <button (click)="Withdraw([amount])">Withdraw</button>
-
 <button (click)="Transfer([amount])">Transfer</button>
-
 <button (click)="PayLoan([amount])">Pay Loan</button> -->
 
         <div>
@@ -20,11 +17,11 @@
                                         <ul>
                                         <li>
                                                 <label for="name">Amount</label>
-                                                <input type="text" name="name" maxlength="100" value="0">
+                                                <input type="text" name="name" maxlength="100" [(ngModel)]="deposit_amount">
                                                 <span>Enter the deposit amount</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm">
+                                                <input type="submit" value="Confirm" (click)="OnSubmitDeposit()">
                                         </li>
                                         </ul>
                                 </form>
@@ -34,11 +31,11 @@
                                         <ul>
                                         <li>
                                                 <label for="name">Amount</label>
-                                                <input type="text" name="name" maxlength="100" value="0">
-                                                <span>Enter amount to withdraw</span>
+                                                <input type="text" name="name" maxlength="100" [(ngModel)]="withdraw_amount">
+                                                <span>{{withdraw_message}}</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm">
+                                                <input type="submit" value="Confirm" (click)="OnSubmitWithdraw()">
                                         </li>
                                         </ul>
                                 </form>
@@ -48,8 +45,8 @@
                                         <ul>
                                         <li>
                                                 <label>To</label>
-                                                <select name="field4" class="field-select">
-                                                <option *ngFor="let acc of accounts$ | async" value="acc.id" > 
+                                                <select name="field4" class="field-select" [(ngModel)]="transferAcc">
+                                                <option *ngFor="let acc of accounts$ | async" value="{{acc.id}}" > 
                                                         {{acc.accNickname}} ({{acc.id}})
                                                 </option>
                                                 </select>
@@ -57,11 +54,11 @@
                                         </li>
                                         <li>
                                                 <label for="name">Amount</label>
-                                                <input type="text" name="name" maxlength="100" value="0">
-                                                <span>Enter transfer amount</span>
+                                                <input type="text" name="name" maxlength="100" [(ngModel)]="transfer_amount">
+                                                <span>{{transfer_message}}</span>
                                         </li>
                                         <li>
-                                                <input type="submit" value="Confirm">
+                                                <input type="submit" value="Confirm" (click)="OnSubmitTransfer()">
                                         </li>
                                         </ul>
                                 </form>

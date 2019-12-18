@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ComponentFactoryResolver, Type, ViewChild } f
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 import { Account, AccountType } from 'src/app/models/account';
 import { CheckingAccountComponent } from '../checking-account/checking-account.component';
@@ -12,7 +13,7 @@ import { ViewContainerDirective } from 'src/app/directives/view-container.direct
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-account-view',
@@ -20,7 +21,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./account-view.component.css'],
   providers: [
     { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },
-    AccountsService
+    AccountsService, ApiService
   ]
 
 })

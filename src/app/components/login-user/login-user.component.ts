@@ -27,7 +27,6 @@ export class LoginUserComponent implements OnInit {
 
   users = [];
   enter = false;
- ;
 
   constructor(private user: UserService,
               private api: ApiService,
@@ -50,30 +49,19 @@ export class LoginUserComponent implements OnInit {
     let apiResult = this.api.login(this.userName, passHash);
     apiResult.toPromise().then(data => 
       {
-        console.log('promise data:', data);
         if (data){
           let token = environment.auth0Token//this.auth.getToken(this.userName, this.password)
-          console.log('token:', token)
-          let VerifiedUser = this.api.getUserByUserName(this.userName)
-          console.log('User:', VerifiedUser);
-          VerifiedUser.toPromise().then(VUser =>{
-            console.log('user:', VUser);
-            this.user.login(VUser, token).toPromise().then(status => {
-              if(status){
-                console.log('status:', status);
-                window.alert("Success");
-                // this.router.navigate(['accounts']);
-                this.location.path();
-              } else {
-                window.alert('Invalid user name or password');
-                //this.router.navigateByUrl(['login']);
-              }
-            });
-
+          //console.log('token:', token)
+          this.api.getUserByUserName(this.userName).toPromise().then(VUser => {
+            //console.log('user:', VUser);
+            this.user.login(VUser, token);
+            this.router.navigate(['/accounts']);
           })
-
+        } else{
+          console.log('Login failed.');
+          window.alert('Invalid credentials.'); //Probably...
         }
       }
-    );
+    )//.catch(reason => {console.log('Login failed: ' + reason)}); // This would not be called
   }
 }
