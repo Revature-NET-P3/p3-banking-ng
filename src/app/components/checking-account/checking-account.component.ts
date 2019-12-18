@@ -54,10 +54,9 @@ export class CheckingAccountComponent implements OnInit, AccountViewChild{
       this.withdraw_message = 'You cannot overdraft on this account';
     }
     else if (this.withdraw_amount > 0){
-      this.api.withdraw(this.account.id, this.withdraw_amount).subscribe(r => {
-        alert("HFKLAJKL");
-        location.reload();
-      })
+      this.api.withdraw(this.account.id, this.withdraw_amount).subscribe(r => 
+        location.reload()
+      )
     }
     else{
       this.withdraw_message = 'Please enter number value greater than 0.'

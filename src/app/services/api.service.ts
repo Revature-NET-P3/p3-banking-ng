@@ -63,11 +63,7 @@ export class ApiService {
   }
 
   private doPut<T>(url: string, object: T): Observable<any> {
-
-    var response$;
-    this.http.put(url, object, Options.response).subscribe(item => response$ = item, err =>{ 
-      console.log(err.message);
-      });
+    var response$ = this.http.put(url, object, Options.response);
     return this.obsFirst(response$);
   }
 
