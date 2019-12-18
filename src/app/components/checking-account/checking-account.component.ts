@@ -64,10 +64,14 @@ export class CheckingAccountComponent implements OnInit, AccountViewChild{
   }
 
   OnSubmitTransfer() {
-    if (this.transfer_amount > 0){
+    if (this.account.balance < this.transfer_amount && this.account.accountTypeId == 1){
+      this.transfer_message = 'You cannot overdraft from a checking.';
+    }
+    else if (this.transfer_amount > 0){
       this.api.transfer(this.account.id, this.transferAcc, this.transfer_amount).subscribe( item =>
         location.reload()
       )
+
     }
     else{
       this.transfer_message = 'Please enter number value greater than 0.'
