@@ -81,9 +81,13 @@ export class AccountViewComponent implements OnInit {
   }
 
   closeAccount(a: Account){
-    this.api.closeAccount(a.id).pipe(first()).subscribe(resp => {
-      a.isClosed = resp;
-    })
+    if (a.balance==0){
+      this.api.closeAccount(a.id).pipe(first()).subscribe(resp => {
+        a.isClosed = resp;
+      })
+    } else {
+      alert("This account has a non-zero balance. It can not be closed.")
+    }
   }
 
   clearChild(){
