@@ -64,6 +64,7 @@ export class ApiService {
 
   private doPut<T>(url: string, object: T): Observable<any> {
     var response$ = this.http.put(url, object, Options.response);
+    //response$.subscribe(res => { alert(res); return res;}, err => {alert(err.message); return err;});
     return this.obsFirst(response$);
   }
 
@@ -192,6 +193,7 @@ export class ApiService {
   }
 
   transfer(fromAcc: number, toAcc: number, amount: number): Observable<any> {
-    return this.doPut(this.url + '/api/Transferables/transfer/' + fromAcc.toString() + '/' + toAcc.toString() + '/' + amount.toString(), null);
+    var response = this.doPut(this.url + '/api/Transferables/transfer/' + fromAcc.toString() + '/' + toAcc.toString() + '/' + amount.toString(), null);
+    return response;
   }
 }
