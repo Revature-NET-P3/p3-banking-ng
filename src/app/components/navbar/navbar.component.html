@@ -1,9 +1,9 @@
 <div class="topnav" id="myTopnav">
         <a routerLink="/home" class="active">Home</a>
-        <a routerLink="/profile">Profile</a>
-        <a routerLink="/accounts" >Accounts</a>
+        <a routerLink="/profile" *ngIf="loggedIn | async">Profile</a>
+        <a routerLink="/accounts" *ngIf="loggedIn | async">Accounts</a>
         
-        <a routerLink="/createnewaccount">Open New Account</a>
+        <a routerLink="/createnewaccount" *ngIf="loggedIn | async">Open New Account</a>
         <a routerLink="/news">News</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
