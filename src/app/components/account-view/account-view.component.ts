@@ -12,7 +12,7 @@ import { AccountViewChild } from 'src/app/models/account-view-child';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { Observable, observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
