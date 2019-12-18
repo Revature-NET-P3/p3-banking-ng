@@ -17,10 +17,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-    //TODO Auth update (add redirect etc.)
-    this.userSvc.login(null);
-  }
+//  login(){
+//    //TODO Auth update (add redirect etc.)
+//    this.userSvc.login(null);
+//  }
 
   logout(){
     this.userSvc.logout();

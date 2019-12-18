@@ -4,7 +4,12 @@
   <h3 style="text-align:center;"><b>Balance: </b>{{account.balance | currency}}</h3>
   <div>
           <accordion [closeOthers]="true" [isAnimated]="true">
-                  <accordion-group heading="-- Withdraw"> 
+                  <accordion-group>
+                          <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
+                            <div class="pull-left float-left">
+                              Withdraw
+                            </div>
+                          </button>
                           <form class="form-style-7">
                                   <ul>
                                   <li>
@@ -19,8 +24,14 @@
                                   </ul>
                           </form>
                   </accordion-group>
-                  <accordion-group heading="|| Transfer"> 
+                  <accordion-group> 
                           <!-- TODO: Transfers should be restricted to maturity -->
+                        <button class="btn btn-link btn-block clearfix"
+                        accordion-heading type="button">
+                        <div class="pull-left float-left">
+                        Transfer
+                        </div>
+                        </button>
                         <form class="form-style-7">
                                 <ul>
                                         <li>

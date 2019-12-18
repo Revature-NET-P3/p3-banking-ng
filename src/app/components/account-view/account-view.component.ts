@@ -1,16 +1,19 @@
 import { Component, OnInit, Input, ComponentFactoryResolver, Type, ViewChild } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
-import { Account, AccountType } from '../../models/account';
+import { Account, AccountType } from 'src/app/models/account';
 import { CheckingAccountComponent } from '../checking-account/checking-account.component';
 import { LoanAccountComponent } from '../loan-account/loan-account.component';
 import { TdcAccountComponent } from '../tdc-account/tdc-account.component';
-import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
+import { AccountViewChild } from 'src/app/models/account-view-child';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-account-view',
@@ -18,7 +21,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./account-view.component.css'],
   providers: [
     { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },
-    AccountsService
+    AccountsService, ApiService
   ]
 
 })
@@ -26,7 +29,7 @@ export class AccountViewComponent implements OnInit {
 
   currentAccount: Account = null;
   filterOptions = AccountType.AllNames();
-  accounts$: Observable<Account[]> = this.accountsSvc.accounts$();  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
+  accounts$: Observable<Account[]> = this.accountsSvc.filteredAccounts$();  //= this.accountsSvc.getAccounts(AccountType.Checking); //TODO Get the right type
   childName = 'Account Details';
   @ViewChild(ViewContainerDirective, { static: true }) childHost: ViewContainerDirective;
   get AccountType() {return AccountType}
@@ -34,6 +37,7 @@ export class AccountViewComponent implements OnInit {
   constructor(private accountsSvc: AccountsService,
     private componentFactoryResolver: ComponentFactoryResolver, 
     private route: ActivatedRoute,   
+    private api: ApiService,
   ) { }
 
   ngOnInit() {
@@ -76,6 +80,12 @@ export class AccountViewComponent implements OnInit {
     this.clearChild();
   }
 
+  closeAccount(a: Account){
+    this.api.closeAccount(a.id).pipe(first()).subscribe(resp => {
+      a.isClosed = resp;
+    })
+  }
+
   clearChild(){
     const viewContainerRef = this.childHost.viewContainerRef;
     viewContainerRef.clear();
@@ -87,10 +97,9 @@ export class AccountViewComponent implements OnInit {
     const viewContainerRef = this.childHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    var childComp = <AccountViewChildComponent>componentRef.instance;
+    var childComp = <AccountViewChild>componentRef.instance;
     childComp.account = this.currentAccount;
     childComp.accounts$ = this.accounts$;
 
   }
-
 }

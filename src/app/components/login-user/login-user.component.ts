@@ -5,6 +5,9 @@ import { UserModel } from 'src/app/models/user-model';
 import {Location} from '@angular/common';
 
 import {Router} from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -24,9 +27,10 @@ export class LoginUserComponent implements OnInit {
 
   users = [];
   enter = false;
- ;
 
   constructor(private user: UserService,
+              private api: ApiService,
+              private auth: AuthService,
               private router: Router,
               private location: Location) { 
 
@@ -41,18 +45,23 @@ export class LoginUserComponent implements OnInit {
 
     this.userName = this.userNameInput.nativeElement.value;
     this.password = this.passwordInput.nativeElement.value;
-
-    var user: UserModel = {id: 1, userName: 'Blabla', email: 'b@gmail.com', password: 'test123'};
-    
-    if(user.userName === this.userName && user.password === this.password) {
-      window.alert("Success");
-      // this.router.navigate(['accounts']);
-      this.location.path();
-
-    } else {
-      window.alert('Invalid user name or password');
-    }
-    
+    let passHash = this.auth.HashPassword(this.password);
+    let apiResult = this.api.login(this.userName, passHash);
+    apiResult.toPromise().then(data => 
+      {
+        if (data){
+          let token = environment.auth0Token//this.auth.getToken(this.userName, this.password)
+          //console.log('token:', token)
+          this.api.getUserByUserName(this.userName).toPromise().then(VUser => {
+            //console.log('user:', VUser);
+            this.user.login(VUser, token);
+            this.router.navigate(['/accounts']);
+          })
+        } else{
+          console.log('Login failed.');
+          window.alert('Invalid credentials.'); //Probably...
+        }
+      }
+    )//.catch(reason => {console.log('Login failed: ' + reason)}); // This would not be called
   }
-
 }

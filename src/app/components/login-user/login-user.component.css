@@ -12,7 +12,7 @@ body {
 
 #bottomEnter{
 	position: relative;
-	top: 400px;
+	top: 370px;
 	/* left: 100px; */
 	right: 40px;
 	z-index: 1;
@@ -36,12 +36,13 @@ body {
 
 .enterButton{
 	position: absolute;
-	top: 540px; 
-	left: 180px;
+	top: 500px; 
+	left: 150px;
 	width: 70px;
 	height: 70px;
 	text-align: center;
 	z-index:2;
+	cursor: pointer;
 }
 
 .text-white{
@@ -57,14 +58,15 @@ body {
 
 .loginForm{
 	position: absolute;
-	top: 200px;
+	top: 150px;
 	left: 70px;
 }
 
 .title{
-	 font-weight: 300;
-	 font-size: 24px;
-	 line-height: 1;
+	font-weight: 300;
+	font-size: 24px;
+	line-height: 1;
+	color: white;
 }
 
 .title span{

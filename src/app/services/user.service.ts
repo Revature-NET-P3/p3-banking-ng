@@ -3,10 +3,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { UserModel } from '../models/user-model';
+import { RegisterUserComponent } from '../components/register-user/register-user.component';
 
-namespace REMOVE_THIS {
-  export const exampleUser: UserModel = { id: 1, userName: "Idk", email: "Idk", password: "Idk" }
-}
+//namespace REMOVE_THIS {
+//  export const exampleUser: UserModel = { id: 60, userName: "Idk", email: "Idk", password: "Idk" }
+//}
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,8 @@ export class UserService {
 
   init(): void {
     //#region TODO Auth team fix this
-    this.cookies.set('User', JSON.stringify(REMOVE_THIS.exampleUser));
+    //this.cookies.set('User', JSON.stringify(REMOVE_THIS.exampleUser));
     //#endregion
-
     if (this.cookies.check('User')) {
       this.loggedIn$.next(true);
       var storedUser: UserModel = JSON.parse(this.cookies.get('User'));
@@ -51,18 +51,16 @@ export class UserService {
   }
 
   logout() {
-    this.cookies.set('User', '');
+    this.cookies.delete('User');
+    this.cookies.delete('Token');
     this.user$.next(null);
     this.loggedIn$.next(false);
   }
 
-  login(user){
-    this.user$.next(REMOVE_THIS.exampleUser);
-    this.cookies.set('User', JSON.stringify(REMOVE_THIS.exampleUser));
+  login(user: UserModel, token: string){
+    this.user$.next(user);
+    this.cookies.set('User', JSON.stringify(user))
+    this.cookies.set('Token', JSON.stringify(token));
     this.loggedIn$.next(true);
-    //this.api.login(user);
   }
-
-
-
 }

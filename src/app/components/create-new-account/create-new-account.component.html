@@ -1,0 +1,58 @@
+<div *ngIf="creatingAccount; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+    <div class="createWrap">
+        <h1>Create New Account</h1>
+        <hr>
+        <div class="contentArea">
+            <label>Select Account type: </label>
+            <select class="form-control" name="accountTypes" #accountType>
+                <option *ngFor="let accType of filterOptions" [value]="accType">
+                    {{ accType }}
+                </option>
+            </select>
+            <br><br>
+            <label>Enter a Nickname: </label>
+            <input type="text" class="form-control" [(ngModel)]="nickName">
+            <br><br>
+            <input type="button" class="btn btn-info" (click)="createAccount(accountType.value)" value="Create" />
+        </div>
+    </div>       
+</ng-template>
+<ng-template #elseBlock>
+    <div class="createWrap">
+        <h1>Account Created!</h1>
+        <hr>
+        <div class="contentArea">
+            <dl class="row">
+                <dt class="col-sm-3">Account Id: </dt>
+                <dd class="col-sm-7">{{postedAccount.id}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Account Type:</dt>
+                <dd class="col-sm-7">{{AccountType[postedAccount.accountTypeId]}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Created Date:</dt>
+                <dd class="col-sm-7">{{postedAccount.createDate|date:'fullDate'}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Balance: </dt>
+                <dd class="col-sm-7">$ {{postedAccount.balance}}</dd>
+            </dl>
+        </div>
+    </div>
+</ng-template>
+
+<!--
+        (click)="showSelectedType(accType)" 
+    <div class="alert alert-danger" *ngIf="accountType.touched && !accountType.valid">
+        Please select the type of account
+    </div>  
+id: 1,
+  userId: 1,
+  accountTypeId: 1,
+  balance: 12,
+  createDate = new Date(),
+  isClosed = false
+-->

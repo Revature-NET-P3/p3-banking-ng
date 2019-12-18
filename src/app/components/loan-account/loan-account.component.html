@@ -5,10 +5,16 @@
   <span id="balance" hidden>{{account.balance}}</span>
   <div>
           <accordion [closeOthers]="true" [isAnimated]="true">
-                  <accordion-group heading="|| Pay Loan"> 
+                  <accordion-group> 
+                        <button class="btn btn-link btn-block clearfix"
+                        accordion-heading type="button">
+                        <div class="pull-left float-left">
+                        Pay Loan
+                        </div>
+                        </button>
                           <form class="form-style-7">
                                   <ul>
-                                  <li>
+                                  <!-- <li>
                                           <label>Payment Type</label>
                                           <select id="mypaymentchoice" class="field-select" onclick="LoanPaymentChoice()"> 
                                           <option value="Monthly">Monthly payment</option>
@@ -16,21 +22,26 @@
                                           <option value="Custom">Custom amount</option>
                                           </select>
                                           <span>Select the payment type here</span>
-                                  </li>
+                                  </li> -->
                                   <li>
                                           <label for="name">Amount</label>
                                           <!-- TODO: Remove hardcode -->
-                                          <input type="text" id="loanamount" maxlength="100" [value]="account.balance*0.04375" readonly>
-                                          <span>Select the payment type above and confirm</span>
+                                          <input name="" type="text" id="loanamount" maxlength="100" [(ngModel)]="pay_amount" [ngModelOptions]="{standalone: true}">
+                                          <span>{{pay_message}} {{pay_amount}}</span>
                                   </li>
                                   <li>
-                                          <input type="submit" value="Confirm" >
+                                          <input type="submit" value="Confirm" (click)="OnPaySubmit()">
                                   </li>
                                   </ul>
                           </form>
                   </accordion-group>
-                  <accordion-group heading="|| Transactions"> 
-                          
+                  <accordion-group> 
+                        <button class="btn btn-link btn-block clearfix"
+                        accordion-heading type="button">
+                        <div class="pull-left float-left">
+                        Transactions
+                        </div>
+                        </button>
                   </accordion-group>
           </accordion>
   </div> 

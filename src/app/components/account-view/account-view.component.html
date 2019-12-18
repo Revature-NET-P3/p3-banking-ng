@@ -12,6 +12,7 @@
         <h2 class=" header" >Your Accounts</h2>
         <!--Filter Button-->
         <div style="margin-top:1rem;">
+            <h4 class="CreateAccount" [routerLink]="['/createnewaccount']" routerLinkActive="true"> + Create account </h4>
             <div class="btn-group" dropdown >
                 <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
                         aria-controls="dropdown-animated">
@@ -23,12 +24,10 @@
                     class="dropdown-item" role="menuitem" style="cursor: pointer;">
                          {{option}} 
                     </li>
-                </ul>
+                </ul>   
             </div>
 
         </div>
-
-    <!--List and show info using child component-->
 
         <div class="DivideAccountView">
             <accordion [closeOthers]="true" [isAnimated]="true">
@@ -36,7 +35,6 @@
                     (isOpenChange)="openChange(a)" >
                     <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
                         <div class="pull-left float-left">
-                            <!-- TODO: make the nickname show -->
                             {{AccountType[a.accountTypeId]}}: {{a.accNickname}}
                         </div>
                         <span class="badge badge-secondary float-right pull-right" *ngIf="a.isClosed;else openTemplate"
@@ -50,15 +48,17 @@
                             </span>
                         </ng-template>
                     </button>
-                    <p> Opened on {{a.createDate|date:'fullDate'}}</p>
+                    <span><p> Opened on {{a.createDate|date:'fullDate'}} </p>
+                        <button type="button" class="btn btn-primary" [routerLink]="['/transactions', {account: a.id}]" routerLinkActive="true" > View transactions. </button>
+                        <button type="button" class="btn btn-danger" (click)="closeAccount(a)" > Close this account. </button>       
+                    </span>
                 </accordion-group>
             </accordion>
-            <h3 style="display:inline; cursor:pointer; color:rgb(27, 79, 253); border: solid; border-color: rgba(127, 191, 255, 0.809);">+ Create a new Account</h3>
-
         </div>
 
     </div>
 
+    <!--List and show info using child component-->
     <div class="DivideAccountView">
         <ng-template app-view-container></ng-template>       
     </div>
