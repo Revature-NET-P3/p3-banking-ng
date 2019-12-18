@@ -12,7 +12,12 @@
 
         <div>
                 <accordion [closeOthers]="true" [isAnimated]="true">
-                        <accordion-group heading=" Deposit "> 
+                        <accordion-group> 
+                                <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
+                                        <div class="pull-left float-left">
+                                        Deposit
+                                        </div>
+                                </button>
                                 <form class="form-style-7">
                                         <ul>
                                         <li>
@@ -26,7 +31,13 @@
                                         </ul>
                                 </form>
                         </accordion-group>
-                        <accordion-group heading=" Withdraw"> 
+                        <accordion-group> 
+                                <button class="btn btn-link btn-block clearfix"
+                                        accordion-heading type="button">
+                                        <div class="pull-left float-left">
+                                        Withdraw
+                                        </div>
+                                </button>
                                 <form class="form-style-7">
                                         <ul>
                                         <li>
@@ -40,7 +51,13 @@
                                         </ul>
                                 </form>
                         </accordion-group>
-                        <accordion-group heading=" Transfer"> 
+                        <accordion-group>
+                                <button class="btn btn-link btn-block clearfix"
+                                        accordion-heading type="button">
+                                        <div class="pull-left float-left">
+                                        Transfer
+                                        </div>
+                                </button>
                                 <form class="form-style-7">
                                         <ul>
                                         <li>
@@ -63,9 +80,15 @@
                                         </ul>
                                 </form>
                         </accordion-group>
-                        <accordion-group heading=" Transactions"> 
+                        <!-- <accordion-group>
+                                <button class="btn btn-link btn-block clearfix"
+                                        accordion-heading type="button">
+                                        <div class="pull-left float-left">
+                                        Transactions
+                                        </div>
+                                </button>
                                 <p>No transactions.</p>
-                        </accordion-group>
+                        </accordion-group> -->
                 </accordion>
         </div> 
 </fieldset>

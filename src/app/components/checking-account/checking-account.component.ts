@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TransactionsService} from 'src/app/services/transactions.service'
 import { Account } from '../../models/account';
-import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
+import { AccountViewChild } from 'src/app/models/account-view-child';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service'
 import { takeLast } from 'rxjs/operators';
@@ -16,9 +16,7 @@ import { discardPeriodicTasks } from '@angular/core/testing';
     ApiService, TransactionsService
   ]
 })
-
-export class CheckingAccountComponent implements OnInit, AccountViewChildComponent{
-
+export class CheckingAccountComponent implements OnInit, AccountViewChild{
   @Input() account: Account;
   @Input() accounts$: Observable<Account[]>;
   deposit_amount = 0;
@@ -52,8 +50,11 @@ export class CheckingAccountComponent implements OnInit, AccountViewChildCompone
   }
 
   OnSubmitWithdraw() { 
-    if (this.withdraw_amount > 0){
-      this.api.withdraw(this.account.id, this.withdraw_amount).subscribe( item =>
+    if (this.account.balance < this.withdraw_amount && this.account.accountTypeId == 1){
+      this.withdraw_message = 'You cannot overdraft on this account';
+    }
+    else if (this.withdraw_amount > 0){
+      this.api.withdraw(this.account.id, this.withdraw_amount).subscribe(r => 
         location.reload()
       )
     }

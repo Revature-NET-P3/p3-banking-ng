@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service'
 
 import { Account } from '../../models/account';
-import { AccountViewChildComponent } from 'src/app/models/account-view-child.component';
+import { AccountViewChild } from 'src/app/models/account-view-child';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
     ApiService
   ]
 })
-export class LoanAccountComponent implements OnInit, AccountViewChildComponent {
+export class LoanAccountComponent implements OnInit, AccountViewChild {
   @Input() account: Account;
   @Input() accounts$: Observable<Account[]>;
   pay_message : string = "Enter payment amount";

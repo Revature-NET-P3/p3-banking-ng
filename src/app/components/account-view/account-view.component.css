@@ -7,6 +7,7 @@
     grid-row-gap: 0px;
     background-color: #ddeaf3; 
     justify-content: space-evenly;
+    font-size: 2rem;
 }
 .panel-group{
     width: 125%;
@@ -35,7 +36,21 @@
     color:rgb(27, 79, 253);
 }
 
+.btn+.btn{
+    margin-left: 1rem;
+}
+
 .header{
     margin: 0 auto;
     text-align: center;
+}
+
+.badge {
+    font-size: small;
+}
+.DivideAccountView .btn{
+    font-size: 1.5rem;
+}
+.dropdown-menu{
+    font-size: 1.5rem;
 }

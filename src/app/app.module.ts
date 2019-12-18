@@ -36,10 +36,7 @@ import { CreateNewAccountComponent } from './components/create-new-account/creat
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../app/services/token-interceptor.service';
-
-
-
-import { NewsComponent } from './components/news/news/news.component';
+import { NewsComponent } from './components/news/news.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 import { TransactionPipe } from './components/pipes/transaction.pipe';
