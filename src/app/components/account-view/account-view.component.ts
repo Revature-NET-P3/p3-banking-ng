@@ -99,9 +99,9 @@ export class AccountViewComponent implements OnInit {
     const componentRef = viewContainerRef.createComponent(componentFactory);
     var childComp = <AccountViewChild>componentRef.instance;
     childComp.account = this.currentAccount;
-    this.api.getAccountsByUser(this.currentAccount.userId).subscribe(ret => {let temp = ret; 
+    this.api.getAccountsByUser(this.currentAccount.userId).subscribe(ret => {let temp = ret.filter(items=>items.accountTypeId == 1 || items.accountTypeId==2);
                                                                              //console.log(ret.findIndex(I=>I.id== this.currentAccount.id)); 
-                                                                             //console.log(temp); 
+                                                                             console.log(temp); 
                                                                              //console.log(temp.splice(temp.findIndex(I=>I.id== this.currentAccount.id),1));
                                                                              //console.log(temp);
                                                                              temp.splice(temp.findIndex(I=>I.id== this.currentAccount.id),1);
