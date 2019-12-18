@@ -1,6 +1,6 @@
 export class UserModel {
     id: number;
-    userName: string;
+    username: string;
     email: string;
-    password: string;
+    passwordHash: string;
 }

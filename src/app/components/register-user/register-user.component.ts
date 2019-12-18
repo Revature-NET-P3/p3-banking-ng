@@ -22,9 +22,9 @@ export class RegisterUserComponent implements OnInit {
   
   onRegister() {
     
-    this.user.userName = this.userNameInput.nativeElement.value;
+    this.user.username = this.userNameInput.nativeElement.value;
     this.user.email = this.emailInput.nativeElement.value;
-    this.user.password = this.passwordInput.nativeElement.value;
+    this.user.passwordHash = this.passwordInput.nativeElement.value;
 
     //this.user.confirmPassword = this.passwordConfirmInput.nativeElement.value;
     

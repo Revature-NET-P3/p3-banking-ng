@@ -119,10 +119,10 @@ export class ApiService {
   {
     var user = new UserModel();
     user.email = email;
-    user.userName = username;
+    user.username = username;
     
-    user.password = password;
-    this.auth.HashPassword(user.password);
+    user.passwordHash = password;
+    this.auth.HashPassword(user.passwordHash);
     this.doPost<UserModel>(this.url + '/api/UsersAPI/CreateUser', user);
   }
   // Accounts Controller API calls
