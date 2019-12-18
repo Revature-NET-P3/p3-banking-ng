@@ -29,15 +29,12 @@
 
         </div>
 
-    <!--List and show info using child component-->
-
         <div class="DivideAccountView">
             <accordion [closeOthers]="true" [isAnimated]="true">
                 <accordion-group *ngFor="let a of accounts$ | async" (click)="getAccount(a)"
                     (isOpenChange)="openChange(a)" >
                     <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
                         <div class="pull-left float-left">
-                            <!-- TODO: make the nickname show -->
                             {{AccountType[a.accountTypeId]}}: {{a.accNickname}}
                         </div>
                         <span class="badge badge-secondary float-right pull-right" *ngIf="a.isClosed;else openTemplate"
@@ -61,6 +58,7 @@
 
     </div>
 
+    <!--List and show info using child component-->
     <div class="DivideAccountView">
         <ng-template app-view-container></ng-template>       
     </div>
