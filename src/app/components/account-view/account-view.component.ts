@@ -11,8 +11,8 @@ import { TdcAccountComponent } from '../tdc-account/tdc-account.component';
 import { AccountViewChild } from 'src/app/models/account-view-child';
 import { ViewContainerDirective } from 'src/app/directives/view-container.directive';
 import { ActivatedRoute } from '@angular/router';
-import { first, filter } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -103,7 +103,16 @@ export class AccountViewComponent implements OnInit {
     const componentRef = viewContainerRef.createComponent(componentFactory);
     var childComp = <AccountViewChild>componentRef.instance;
     childComp.account = this.currentAccount;
-    childComp.accounts$ = this.accounts$;
+    this.api.getAccountsByUser(this.currentAccount.userId).subscribe(ret => {let temp = ret.filter(items=>(items.accountTypeId == 1 || items.accountTypeId==2));
+                                                                             //console.log(ret.findIndex(I=>I.id== this.currentAccount.id)); 
+                                                                             //console.log(ret);
+                                                                             //console.log(temp); 
+                                                                             //console.log(temp.splice(temp.findIndex(I=>I.id== this.currentAccount.id),1));
+                                                                             //console.log(temp);
+                                                                             let aIndex =temp.findIndex(I=>I.id== this.currentAccount.id); 
+                                                                             if(aIndex > -1) {temp.splice(aIndex,1);};
+                                                                             childComp.accounts$=of(temp);
+                                                                            });
 
   }
 }
