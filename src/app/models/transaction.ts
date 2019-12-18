@@ -9,8 +9,8 @@ export enum TransactionType {
     Close,
 }
 
-const TransactionTypeNames = {1:"Withdrawal", 2:"Deposit", 3:"Inbound Transfer", 
-    4:"Outbound Transfer", 5:"Overdraft Fee", 6:"Payment", 7:"Account Opened", 8:"Account Closed"}
+const TransactionTypeNames = {1:"Withdrawal", 2:"Deposit", 3:"Outbound Transfer", 
+    4:"Inbound Transfer", 5:"Overdraft Fee", 6:"Payment", 7:"Account Opened", 8:"Account Closed"}
 
 export class DBTransaction {
     id: number;
